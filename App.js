@@ -50,33 +50,29 @@ const Tab = createBottomTabNavigator();
 // }
 
 class App extends React.Component {
-  // signupHandler = (userObj) => {
-  //   const configObj = {
-  //     method: "POST",
-  //     headers: {
-  //       accepts: "application/json",
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify({ user: userObj }),
-  //   };
+  signupHandler = (userObj) => {
+    console.log(userObj);
+    // const configObj = {
+    //   method: "POST",
+    //   headers: {
+    //     accepts: "application/json",
+    //     "content-type": "application/json",
+    //   },
+    //   body: JSON.stringify({ user: userObj }),
+    // };
 
-  //   fetch("http://localhost:3000/api/v1/users", configObj)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       if (data.jwt) {
-  //         this.setState(
-  //           {
-  //             user: data.user,
-  //           },
-  //           () => {
-  //             this.loginHandler(this.state.user);
-  //           }
-  //         );
-  //       } else {
-  //         this.setState({ signupError: data });
-  //       }
-  //     });
-  // };
+    // fetch("http://localhost:3000/api/v1/users", configObj)
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     if (data.jwt) {
+    //       this.setState({
+    //         user: data.user,
+    //       });
+    //     } else {
+    //       this.setState({ signupError: data });
+    //     }
+    //   });
+  };
 
   render() {
     return (
@@ -86,7 +82,7 @@ class App extends React.Component {
           centerComponent={{ text: "MentorMe", style: { color: "#fff" } }}
           rightComponent={{ icon: "home", color: "#fff" }}
         />
-        <MainTabNavigator />
+        <MainTabNavigator signupHandler={this.signupHandler} />
       </NavigationContainer>
     );
   }

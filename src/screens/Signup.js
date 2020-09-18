@@ -11,6 +11,11 @@ class Signup extends React.Component {
 
   onChangeText = (name) => (text) => this.setState({ [name]: text });
 
+  submitHandler = () => {
+    console.log("testing submithandler");
+    this.props.signupHandler(this.state);
+  };
+
   render() {
     let { username, password } = this.state;
 
@@ -28,10 +33,7 @@ class Signup extends React.Component {
           onChangeText={this.onChangeText("password")}
           value={password}
         />
-        <Button
-          title="Sign in!"
-          //   onPress={() => this.signInAsync(this.state.user)}
-        />
+        <Button title="Sign in!" onPress={this.submitHandler} />
       </View>
     );
   }

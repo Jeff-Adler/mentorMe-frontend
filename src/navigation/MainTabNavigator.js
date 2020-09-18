@@ -6,7 +6,7 @@ import Signup from "../screens/Signup";
 
 const Tab = createBottomTabNavigator();
 
-const MainTabNavigator = () => {
+const MainTabNavigator = (props) => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
@@ -28,7 +28,10 @@ const MainTabNavigator = () => {
         inactiveTintColor: "gray",
       }}
     >
-      <Tab.Screen name="Signup" component={Signup} />
+      <Tab.Screen
+        name="Signup"
+        children={() => <Signup signupHandler={props.signupHandler} />}
+      />
       <Tab.Screen name="Posts" component={PostList} />
       {/* <Tab.Screen name="Search" component={SettingsStackScreen} />
       <Tab.Screen name="Pending" component={HomeStackScreen} />
