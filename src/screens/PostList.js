@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { ListItem, Avatar } from "react-native-elements";
 import { AvatarGenerator } from "random-avatar-generator";
 
@@ -29,12 +29,9 @@ class PostList extends React.Component {
     fetch("http://localhost:3000/posts")
       .then((response) => response.json())
       .then((posts) =>
-        this.setState(
-          {
-            posts: posts,
-          },
-          console.log("Posts loaded", posts)
-        )
+        this.setState({
+          posts: posts,
+        })
       );
   }
 
@@ -43,7 +40,10 @@ class PostList extends React.Component {
       console.log(post);
       return (
         <ListItem key={post.id} bottomDivider>
-          <Avatar source={{ uri: generator.generateRandomAvatar() }} />
+          <Avatar
+            style={styles.image}
+            source={{ uri: generator.generateRandomAvatar() }}
+          />
           <ListItem.Content>
             <ListItem.Title>{post.id}</ListItem.Title>
             <ListItem.Subtitle>{post.connection_id}</ListItem.Subtitle>
@@ -58,5 +58,14 @@ class PostList extends React.Component {
     return <View>{this.state.posts !== null ? this.mapPosts() : null}</View>;
   }
 }
+
+const styles = StyleSheet.create({
+  image: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    overflow: "hidden",
+  },
+});
 
 export default PostList;
