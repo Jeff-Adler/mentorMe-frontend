@@ -46,7 +46,6 @@ class App extends React.Component {
   };
 
   loginHandler = (userInfo) => {
-    console.log(userInfo);
     const configObj = {
       method: "POST",
       headers: {
@@ -66,7 +65,9 @@ class App extends React.Component {
             console.log("Userdata", this.state.user);
           });
         } else {
-          this.setState({ authenticationError: data.message });
+          this.setState({ authenticationError: data.message }, () =>
+            console.log("Authentication Error:", this.state.authenticationError)
+          );
         }
       });
   };
@@ -147,47 +148,3 @@ const styles = StyleSheet.create({
 });
 
 export default App;
-
-// export default function App() {
-//   return (
-//     <NavigationContainer>
-//       <Header
-//         leftComponent={{ icon: "menu", color: "#fff" }}
-//         centerComponent={{ text: "MentorMe", style: { color: "#fff" } }}
-//         rightComponent={{ icon: "home", color: "#fff" }}
-//       />
-//       <MainTabNavigator />
-//     </NavigationContainer>
-
-// {/* <View style={styles.container}>
-//   <Text>MentorMe</Text>
-//   <StatusBar style="auto" />
-// </View> */}
-
-// <Tab.Navigator
-//   screenOptions={({ route }) => ({
-//     tabBarIcon: ({ focused, color, size }) => {
-//       let iconName;
-//       if (route.name === "Home") {
-//         iconName = focused
-//           ? "ios-information-circle"
-//           : "ios-information-circle-outline";
-//       } else if (route.name === "Settings") {
-//         iconName = focused ? "ios-list-box" : "ios-list";
-//       }
-
-//       return <Ionicons name={iconName} size={size} color={color} />;
-//     },
-//   })}
-//   tabBarOptions={{
-//     activeTintColor: "tomato",
-//     inactiveTintColor: "gray",
-//   }}
-// >
-//   <Tab.Screen name="Home" component={HomeStackScreen} />
-//   <Tab.Screen name="Settings" component={SettingsStackScreen} />
-// </Tab.Navigator>
-
-// <MainStackNavigator />
-//   );
-// }
