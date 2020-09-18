@@ -1,6 +1,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import { ListItem, Avatar } from "react-native-elements";
+import AsyncStorage from "@react-native-community/async-storage";
 
 const list = [
   {
@@ -23,14 +24,39 @@ class PostList extends React.Component {
   };
 
   componentDidMount() {
-    fetch("http://localhost:3000/posts")
-      .then((response) => response.json())
-      .then((posts) =>
-        this.setState({
-          posts: posts,
-        })
-      );
+    const token = this.getToken();
+    console.log("Token:", token);
+    // if (token) {
+    //   this.fetchPosts(token);
+    // }
   }
+
+  async getToken() {
+    console.log("starting gettokeN");
+    try {
+      let token = await AsyncStorage.getItem("token");
+      console.log("Inside getToken:", token);
+      this.fetchPosts(token);
+    } catch (error) {
+      console.log("Something went wrong", error);
+    }
+  }
+
+  fetchPosts = (token) => {
+    fetch("http://localhost:3000/posts", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((retrievedPosts) => {
+        console.log("Received Posts:", retrievedPosts);
+        // this.setState({
+        //   posts: [...retrievedPosts],
+        // });
+      });
+  };
 
   mapPosts = () => {
     return this.state.posts.map((post) => {

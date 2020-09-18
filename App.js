@@ -30,6 +30,29 @@ class App extends React.Component {
     authenticationError: null,
   };
 
+  async storeToken(jwt) {
+    try {
+      await AsyncStorage.setItem("token", jwt);
+    } catch (error) {
+      console.log("Something went wrong", error);
+    }
+  }
+
+  async getToken() {
+    console.log("starting gettokeN");
+    try {
+      let token = await AsyncStorage.getItem("token");
+      console.log("Inside getToken:", token);
+      return token;
+    } catch (error) {
+      console.log("Something went wrong", error);
+    }
+  }
+
+  getToken = () => {
+    return AsyncStorage.getItem("token");
+  };
+
   retrieveUserProfile = (token) => {
     fetch("http://localhost:3000/api/v1/profile", {
       method: "GET",
@@ -59,15 +82,10 @@ class App extends React.Component {
       .then((response) => response.json())
       .then((data) => {
         if (data.jwt) {
-          AsyncStorage.setItem("token", data.jwt);
-          this.setState({ user: data.user, isSignedIn: true }, () => {
-            console.log("auth_token:", AsyncStorage.getItem("token"));
-            console.log("Userdata", this.state.user);
-          });
+          this.storeToken(data.jwt);
+          this.setState({ user: data.user, isSignedIn: true });
         } else {
-          this.setState({ authenticationError: data.message }, () =>
-            console.log("Authentication Error:", this.state.authenticationError)
-          );
+          this.setState({ authenticationError: data.message });
         }
       });
   };
@@ -87,20 +105,13 @@ class App extends React.Component {
       .then((data) => {
         console.log(data);
         if (data.jwt) {
-          this.setState(
-            {
-              user: data.user,
-            },
-            () => console.log("Received user data:", this.state.user)
-          );
+          this.setState({
+            user: data.user,
+          });
         } else {
-          this.setState(
-            {
-              signupError: data.error,
-            },
-            () =>
-              console.log("Did NOT receive user data:", this.state.signupError)
-          );
+          this.setState({
+            signupError: data.error,
+          });
         }
       });
   };
@@ -117,6 +128,7 @@ class App extends React.Component {
             />
             <NavigationContainer>
               <MainTabNavigator
+                getToken={this.getToken}
                 loginHandler={this.loginHandler}
                 signupHandler={this.signupHandler}
               />

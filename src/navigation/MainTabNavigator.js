@@ -8,16 +8,18 @@ import Login from "../screens/Login";
 const Tab = createBottomTabNavigator();
 
 const MainTabNavigator = (props) => {
+  const { getToken } = props;
   return (
     <Tab.Navigator
+      initialRouteName="Chats"
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
-          if (route.name === "Home") {
+          if (route.name === "Chats") {
             iconName = focused
               ? "ios-information-circle"
               : "ios-information-circle-outline";
-          } else if (route.name === "Settings") {
+          } else if (route.name === "Search") {
             iconName = focused ? "ios-list-box" : "ios-list";
           }
 
@@ -30,17 +32,12 @@ const MainTabNavigator = (props) => {
       }}
     >
       <Tab.Screen
-        name="Login"
-        children={() => <Login loginHandler={props.loginHandler} />}
+        name="Chats"
+        children={() => <PostList getToken={getToken} />}
       />
-      <Tab.Screen
-        name="Signup"
-        children={() => <Signup signupHandler={props.signupHandler} />}
-      />
-      <Tab.Screen name="Posts" component={PostList} />
-      {/* <Tab.Screen name="Search" component={SettingsStackScreen} />
-      <Tab.Screen name="Pending" component={HomeStackScreen} />
-      <Tab.Screen name="Account" component={HomeStackScreen} /> */}
+      <Tab.Screen name="Search" component={PostList} />
+      <Tab.Screen name="Pending" component={PostList} />
+      <Tab.Screen name="Account" component={PostList} />
     </Tab.Navigator>
   );
 };

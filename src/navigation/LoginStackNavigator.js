@@ -8,7 +8,6 @@ const Stack = createStackNavigator();
 
 const LoginStackNavigator = (props) => {
   const { loginHandler, signupHandler } = props;
-  console.log("loginStackNavigator props:", loginHandler, signupHandler);
   return (
     <Stack.Navigator style={styles.container} initialRouteName="Login">
       <Stack.Screen name="Login">

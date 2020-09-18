@@ -14,7 +14,6 @@ class Login extends React.Component {
   render() {
     let { username, password } = this.state;
     const { navigation } = this.props;
-    console.log("Login props:", this.props);
     return (
       <View style={styles.container}>
         <Input
