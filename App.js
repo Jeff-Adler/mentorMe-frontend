@@ -52,10 +52,10 @@ const Tab = createBottomTabNavigator();
 class App extends React.Component {
   state = {
     user: null,
+    signupError: null,
   };
 
   signupHandler = (userObj) => {
-    console.log("userObj:", userObj);
     const configObj = {
       method: "POST",
       headers: {
@@ -68,17 +68,22 @@ class App extends React.Component {
     fetch("http://localhost:3000/api/v1/users", configObj)
       .then((response) => response.json())
       .then((data) => {
-        console.log("confirming data jwt:", data.jwt);
-        console.log("confirming data user:", data.user);
+        console.log(data);
         if (data.jwt) {
           this.setState(
             {
               user: data.user,
             },
-            console.log("Received user data:", this.state.user)
+            () => console.log("Received user data:", this.state.user)
           );
         } else {
-          this.setState({ signupError: data });
+          this.setState(
+            {
+              signupError: data.error,
+            },
+            () =>
+              console.log("Did NOT receive user data:", this.state.signupError)
+          );
         }
       });
   };
