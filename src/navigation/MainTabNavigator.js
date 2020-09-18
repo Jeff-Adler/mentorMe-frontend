@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import PostList from "../screens/PostList";
 import Signup from "../screens/Signup";
+import Login from "../screens/Login";
 
 const Tab = createBottomTabNavigator();
 
@@ -28,6 +29,10 @@ const MainTabNavigator = (props) => {
         inactiveTintColor: "gray",
       }}
     >
+      <Tab.Screen
+        name="Login"
+        children={() => <Login loginHandler={props.loginHandler} />}
+      />
       <Tab.Screen
         name="Signup"
         children={() => <Signup signupHandler={props.signupHandler} />}

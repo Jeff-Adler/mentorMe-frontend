@@ -17,6 +17,8 @@ import SettingsScreen from "./src/screens/Settings";
 
 import MainTabNavigator from "./src/navigation/MainTabNavigator";
 
+import AsyncStorage from "@react-native-community/async-storage";
+
 const Tab = createBottomTabNavigator();
 
 // function DetailsScreen() {
@@ -53,6 +55,48 @@ class App extends React.Component {
   state = {
     user: null,
     signupError: null,
+    authenticationError: null,
+  };
+
+  retrieveUserProfile = (token) => {
+    fetch("http://localhost:3000/api/v1/profile", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data) {
+          this.setState({ user: data.user });
+        }
+      });
+  };
+
+  loginHandler = (userInfo) => {
+    console.log(userInfo);
+    const configObj = {
+      method: "POST",
+      headers: {
+        accepts: "application/json",
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ user: userInfo }),
+    };
+
+    fetch("http://localhost:3000/api/v1/login", configObj)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.jwt) {
+          AsyncStorage.setItem("token", data.jwt);
+          this.setState({ user: data.user }, () => {
+            console.log("auth_token:", AsyncStorage.getItem("token"));
+            console.log("Userdata", this.state.user);
+          });
+        } else {
+          this.setState({ authenticationError: data.message });
+        }
+      });
   };
 
   signupHandler = (userObj) => {
@@ -96,7 +140,10 @@ class App extends React.Component {
           centerComponent={{ text: "MentorMe", style: { color: "#fff" } }}
           rightComponent={{ icon: "home", color: "#fff" }}
         />
-        <MainTabNavigator signupHandler={this.signupHandler} />
+        <MainTabNavigator
+          loginHandler={this.loginHandler}
+          signupHandler={this.signupHandler}
+        />
       </NavigationContainer>
     );
   }
