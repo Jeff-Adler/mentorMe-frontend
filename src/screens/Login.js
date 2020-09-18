@@ -34,6 +34,7 @@ class Login extends React.Component {
         />
         <Button
           title="Go to Signup"
+          type="clear"
           onPress={() => navigation.navigate("Signup")}
         />
       </View>
