@@ -50,28 +50,37 @@ const Tab = createBottomTabNavigator();
 // }
 
 class App extends React.Component {
-  signupHandler = (userObj) => {
-    console.log(userObj);
-    // const configObj = {
-    //   method: "POST",
-    //   headers: {
-    //     accepts: "application/json",
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify({ user: userObj }),
-    // };
+  state = {
+    user: null,
+  };
 
-    // fetch("http://localhost:3000/api/v1/users", configObj)
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     if (data.jwt) {
-    //       this.setState({
-    //         user: data.user,
-    //       });
-    //     } else {
-    //       this.setState({ signupError: data });
-    //     }
-    //   });
+  signupHandler = (userObj) => {
+    console.log("userObj:", userObj);
+    const configObj = {
+      method: "POST",
+      headers: {
+        accepts: "application/json",
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ user: userObj }),
+    };
+
+    fetch("http://localhost:3000/api/v1/users", configObj)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("confirming data jwt:", data.jwt);
+        console.log("confirming data user:", data.user);
+        if (data.jwt) {
+          this.setState(
+            {
+              user: data.user,
+            },
+            console.log("Received user data:", this.state.user)
+          );
+        } else {
+          this.setState({ signupError: data });
+        }
+      });
   };
 
   render() {
