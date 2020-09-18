@@ -49,49 +49,92 @@ const Tab = createBottomTabNavigator();
 //   );
 // }
 
-export default function App() {
-  return (
-    <NavigationContainer>
-      <Header
-        leftComponent={{ icon: "menu", color: "#fff" }}
-        centerComponent={{ text: "MentorMe", style: { color: "#fff" } }}
-        rightComponent={{ icon: "home", color: "#fff" }}
-      />
-      <MainTabNavigator />
-    </NavigationContainer>
+class App extends React.Component {
+  // signupHandler = (userObj) => {
+  //   const configObj = {
+  //     method: "POST",
+  //     headers: {
+  //       accepts: "application/json",
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify({ user: userObj }),
+  //   };
 
-    // {/* <View style={styles.container}>
-    //   <Text>MentorMe</Text>
-    //   <StatusBar style="auto" />
-    // </View> */}
+  //   fetch("http://localhost:3000/api/v1/users", configObj)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       if (data.jwt) {
+  //         this.setState(
+  //           {
+  //             user: data.user,
+  //           },
+  //           () => {
+  //             this.loginHandler(this.state.user);
+  //           }
+  //         );
+  //       } else {
+  //         this.setState({ signupError: data });
+  //       }
+  //     });
+  // };
 
-    // <Tab.Navigator
-    //   screenOptions={({ route }) => ({
-    //     tabBarIcon: ({ focused, color, size }) => {
-    //       let iconName;
-    //       if (route.name === "Home") {
-    //         iconName = focused
-    //           ? "ios-information-circle"
-    //           : "ios-information-circle-outline";
-    //       } else if (route.name === "Settings") {
-    //         iconName = focused ? "ios-list-box" : "ios-list";
-    //       }
-
-    //       return <Ionicons name={iconName} size={size} color={color} />;
-    //     },
-    //   })}
-    //   tabBarOptions={{
-    //     activeTintColor: "tomato",
-    //     inactiveTintColor: "gray",
-    //   }}
-    // >
-    //   <Tab.Screen name="Home" component={HomeStackScreen} />
-    //   <Tab.Screen name="Settings" component={SettingsStackScreen} />
-    // </Tab.Navigator>
-
-    // <MainStackNavigator />
-  );
+  render() {
+    return (
+      <NavigationContainer>
+        <Header
+          leftComponent={{ icon: "menu", color: "#fff" }}
+          centerComponent={{ text: "MentorMe", style: { color: "#fff" } }}
+          rightComponent={{ icon: "home", color: "#fff" }}
+        />
+        <MainTabNavigator />
+      </NavigationContainer>
+    );
+  }
 }
+
+// export default function App() {
+//   return (
+//     <NavigationContainer>
+//       <Header
+//         leftComponent={{ icon: "menu", color: "#fff" }}
+//         centerComponent={{ text: "MentorMe", style: { color: "#fff" } }}
+//         rightComponent={{ icon: "home", color: "#fff" }}
+//       />
+//       <MainTabNavigator />
+//     </NavigationContainer>
+
+// {/* <View style={styles.container}>
+//   <Text>MentorMe</Text>
+//   <StatusBar style="auto" />
+// </View> */}
+
+// <Tab.Navigator
+//   screenOptions={({ route }) => ({
+//     tabBarIcon: ({ focused, color, size }) => {
+//       let iconName;
+//       if (route.name === "Home") {
+//         iconName = focused
+//           ? "ios-information-circle"
+//           : "ios-information-circle-outline";
+//       } else if (route.name === "Settings") {
+//         iconName = focused ? "ios-list-box" : "ios-list";
+//       }
+
+//       return <Ionicons name={iconName} size={size} color={color} />;
+//     },
+//   })}
+//   tabBarOptions={{
+//     activeTintColor: "tomato",
+//     inactiveTintColor: "gray",
+//   }}
+// >
+//   <Tab.Screen name="Home" component={HomeStackScreen} />
+//   <Tab.Screen name="Settings" component={SettingsStackScreen} />
+// </Tab.Navigator>
+
+// <MainStackNavigator />
+//   );
+// }
 
 const styles = StyleSheet.create({
   container: {
@@ -101,3 +144,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+
+export default App;

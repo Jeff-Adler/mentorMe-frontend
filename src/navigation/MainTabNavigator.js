@@ -2,6 +2,7 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import PostList from "../screens/PostList";
+import Signup from "../screens/Signup";
 
 const Tab = createBottomTabNavigator();
 
@@ -27,6 +28,7 @@ const MainTabNavigator = () => {
         inactiveTintColor: "gray",
       }}
     >
+      <Tab.Screen name="Signup" component={Signup} />
       <Tab.Screen name="Posts" component={PostList} />
       {/* <Tab.Screen name="Search" component={SettingsStackScreen} />
       <Tab.Screen name="Pending" component={HomeStackScreen} />
