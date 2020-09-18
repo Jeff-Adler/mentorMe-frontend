@@ -1,9 +1,6 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import { ListItem, Avatar } from "react-native-elements";
-import { AvatarGenerator } from "random-avatar-generator";
-
-const generator = new AvatarGenerator();
 
 const list = [
   {
@@ -37,12 +34,11 @@ class PostList extends React.Component {
 
   mapPosts = () => {
     return this.state.posts.map((post) => {
-      console.log(post);
       return (
         <ListItem key={post.id} bottomDivider>
           <Avatar
-            style={styles.image}
-            source={{ uri: generator.generateRandomAvatar() }}
+            style={styles.avatar}
+            source={{ uri: "http://tinygraphs.com/labs/squares/random" }}
           />
           <ListItem.Content>
             <ListItem.Title>{post.id}</ListItem.Title>
@@ -54,13 +50,12 @@ class PostList extends React.Component {
   };
 
   render() {
-    // console.log(generator.generateRandomAvatar());
     return <View>{this.state.posts !== null ? this.mapPosts() : null}</View>;
   }
 }
 
 const styles = StyleSheet.create({
-  image: {
+  avatar: {
     width: 50,
     height: 50,
     borderRadius: 25,
