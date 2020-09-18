@@ -1,7 +1,11 @@
 {
     "cSpell.ignoreWords": [
         "ionicons",
+        "login",
+        "login stack navigator",
         "navigations",
-        "pressable"
+        "navigator",
+        "pressable",
+        "stack"
     ]
 }

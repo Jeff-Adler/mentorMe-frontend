@@ -16,6 +16,7 @@ import HomeScreen from "./src/screens/Home";
 import SettingsScreen from "./src/screens/Settings";
 
 import MainTabNavigator from "./src/navigation/MainTabNavigator";
+import LoginStackNavigator from "./src/navigation/LoginStackNavigator";
 
 import AsyncStorage from "@react-native-community/async-storage";
 
@@ -54,6 +55,7 @@ const Tab = createBottomTabNavigator();
 class App extends React.Component {
   state = {
     user: null,
+    isSignedIn: false,
     signupError: null,
     authenticationError: null,
   };
@@ -89,7 +91,7 @@ class App extends React.Component {
       .then((data) => {
         if (data.jwt) {
           AsyncStorage.setItem("token", data.jwt);
-          this.setState({ user: data.user }, () => {
+          this.setState({ user: data.user, isSignedIn: true }, () => {
             console.log("auth_token:", AsyncStorage.getItem("token"));
             console.log("Userdata", this.state.user);
           });
@@ -134,20 +136,47 @@ class App extends React.Component {
 
   render() {
     return (
-      <NavigationContainer>
-        <Header
-          leftComponent={{ icon: "menu", color: "#fff" }}
-          centerComponent={{ text: "MentorMe", style: { color: "#fff" } }}
-          rightComponent={{ icon: "home", color: "#fff" }}
-        />
-        <MainTabNavigator
-          loginHandler={this.loginHandler}
-          signupHandler={this.signupHandler}
-        />
-      </NavigationContainer>
+      <View style={styles.container}>
+        {this.state.isSignedIn === true ? (
+          <View>
+            <Header
+              leftComponent={{ icon: "menu", color: "#fff" }}
+              centerComponent={{ text: "MentorMe", style: { color: "#fff" } }}
+              rightComponent={{ icon: "home", color: "#fff" }}
+            />
+            <NavigationContainer>
+              <MainTabNavigator
+                loginHandler={this.loginHandler}
+                signupHandler={this.signupHandler}
+              />
+            </NavigationContainer>
+          </View>
+        ) : (
+          <View style={styles.container}>
+            <NavigationContainer style={styles.container}>
+              <LoginStackNavigator
+                style={styles.container}
+                loginHandler={this.loginHandler}
+                signupHandler={this.signupHandler}
+              />
+            </NavigationContainer>
+          </View>
+        )}
+      </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    // alignItems: "center",
+    // justifyContent: "center",
+  },
+});
+
+export default App;
 
 // export default function App() {
 //   return (
@@ -192,14 +221,3 @@ class App extends React.Component {
 // <MainStackNavigator />
 //   );
 // }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
-
-export default App;

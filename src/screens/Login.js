@@ -13,7 +13,7 @@ class Login extends React.Component {
 
   render() {
     let { username, password } = this.state;
-
+    const { navigation } = this.props;
     return (
       <View style={styles.container}>
         <Input
@@ -29,8 +29,12 @@ class Login extends React.Component {
           value={password}
         />
         <Button
-          title="Sign up!"
+          title="Login"
           onPress={() => this.props.loginHandler(this.state)}
+        />
+        <Button
+          title="Go to Signup"
+          onPress={() => navigation.navigate("Signup")}
         />
       </View>
     );
@@ -39,6 +43,7 @@ class Login extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },

@@ -13,7 +13,6 @@ class Signup extends React.Component {
 
   render() {
     let { username, password } = this.state;
-
     return (
       <View style={styles.container}>
         <Input
