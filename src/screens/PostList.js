@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 import { ListItem, Avatar } from "react-native-elements";
 import AsyncStorage from "@react-native-community/async-storage";
 
@@ -25,21 +25,13 @@ class PostList extends React.Component {
 
   componentDidMount() {
     const token = this.getToken();
-    console.log("Token:", token);
-    // if (token) {
-    //   this.fetchPosts(token);
-    // }
   }
 
   async getToken() {
-    console.log("starting gettokeN");
     try {
       let token = await AsyncStorage.getItem("token");
-      console.log("Inside getToken:", token);
       this.fetchPosts(token);
-    } catch (error) {
-      console.log("Something went wrong", error);
-    }
+    } catch (error) {}
   }
 
   fetchPosts = (token) => {
@@ -51,10 +43,12 @@ class PostList extends React.Component {
     })
       .then((response) => response.json())
       .then((retrievedPosts) => {
-        console.log("Received Posts:", retrievedPosts);
-        // this.setState({
-        //   posts: [...retrievedPosts],
-        // });
+        this.setState(
+          {
+            posts: [...retrievedPosts],
+          },
+          () => console.log(this.state.posts)
+        );
       });
   };
 
@@ -76,6 +70,7 @@ class PostList extends React.Component {
   };
 
   render() {
+    console.log("in render");
     return <View>{this.state.posts !== null ? this.mapPosts() : null}</View>;
   }
 }

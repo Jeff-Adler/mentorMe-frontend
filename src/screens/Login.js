@@ -5,8 +5,8 @@ import Icon from "react-native-vector-icons/FontAwesome";
 
 class Login extends React.Component {
   state = {
-    username: "",
-    password: "",
+    username: "JeffAdler",
+    password: "Blink2002",
   };
 
   onChangeText = (name) => (text) => this.setState({ [name]: text });

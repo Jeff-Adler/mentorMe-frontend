@@ -120,7 +120,7 @@ class App extends React.Component {
     return (
       <View style={styles.container}>
         {this.state.isSignedIn === true ? (
-          <View>
+          <View style={styles.container}>
             <Header
               leftComponent={{ icon: "menu", color: "#fff" }}
               centerComponent={{ text: "MentorMe", style: { color: "#fff" } }}
