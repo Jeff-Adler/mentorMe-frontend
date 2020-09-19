@@ -68,8 +68,9 @@ class App extends React.Component {
       });
   };
 
-  submitBirthdate = (birthdate) => {
-    console.log(birthdate);
+  submitBirthdate = (dateObj) => {
+    const dateString = JSON.stringify(dateObj);
+    const birthdate = dateString.slice(1, dateString.indexOf("T"));
   };
 
   loginHandler = (userInfo) => {
