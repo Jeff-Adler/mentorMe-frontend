@@ -1,11 +1,14 @@
 {
     "cSpell.ignoreWords": [
+        "birthdate",
         "ionicons",
         "login",
         "login stack navigator",
         "navigations",
         "navigator",
         "pressable",
-        "stack"
+        "stack",
+        "submit",
+        "submit birthdate"
     ]
 }

@@ -68,6 +68,10 @@ class App extends React.Component {
       });
   };
 
+  submitBirthdate = (birthdate) => {
+    console.log(birthdate);
+  };
+
   loginHandler = (userInfo) => {
     const configObj = {
       method: "POST",
@@ -129,6 +133,7 @@ class App extends React.Component {
             <NavigationContainer>
               <MainTabNavigator
                 getToken={this.getToken}
+                submitBirthdate={this.submitBirthdate}
                 loginHandler={this.loginHandler}
                 signupHandler={this.signupHandler}
               />

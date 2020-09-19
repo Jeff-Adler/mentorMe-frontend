@@ -2,13 +2,12 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import PostList from "../screens/PostList";
-import Signup from "../screens/Signup";
-import Login from "../screens/Login";
+import { DatePicker } from "../screens/DatePicker";
 
 const Tab = createBottomTabNavigator();
 
 const MainTabNavigator = (props) => {
-  const { getToken } = props;
+  const { submitBirthdate, getToken } = props;
   return (
     <Tab.Navigator
       initialRouteName="Chats"
@@ -37,7 +36,10 @@ const MainTabNavigator = (props) => {
       />
       <Tab.Screen name="Search" component={PostList} />
       <Tab.Screen name="Pending" component={PostList} />
-      <Tab.Screen name="Account" component={PostList} />
+      <Tab.Screen
+        name="Account"
+        children={() => <DatePicker submitBirthdate={submitBirthdate} />}
+      />
     </Tab.Navigator>
   );
 };
