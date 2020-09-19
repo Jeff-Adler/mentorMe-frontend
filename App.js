@@ -30,6 +30,15 @@ class App extends React.Component {
     authenticationError: null,
   };
 
+  async componentDidMount() {
+    const token = await this.getToken();
+    if (token) {
+      this.retrieveUserProfile(token);
+    } else {
+      // this.props.history.push("/login")
+    }
+  }
+
   getUserId = () => {
     return this.state.user.id;
   };
@@ -63,7 +72,7 @@ class App extends React.Component {
       .then((response) => response.json())
       .then((data) => {
         if (data) {
-          this.setState({ user: data.user });
+          this.setState({ user: data.user, isSignedIn: true });
         }
       });
   };
