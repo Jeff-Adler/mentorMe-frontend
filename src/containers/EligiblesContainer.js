@@ -1,6 +1,7 @@
 import React from "react";
-import AsyncStorage from "@react-native-community/async-storage";
+// import AsyncStorage from "@react-native-community/async-storage";
 import { View, StyleSheet, Text } from "react-native";
+import EligiblesCardStack from "../screens/EligiblesCardStack";
 
 class EligiblesContainer extends React.Component {
   state = { eligibles: null };
@@ -32,7 +33,7 @@ class EligiblesContainer extends React.Component {
   };
 
   render() {
-    return <Text>Test</Text>;
+    return <EligiblesCardStack eligibles={this.state.eligibles} />;
   }
 }
 
