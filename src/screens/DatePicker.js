@@ -8,7 +8,7 @@ export const DatePicker = (props) => {
   const [mode, setMode] = useState("date");
   const [show, setShow] = useState(false);
 
-  let { submitBirthdate } = props;
+  let { logoutHandler, submitBirthdate } = props;
 
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
@@ -30,6 +30,12 @@ export const DatePicker = (props) => {
         style={styles.button}
         title="Submit"
         onPress={() => submitBirthdate(date)}
+      />
+      <Button
+        style={styles.button}
+        title="Logout"
+        type="clear"
+        onPress={() => logoutHandler()}
       />
     </View>
   );

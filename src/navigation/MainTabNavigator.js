@@ -8,7 +8,7 @@ import EligiblesContainer from "../containers/EligiblesContainer";
 const Tab = createBottomTabNavigator();
 
 const MainTabNavigator = (props) => {
-  const { currentUser, submitBirthdate, getToken } = props;
+  const { logoutHandler, currentUser, submitBirthdate, getToken } = props;
   return (
     <Tab.Navigator
       initialRouteName="Chats"
@@ -44,7 +44,12 @@ const MainTabNavigator = (props) => {
       <Tab.Screen name="Pending" component={PostList} />
       <Tab.Screen
         name="Account"
-        children={() => <DatePicker submitBirthdate={submitBirthdate} />}
+        children={() => (
+          <DatePicker
+            submitBirthdate={submitBirthdate}
+            logoutHandler={logoutHandler}
+          />
+        )}
       />
     </Tab.Navigator>
   );

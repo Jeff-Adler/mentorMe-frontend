@@ -152,6 +152,15 @@ class App extends React.Component {
       });
   };
 
+  logoutHandler = async () => {
+    try {
+      await AsyncStorage.removeItem("token");
+      this.setState({ isSignedIn: false });
+    } catch (exception) {
+      console.log("Couldn't logout");
+    }
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -169,6 +178,7 @@ class App extends React.Component {
                 submitBirthdate={this.submitBirthdate}
                 loginHandler={this.loginHandler}
                 signupHandler={this.signupHandler}
+                logoutHandler={this.logoutHandler}
               />
             </NavigationContainer>
           </View>
