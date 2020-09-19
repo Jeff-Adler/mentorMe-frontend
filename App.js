@@ -69,12 +69,13 @@ class App extends React.Component {
   };
 
   submitBirthdate = async (dateObj) => {
+    console.log("before modifying:", dateObj);
     const dateString = JSON.stringify(dateObj);
     const birthdate = dateString.slice(1, dateString.indexOf("T"));
 
     const token = await this.getTokenNotAsync();
 
-    console.log(token);
+    console.log(birthdate);
 
     const configObj = {
       method: "PATCH",
