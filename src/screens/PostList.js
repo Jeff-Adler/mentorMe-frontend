@@ -59,7 +59,6 @@ class PostList extends React.Component {
   };
 
   render() {
-    console.log("in render");
     return <View>{this.state.posts !== null ? this.mapPosts() : null}</View>;
   }
 }

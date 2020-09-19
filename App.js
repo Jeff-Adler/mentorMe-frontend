@@ -30,6 +30,10 @@ class App extends React.Component {
     authenticationError: null,
   };
 
+  getUserId = () => {
+    return this.state.user.id;
+  };
+
   async storeToken(jwt) {
     try {
       await AsyncStorage.setItem("token", jwt);
@@ -38,20 +42,16 @@ class App extends React.Component {
     }
   }
 
-  async getToken() {
-    console.log("starting gettokeN");
-    try {
-      let token = await AsyncStorage.getItem("token");
-      console.log("Inside getToken:", token);
-      return token;
-    } catch (error) {
-      console.log("Something went wrong", error);
-    }
+  getTokenNotAsync() {
+    return AsyncStorage.getItem("token");
   }
 
-  getToken = () => {
-    return AsyncStorage.getItem("token");
-  };
+  async getToken() {
+    try {
+      let token = await AsyncStorage.getItem("token");
+      return token;
+    } catch (error) {}
+  }
 
   retrieveUserProfile = (token) => {
     fetch("http://localhost:3000/api/v1/profile", {
@@ -68,9 +68,33 @@ class App extends React.Component {
       });
   };
 
-  submitBirthdate = (dateObj) => {
+  submitBirthdate = async (dateObj) => {
     const dateString = JSON.stringify(dateObj);
     const birthdate = dateString.slice(1, dateString.indexOf("T"));
+
+    const token = await this.getTokenNotAsync();
+
+    console.log(token);
+
+    const configObj = {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        accepts: "application/json",
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ user: { birthdate: birthdate } }),
+    };
+
+    fetch(`http://localhost:3000/api/v1/users/${this.getUserId()}`, configObj)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data) {
+          this.setState({ user: data.user }, () =>
+            console.log(this.state.user)
+          );
+        }
+      });
   };
 
   loginHandler = (userInfo) => {
