@@ -42,16 +42,16 @@ class App extends React.Component {
     }
   }
 
-  getTokenNotAsync() {
+  getToken() {
     return AsyncStorage.getItem("token");
   }
 
-  async getToken() {
-    try {
-      let token = await AsyncStorage.getItem("token");
-      return token;
-    } catch (error) {}
-  }
+  // async getToken() {
+  //   try {
+  //     let token = await AsyncStorage.getItem("token");
+  //     return token;
+  //   } catch (error) {}
+  // }
 
   retrieveUserProfile = (token) => {
     fetch("http://localhost:3000/api/v1/profile", {
@@ -69,13 +69,10 @@ class App extends React.Component {
   };
 
   submitBirthdate = async (dateObj) => {
-    console.log("before modifying:", dateObj);
     const dateString = JSON.stringify(dateObj);
     const birthdate = dateString.slice(1, dateString.indexOf("T"));
 
-    const token = await this.getTokenNotAsync();
-
-    console.log(birthdate);
+    const token = await this.getToken();
 
     const configObj = {
       method: "PATCH",
@@ -158,6 +155,7 @@ class App extends React.Component {
             />
             <NavigationContainer>
               <MainTabNavigator
+                currentUser={this.state.user}
                 getToken={this.getToken}
                 submitBirthdate={this.submitBirthdate}
                 loginHandler={this.loginHandler}

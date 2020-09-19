@@ -3,11 +3,12 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 import PostList from "../screens/PostList";
 import { DatePicker } from "../screens/DatePicker";
+import EligiblesContainer from "../containers/EligiblesContainer";
 
 const Tab = createBottomTabNavigator();
 
 const MainTabNavigator = (props) => {
-  const { submitBirthdate, getToken } = props;
+  const { currentUser, submitBirthdate, getToken } = props;
   return (
     <Tab.Navigator
       initialRouteName="Chats"
@@ -34,7 +35,12 @@ const MainTabNavigator = (props) => {
         name="Chats"
         children={() => <PostList getToken={getToken} />}
       />
-      <Tab.Screen name="Search" component={PostList} />
+      <Tab.Screen
+        name="Search"
+        children={() => (
+          <EligiblesContainer currentUser={currentUser} getToken={getToken} />
+        )}
+      />
       <Tab.Screen name="Pending" component={PostList} />
       <Tab.Screen
         name="Account"
