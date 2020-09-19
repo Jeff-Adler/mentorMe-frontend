@@ -141,9 +141,14 @@ class App extends React.Component {
       .then((data) => {
         console.log(data);
         if (data.jwt) {
-          this.setState({
-            user: data.user,
-          });
+          this.setState(
+            {
+              user: data.user,
+            },
+            () => {
+              this.loginHandler(userObj);
+            }
+          );
         } else {
           this.setState({
             signupError: data.error,
