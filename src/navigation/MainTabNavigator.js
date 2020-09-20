@@ -4,6 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import PostList from "../screens/PostList";
 import { DatePicker } from "../screens/DatePicker";
 import EligiblesContainer from "../containers/EligiblesContainer";
+import PendingContainer from "../containers/PendingContainer";
 
 const Tab = createBottomTabNavigator();
 
@@ -41,7 +42,12 @@ const MainTabNavigator = (props) => {
           <EligiblesContainer currentUser={currentUser} getToken={getToken} />
         )}
       />
-      <Tab.Screen name="Pending" component={PostList} />
+      <Tab.Screen
+        name="Pending"
+        children={() => (
+          <PendingContainer currentUser={currentUser} getToken={getToken} />
+        )}
+      />
       <Tab.Screen
         name="Account"
         children={() => (
