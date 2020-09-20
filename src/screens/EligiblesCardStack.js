@@ -1,40 +1,51 @@
 import React from "react";
 import CardStack, { Card } from "react-native-card-stack-swiper";
-import { StyleSheet, Text } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 class EligiblesCardStack extends React.Component {
+  mapEligibles = () => {
+    return this.props.eligibles.map((eligible, index) => {
+      const evenOddBoolean = index % 2 === 0;
+      return (
+        <Card
+          style={[styles.card, styles.card1]}
+          onSwipedRight={() => this.props.handleSwipeRight(eligible.id)}
+        >
+          <Text style={styles.label}>{eligible.username}</Text>
+        </Card>
+      );
+    });
+  };
+
   render() {
+    const { eligibles } = this.props;
     return (
-      <CardStack
-        style={styles.content}
-        ref={(swiper) => {
-          this.swiper = swiper;
-        }}
-      >
-        <Card style={[styles.card, styles.card1]}>
-          <Text style={styles.label}>A</Text>
-        </Card>
-        <Card style={[styles.card, styles.card2]}>
-          <Text style={styles.label}>B</Text>
-        </Card>
-        <Card style={[styles.card, styles.card1]}>
-          <Text style={styles.label}>C</Text>
-        </Card>
-      </CardStack>
+      <View style={styles.container}>
+        <CardStack
+          style={styles.content}
+          ref={(swiper) => {
+            this.swiper = swiper;
+          }}
+        >
+          {this.mapEligibles()}
+        </CardStack>
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
+    justifyContent: "center",
+    alignItems: "center",
     flex: 1,
     flexDirection: "column",
     backgroundColor: "#f2f2f2",
   },
   content: {
-    flex: 5,
+    flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    // justifyContent: "center",
   },
   card: {
     width: 320,

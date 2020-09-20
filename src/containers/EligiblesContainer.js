@@ -4,7 +4,7 @@ import { View, StyleSheet, Text } from "react-native";
 import EligiblesCardStack from "../screens/EligiblesCardStack";
 
 class EligiblesContainer extends React.Component {
-  state = { eligibles: null };
+  state = { eligibles: null, error: "" };
 
   async componentDidMount() {
     const token = await this.props.getToken();
@@ -23,17 +23,50 @@ class EligiblesContainer extends React.Component {
     )
       .then((response) => response.json())
       .then((eligibles) => {
-        this.setState(
-          {
+        if (Object.keys(eligibles)[0] !== "error") {
+          this.setState({
             eligibles: eligibles,
-          },
-          () => console.log(eligibles)
-        );
+          });
+        } else {
+          this.setState({ error: eligibles.error });
+        }
+      });
+  };
+
+  handleSwipeRight = async (mentorId) => {
+    const connection = {
+      mentee_id: this.props.currentUser.id,
+      mentor_id: mentorId,
+    };
+    const token = await this.props.getToken();
+    fetch(`http://localhost:3000/connections`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        accepts: "application/json",
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ connection: connection }),
+    })
+      .then((response) => response.json())
+      .then((connection) => {
+        console.log(connection);
       });
   };
 
   render() {
-    return <EligiblesCardStack eligibles={this.state.eligibles} />;
+    return (
+      <View>
+        {this.state.eligibles !== null ? (
+          <EligiblesCardStack
+            handleSwipeRight={this.handleSwipeRight}
+            eligibles={this.state.eligibles}
+          />
+        ) : (
+          <Text>{this.state.error}</Text>
+        )}
+      </View>
+    );
   }
 }
 

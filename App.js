@@ -20,6 +20,9 @@ import LoginStackNavigator from "./src/navigation/LoginStackNavigator";
 
 import AsyncStorage from "@react-native-community/async-storage";
 
+import Constants from "expo-constants";
+const statusBarHeight = Constants.statusBarHeight;
+
 const Tab = createBottomTabNavigator();
 
 class App extends React.Component {
@@ -171,11 +174,11 @@ class App extends React.Component {
       <View style={styles.container}>
         {this.state.isSignedIn === true ? (
           <View style={styles.container}>
-            <Header
+            {/* <Header
               leftComponent={{ icon: "menu", color: "#fff" }}
               centerComponent={{ text: "MentorMe", style: { color: "#fff" } }}
               rightComponent={{ icon: "home", color: "#fff" }}
-            />
+            /> */}
             <NavigationContainer>
               <MainTabNavigator
                 currentUser={this.state.user}
@@ -205,6 +208,7 @@ class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: statusBarHeight,
     flex: 1,
     backgroundColor: "#fff",
     // alignItems: "center",
