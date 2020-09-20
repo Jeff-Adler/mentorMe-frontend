@@ -22,11 +22,16 @@ class PendingContainer extends React.Component {
       .then((response) => response.json())
       .then((pendings) => {
         if (Object.keys(pendings)[0] !== "error") {
-          this.setState({
-            pendings: pendings,
-          });
+          this.setState(
+            {
+              pendings: pendings,
+            },
+            () => console.log(this.state.pendings)
+          );
         } else {
-          this.setState({ error: pendings.error });
+          this.setState({ error: pendings.error }, () =>
+            console.log(this.state.error)
+          );
         }
       });
   };

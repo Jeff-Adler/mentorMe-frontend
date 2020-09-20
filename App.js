@@ -122,7 +122,9 @@ class App extends React.Component {
       .then((data) => {
         if (data.jwt) {
           this.storeToken(data.jwt);
-          this.setState({ user: data.user, isSignedIn: true });
+          this.setState({ user: data.user, isSignedIn: true }, () =>
+            console.log(this.state.user)
+          );
         } else {
           this.setState({ authenticationError: data.message });
         }

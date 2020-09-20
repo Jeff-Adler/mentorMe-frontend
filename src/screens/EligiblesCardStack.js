@@ -8,6 +8,7 @@ class EligiblesCardStack extends React.Component {
       const evenOddBoolean = index % 2 === 0;
       return (
         <Card
+          key={eligible.id}
           style={[styles.card, styles.card1]}
           onSwipedRight={() => this.props.handleSwipeRight(eligible.id)}
         >
@@ -21,14 +22,18 @@ class EligiblesCardStack extends React.Component {
     const { eligibles } = this.props;
     return (
       <View style={styles.container}>
-        <CardStack
-          style={styles.content}
-          ref={(swiper) => {
-            this.swiper = swiper;
-          }}
-        >
-          {this.mapEligibles()}
-        </CardStack>
+        {this.props.eligibles !== [] ? (
+          <CardStack
+            style={styles.content}
+            ref={(swiper) => {
+              this.swiper = swiper;
+            }}
+          >
+            {this.mapEligibles()}
+          </CardStack>
+        ) : (
+          <Text>Sorry, we can't find anyone!</Text>
+        )}
       </View>
     );
   }

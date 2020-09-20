@@ -4,7 +4,7 @@ import { View, StyleSheet, Text } from "react-native";
 import EligiblesCardStack from "../screens/EligiblesCardStack";
 
 class EligiblesContainer extends React.Component {
-  state = { eligibles: null, error: "" };
+  state = { eligibles: null, error: "", isLoaded: false };
 
   async componentDidMount() {
     const token = await this.props.getToken();
@@ -23,9 +23,13 @@ class EligiblesContainer extends React.Component {
     )
       .then((response) => response.json())
       .then((eligibles) => {
-        if (Object.keys(eligibles)[0] !== "error") {
+        if (
+          Object.keys(eligibles)[0] !== "error" &&
+          Object.keys(eligibles)[0] !== "status"
+        ) {
           this.setState({
             eligibles: eligibles,
+            isLoaded: true,
           });
         } else {
           this.setState({ error: eligibles.error });
@@ -57,7 +61,9 @@ class EligiblesContainer extends React.Component {
   render() {
     return (
       <View>
-        {this.state.eligibles !== null ? (
+        {this.state.eligibles !== null &&
+        this.state.error === "" &&
+        this.state.isLoaded === true ? (
           <EligiblesCardStack
             handleSwipeRight={this.handleSwipeRight}
             eligibles={this.state.eligibles}
