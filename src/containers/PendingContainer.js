@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text } from "react-native";
+import PendingsList from "../screens/PendingsList";
 
 class PendingContainer extends React.Component {
   state = { pendings: null, error: "" };
@@ -39,7 +40,11 @@ class PendingContainer extends React.Component {
   render() {
     return (
       <View>
-        <Text>Test</Text>
+        {this.state.pendings !== null ? (
+          <PendingsList pendings={this.state.pendings} />
+        ) : (
+          <Text>{this.state.error}</Text>
+        )}
       </View>
     );
   }
