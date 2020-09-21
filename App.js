@@ -58,13 +58,6 @@ class App extends React.Component {
     return AsyncStorage.getItem("token");
   }
 
-  // async getToken() {
-  //   try {
-  //     let token = await AsyncStorage.getItem("token");
-  //     return token;
-  //   } catch (error) {}
-  // }
-
   retrieveUserProfile = (token) => {
     fetch("http://localhost:3000/api/v1/profile", {
       method: "GET",
@@ -74,10 +67,15 @@ class App extends React.Component {
     })
       .then((response) => response.json())
       .then((data) => {
-        if (data) {
+        console.log("user data:", data);
+        if (!data.error) {
           this.setState({ user: data.user, isSignedIn: true });
         }
       });
+  };
+
+  submitUserInfo = async (userInfo) => {
+    console.log(userInfo);
   };
 
   submitBirthdate = async (dateObj) => {
@@ -185,6 +183,7 @@ class App extends React.Component {
               <MainTabNavigator
                 currentUser={this.state.user}
                 getToken={this.getToken}
+                submitUserInfo={this.submitUserInfo}
                 submitBirthdate={this.submitBirthdate}
                 loginHandler={this.loginHandler}
                 signupHandler={this.signupHandler}

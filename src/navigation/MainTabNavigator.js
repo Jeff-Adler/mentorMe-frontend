@@ -5,11 +5,18 @@ import PostContainer from "../containers/PostContainer";
 import { DatePicker } from "../screens/DatePicker";
 import EligiblesContainer from "../containers/EligiblesContainer";
 import PendingContainer from "../containers/PendingContainer";
+import AccountStackNavigator from "../navigation/AccountStackNavigator";
 
 const Tab = createBottomTabNavigator();
 
 const MainTabNavigator = (props) => {
-  const { logoutHandler, currentUser, submitBirthdate, getToken } = props;
+  const {
+    submitUserInfo,
+    logoutHandler,
+    currentUser,
+    submitBirthdate,
+    getToken,
+  } = props;
   return (
     <Tab.Navigator
       initialRouteName="Chats"
@@ -51,10 +58,17 @@ const MainTabNavigator = (props) => {
       <Tab.Screen
         name="Account"
         children={() => (
-          <DatePicker
+          <AccountStackNavigator
+            currentUser={currentUser}
+            submitUserInfo={submitUserInfo}
             submitBirthdate={submitBirthdate}
             logoutHandler={logoutHandler}
           />
+          // <DatePicker
+          //   currentUser={currentUser}
+          //   submitBirthdate={submitBirthdate}
+          //   logoutHandler={logoutHandler}
+          // />
         )}
       />
     </Tab.Navigator>

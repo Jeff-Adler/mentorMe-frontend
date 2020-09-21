@@ -1,9 +1,9 @@
 import React from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { Input } from "react-native-elements";
+import { Input, Button } from "react-native-elements";
 import { View, StyleSheet } from "react-native";
 
-class ProfileForm extends React.Component {
+class ProfileEditForm extends React.Component {
   state = {
     firstName: "",
     lastName: "",
@@ -11,6 +11,11 @@ class ProfileForm extends React.Component {
   };
 
   onChangeText = (name) => (text) => this.setState({ [name]: text });
+
+  pressHandler = () => {
+    this.props.submitUserInfo(this.state);
+    // this.props.navigation.navigate.pop()
+  };
 
   render() {
     let { firstName, lastName, gender } = this.state;
@@ -28,10 +33,7 @@ class ProfileForm extends React.Component {
           onChangeText={this.onChangeText("lastName")}
           value={lastName}
         />
-        <Button
-          title="Submit"
-          onPress={() => this.props.signupHandler(this.state)}
-        />
+        <Button title="Submit" onPress={this.pressHandler} />
       </View>
     );
   }
@@ -45,4 +47,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProfileForm;
+export default ProfileEditForm;

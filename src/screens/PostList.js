@@ -10,6 +10,7 @@ class PostList extends React.Component {
   };
 
   mapPosts = () => {
+    console.log(this.props.post);
     return this.props.posts.map((post) => {
       const storedPost = post;
       return (
@@ -32,7 +33,9 @@ class PostList extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        {this.props.posts !== null ? this.mapPosts() : null}
+        {this.props.posts !== null && this.props.posts !== undefined
+          ? this.mapPosts()
+          : null}
       </View>
     );
   }
