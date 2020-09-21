@@ -1,12 +1,24 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 import { ListItem, Avatar } from "react-native-elements";
 
 class PendingsList extends React.Component {
+  // This method triggers PendingContainer to fetch individual pending show page
+  showPending = (pending) => {
+    // pending.persist();
+    // console.log("Pendinglist Pending:", pending);
+    // this.props.navigation.navigate("Pending", { pending: pending });
+  };
+
   mapPendings = () => {
-    return this.props.pendings.map((pending) => {
+    return this.props.pendings.map((pending, index) => {
+      const savedPending = this.props.pendings[index];
       return (
-        <ListItem key={pending.id} bottomDivider>
+        <ListItem
+          onPress={(savedPending) => this.showPending(savedPending)}
+          key={pending.id}
+          bottomDivider
+        >
           <Avatar
             style={styles.avatar}
             source={{ uri: "http://tinygraphs.com/labs/squares/random" }}
@@ -22,7 +34,7 @@ class PendingsList extends React.Component {
   };
 
   render() {
-    return <View>{this.mapPendings()}</View>;
+    return <View style={styles.container}>{this.mapPendings()}</View>;
   }
 }
 
@@ -32,6 +44,11 @@ const styles = StyleSheet.create({
     height: 50,
     borderRadius: 25,
     overflow: "hidden",
+  },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 
