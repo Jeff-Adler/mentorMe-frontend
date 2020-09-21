@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { ListItem, Avatar } from "react-native-elements";
 
 class PendingsList extends React.Component {
@@ -32,7 +32,11 @@ class PendingsList extends React.Component {
   };
 
   render() {
-    return <View style={styles.container}>{this.mapPendings()}</View>;
+    return (
+      <View style={styles.container}>
+        {this.props.pendings !== null ? this.mapPendings() : null}
+      </View>
+    );
   }
 }
 
