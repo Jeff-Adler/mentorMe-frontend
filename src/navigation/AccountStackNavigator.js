@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { StyleSheet } from "react-native";
 
+import Profile from "../screens/Profile";
 import ProfileEditForm from "../screens/ProfileEditForm";
 import { DatePicker } from "../screens/DatePicker";
 
@@ -12,13 +13,10 @@ const AccountStackNavigator = (props) => {
   const { submitUserInfo, submitBirthdate, logoutHandler } = props;
   return (
     <NavigationContainer style={styles.container} independent={true}>
-      <Stack.Navigator
-        style={styles.container}
-        initialRouteName="ProfileEditForm"
-      >
-        {/* <Stack.Screen name="Account">
-          {(props) => <Login {...props}/>}
-        </Stack.Screen> */}
+      <Stack.Navigator style={styles.container} initialRouteName="Profile">
+        <Stack.Screen name="Profile">
+          {(props) => <Profile {...props} logoutHandler={logoutHandler} />}
+        </Stack.Screen>
         <Stack.Screen name="ProfileEditForm">
           {(props) => (
             <ProfileEditForm {...props} submitUserInfo={submitUserInfo} />
