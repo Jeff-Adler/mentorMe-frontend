@@ -1,6 +1,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { ListItem, Avatar } from "react-native-elements";
+import { ListItem } from "react-native-elements";
+import UserAvatar from "react-native-user-avatar";
 
 class PendingsList extends React.Component {
   clickHandler = (pending) => {
@@ -17,9 +18,10 @@ class PendingsList extends React.Component {
           key={pending.id}
           bottomDivider
         >
-          <Avatar
-            style={styles.avatar}
-            source={{ uri: "http://tinygraphs.com/labs/squares/random" }}
+          <UserAvatar
+            size={50}
+            bgColor="#3498db"
+            name={`${pending.first_name} ${pending.last_name}`}
           />
           <ListItem.Content>
             <ListItem.Title>{pending.username}</ListItem.Title>
