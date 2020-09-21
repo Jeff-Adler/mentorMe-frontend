@@ -1,7 +1,7 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
-import PostList from "../screens/PostList";
+import PostContainer from "../containers/PostContainer";
 import { DatePicker } from "../screens/DatePicker";
 import EligiblesContainer from "../containers/EligiblesContainer";
 import PendingContainer from "../containers/PendingContainer";
@@ -34,7 +34,7 @@ const MainTabNavigator = (props) => {
     >
       <Tab.Screen
         name="Chats"
-        children={() => <PostList getToken={getToken} />}
+        children={() => <PostContainer getToken={getToken} />}
       />
       <Tab.Screen
         name="Search"

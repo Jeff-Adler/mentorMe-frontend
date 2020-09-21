@@ -23,9 +23,9 @@ function PostStackNavigator(props) {
             <PostList {...props} posts={posts} fetchHandler={fetchHandler} />
           )}
         </PostStack.Screen>
-        <PostStack.screen name="Post">
+        <PostStack.Screen name="Post">
           {(props) => <Post {...props} post={post} />}
-        </PostStack.screen>
+        </PostStack.Screen>
       </PostStack.Navigator>
     </NavigationContainer>
   );

@@ -6,7 +6,7 @@ class Pending extends React.Component {
     const { pendingUser } = this.props;
     return (
       <View>
-        {this.props.pendingUser !== null ? (
+        {pendingUser !== null ? (
           <View>
             <Text>{pendingUser.username}</Text>
           </View>
