@@ -1,13 +1,23 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { Button } from "react-native-elements";
+import { View, StyleSheet } from "react-native";
+import { Button, Text } from "react-native-elements";
+import UserAvatar from "react-native-user-avatar";
 
 class Profile extends React.Component {
   render() {
-    let { logoutHandler } = this.props;
+    let { currentUser, logoutHandler } = this.props;
     return (
       <View style={styles.container}>
-        <Text>Jeff</Text>
+        <Text h4>
+          {`${currentUser.first_name} ${currentUser.last_name}`}
+          {"\n"}
+        </Text>
+        <UserAvatar
+          size={50}
+          bgColor="#3498db"
+          name={`${currentUser.first_name} ${currentUser.last_name}`}
+        />
+        <Text>{"\n"}</Text>
         <Button
           style={styles.button}
           title="Edit"
@@ -28,6 +38,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
+    alignItems: "center",
   },
   button: {
     alignItems: "center",

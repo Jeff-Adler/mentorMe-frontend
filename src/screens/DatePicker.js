@@ -16,6 +16,11 @@ export const DatePicker = (props) => {
     setDate(currentDate);
   };
 
+  const pressHandler = () => {
+    submitBirthdate(date);
+    props.navigation.popToTop();
+  };
+
   return (
     <View style={styles.container}>
       <DateTimePicker
@@ -26,11 +31,7 @@ export const DatePicker = (props) => {
         onChange={onChange}
         maximumDate={new Date()}
       />
-      <Button
-        style={styles.button}
-        title="Submit"
-        onPress={() => submitBirthdate(date)}
-      />
+      <Button style={styles.button} title="Submit" onPress={pressHandler} />
     </View>
   );
 };

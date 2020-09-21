@@ -10,12 +10,18 @@ import { DatePicker } from "../screens/DatePicker";
 const Stack = createStackNavigator();
 
 const AccountStackNavigator = (props) => {
-  const { submitUserInfo, submitBirthdate, logoutHandler } = props;
+  const { currentUser, submitUserInfo, submitBirthdate, logoutHandler } = props;
   return (
     <NavigationContainer style={styles.container} independent={true}>
       <Stack.Navigator style={styles.container} initialRouteName="Profile">
         <Stack.Screen name="Profile">
-          {(props) => <Profile {...props} logoutHandler={logoutHandler} />}
+          {(props) => (
+            <Profile
+              {...props}
+              currentUser={currentUser}
+              logoutHandler={logoutHandler}
+            />
+          )}
         </Stack.Screen>
         <Stack.Screen name="ProfileEditForm">
           {(props) => (
