@@ -3,21 +3,12 @@ import { View, Text } from "react-native";
 
 class Pending extends React.Component {
   render() {
-    {
-      this.props.pendingUser !== null
-        ? console.log("user:", this.props.pendingUser.user)
-        : null;
-    }
-    {
-      this.props.pendingUser !== null
-        ? console.log("user:", this.props.pendingUser.user.username)
-        : null;
-    }
+    const { pendingUser } = this.props;
     return (
       <View>
         {this.props.pendingUser !== null ? (
           <View>
-            <Text>{this.props.pendingUser.user.username}</Text>
+            <Text>{pendingUser.username}</Text>
           </View>
         ) : null}
       </View>

@@ -25,8 +25,8 @@ class PendingContainer extends React.Component {
       },
     })
       .then((response) => response.json())
-      .then((user) => {
-        this.setState({ pendingUser: user });
+      .then((data) => {
+        this.setState({ pendingUser: data.user });
       });
   };
 
