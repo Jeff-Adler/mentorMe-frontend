@@ -12,12 +12,7 @@ function PendingsStackNavigator(props) {
   const { pendings, pendingUser, fetchHandler } = props;
   return (
     <NavigationContainer style={styles.container} independent={true}>
-      <PendingsStack.Navigator
-        screenOptions={{
-          headerShown: false,
-        }}
-        initialRouteName="PendingsList"
-      >
+      <PendingsStack.Navigator initialRouteName="PendingsList">
         <PendingsStack.Screen name="PendingsList">
           {(props) => (
             <PendingsList

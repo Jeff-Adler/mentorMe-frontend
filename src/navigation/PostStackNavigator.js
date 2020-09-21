@@ -12,12 +12,7 @@ function PostStackNavigator(props) {
   const { posts, fetchHandler, post } = props;
   return (
     <NavigationContainer style={styles.container} independent={true}>
-      <PostStack.Navigator
-        screenOptions={{
-          headerShown: false,
-        }}
-        initialRouteName="PostList"
-      >
+      <PostStack.Navigator initialRouteName="PostList">
         <PostStack.Screen name="PostList">
           {(props) => (
             <PostList {...props} posts={posts} fetchHandler={fetchHandler} />
