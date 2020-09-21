@@ -1,6 +1,5 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import PendingsList from "../screens/PendingsList";
 
 import PendingsStackNavigator from "../navigation/PendingsStackNavigator";
 

@@ -2,9 +2,6 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import { ListItem, Avatar } from "react-native-elements";
 import AsyncStorage from "@react-native-community/async-storage";
-// import { createStackNavigator } from "@react-navigation/stack";
-
-// const Stack = createStackNavigator();
 
 class PostList extends React.Component {
   state = {
