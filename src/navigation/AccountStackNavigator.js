@@ -6,6 +6,7 @@ import { StyleSheet } from "react-native";
 import Profile from "../screens/Profile";
 import ProfileEditForm from "../screens/ProfileEditForm";
 import { DatePicker } from "../screens/DatePicker";
+import GenderPicker from "../screens/GenderPicker";
 
 const Stack = createStackNavigator();
 
@@ -26,6 +27,11 @@ const AccountStackNavigator = (props) => {
         <Stack.Screen name="ProfileEditForm">
           {(props) => (
             <ProfileEditForm {...props} submitUserInfo={submitUserInfo} />
+          )}
+        </Stack.Screen>
+        <Stack.Screen name="GenderPicker">
+          {(props) => (
+            <GenderPicker {...props} submitUserInfo={submitUserInfo} />
           )}
         </Stack.Screen>
         <Stack.Screen name="DatePicker">
