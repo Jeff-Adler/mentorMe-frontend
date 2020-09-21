@@ -1,6 +1,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import { ListItem, Avatar } from "react-native-elements";
+import UserAvatar from "react-native-user-avatar";
 
 class PostList extends React.Component {
   clickHandler = (post) => {
@@ -17,10 +18,7 @@ class PostList extends React.Component {
           key={post.id}
           bottomDivider
         >
-          <Avatar
-            style={styles.avatar}
-            source={{ uri: "http://tinygraphs.com/labs/squares/random" }}
-          />
+          <UserAvatar size={50} bgColor="#3498db" name="Avishay Bar" />
           <ListItem.Content>
             <ListItem.Title>{post.mentee_name}</ListItem.Title>
             <ListItem.Subtitle>{post.mentor_name}</ListItem.Subtitle>
