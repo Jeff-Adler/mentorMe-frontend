@@ -15,9 +15,9 @@ const AccountStackNavigator = (props) => {
         style={styles.container}
         initialRouteName="ProfileEditForm"
       >
-        <Stack.Screen name="Account">
-          {/* {(props) => <Login {...props}/>} */}
-        </Stack.Screen>
+        {/* <Stack.Screen name="Account">
+          {(props) => <Login {...props}/>}
+        </Stack.Screen> */}
         <Stack.Screen name="ProfileEditForm">
           {(props) => (
             <ProfileEditForm {...props} submitUserInfo={submitUserInfo} />

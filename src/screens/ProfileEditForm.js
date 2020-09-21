@@ -22,13 +22,13 @@ class ProfileEditForm extends React.Component {
     return (
       <View style={styles.container}>
         <Input
-          placeholder="firstName"
+          placeholder="First Name"
           //   leftIcon={{ type: "font-awesome", name: "user" }}
           onChangeText={this.onChangeText("firstName")}
           value={firstName}
         />
         <Input
-          placeholder="lastName"
+          placeholder="Last Name"
           //   leftIcon={{ type: "font-awesome", name: "lock" }}
           onChangeText={this.onChangeText("lastName")}
           value={lastName}
