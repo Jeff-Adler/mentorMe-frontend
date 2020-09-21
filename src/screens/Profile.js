@@ -12,6 +12,14 @@ class Profile extends React.Component {
           {`${currentUser.first_name} ${currentUser.last_name}`}
           {"\n"}
         </Text>
+        <Text h4>
+          {currentUser.gender}
+          {"\n"}
+        </Text>
+        <Text h4>
+          {currentUser.birthdate}
+          {"\n"}
+        </Text>
         <UserAvatar
           size={50}
           bgColor="#3498db"
