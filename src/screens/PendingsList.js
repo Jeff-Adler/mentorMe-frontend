@@ -3,19 +3,17 @@ import { View, StyleSheet, Text } from "react-native";
 import { ListItem, Avatar } from "react-native-elements";
 
 class PendingsList extends React.Component {
-  // This method triggers PendingContainer to fetch individual pending show page
-  showPending = (pending) => {
-    // pending.persist();
-    // console.log("Pendinglist Pending:", pending);
-    // this.props.navigation.navigate("Pending", { pending: pending });
+  clickHandler = (pending) => {
+    this.props.fetchHandler(pending.id);
+    this.props.navigation.navigate("Pending");
   };
 
   mapPendings = () => {
-    return this.props.pendings.map((pending, index) => {
-      const savedPending = this.props.pendings[index];
+    return this.props.pendings.map((pending) => {
+      const storedPending = pending;
       return (
         <ListItem
-          onPress={(savedPending) => this.showPending(savedPending)}
+          onPress={() => this.clickHandler(storedPending)}
           key={pending.id}
           bottomDivider
         >

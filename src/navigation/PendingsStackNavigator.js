@@ -3,15 +3,13 @@ import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import PendingContainer from "../containers/PendingContainer";
-
 import PendingsList from "../screens/PendingsList";
 import Pending from "../screens/Pending";
 
 const PendingsStack = createStackNavigator();
 
 function PendingsStackNavigator(props) {
-  const { pendings } = props;
+  const { pendings, pendingUser, fetchHandler } = props;
   return (
     <NavigationContainer style={styles.container} independent={true}>
       <PendingsStack.Navigator
@@ -21,9 +19,17 @@ function PendingsStackNavigator(props) {
         initialRouteName="PendingsList"
       >
         <PendingsStack.Screen name="PendingsList">
-          {(props) => <PendingsList {...props} pendings={pendings} />}
+          {(props) => (
+            <PendingsList
+              {...props}
+              pendings={pendings}
+              fetchHandler={fetchHandler}
+            />
+          )}
         </PendingsStack.Screen>
-        <PendingsStack.Screen name="Pending" component={Pending} />
+        <PendingsStack.Screen name="Pending">
+          {(props) => <Pending {...props} pendingUser={pendingUser} />}
+        </PendingsStack.Screen>
       </PendingsStack.Navigator>
     </NavigationContainer>
   );
