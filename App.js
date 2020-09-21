@@ -37,8 +37,6 @@ class App extends React.Component {
     const token = await this.getToken();
     if (token) {
       this.retrieveUserProfile(token);
-    } else {
-      // this.props.history.push("/login")
     }
   }
 
@@ -75,6 +73,26 @@ class App extends React.Component {
 
   submitUserInfo = async (userInfo) => {
     console.log(userInfo);
+    const token = await this.getToken();
+    const configObj = {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        accepts: "application/json",
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ user: userInfo }),
+    };
+
+    fetch(`http://localhost:3000/api/v1/users/${this.getUserId()}`, configObj)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data) {
+          this.setState({ user: data.user }, () =>
+            console.log("Updated user:", this.state.user)
+          );
+        }
+      });
   };
 
   submitBirthdate = async (dateObj) => {
@@ -98,7 +116,7 @@ class App extends React.Component {
       .then((data) => {
         if (data) {
           this.setState({ user: data.user }, () =>
-            console.log(this.state.user)
+            console.log("Birthdate submitted:", this.state.user)
           );
         }
       });
@@ -119,9 +137,7 @@ class App extends React.Component {
       .then((data) => {
         if (data.jwt) {
           this.storeToken(data.jwt);
-          this.setState({ user: data.user, isSignedIn: true }, () =>
-            console.log(this.state.user)
-          );
+          this.setState({ user: data.user, isSignedIn: true });
         } else {
           this.setState({ authenticationError: data.message });
         }
@@ -141,7 +157,6 @@ class App extends React.Component {
     fetch("http://localhost:3000/api/v1/users", configObj)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         if (data.jwt) {
           this.setState(
             {

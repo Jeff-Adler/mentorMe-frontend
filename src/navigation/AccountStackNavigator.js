@@ -4,11 +4,12 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { StyleSheet } from "react-native";
 
 import ProfileEditForm from "../screens/ProfileEditForm";
+import { DatePicker } from "../screens/DatePicker";
 
 const Stack = createStackNavigator();
 
 const AccountStackNavigator = (props) => {
-  const { submitUserInfo } = props;
+  const { submitUserInfo, submitBirthdate, logoutHandler } = props;
   return (
     <NavigationContainer style={styles.container} independent={true}>
       <Stack.Navigator
@@ -21,6 +22,11 @@ const AccountStackNavigator = (props) => {
         <Stack.Screen name="ProfileEditForm">
           {(props) => (
             <ProfileEditForm {...props} submitUserInfo={submitUserInfo} />
+          )}
+        </Stack.Screen>
+        <Stack.Screen name="DatePicker">
+          {(props) => (
+            <DatePicker {...props} submitBirthdate={submitBirthdate} />
           )}
         </Stack.Screen>
       </Stack.Navigator>

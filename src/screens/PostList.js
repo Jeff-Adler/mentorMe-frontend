@@ -10,7 +10,6 @@ class PostList extends React.Component {
   };
 
   mapPosts = () => {
-    console.log(this.props.post);
     return this.props.posts.map((post) => {
       const storedPost = post;
       return (

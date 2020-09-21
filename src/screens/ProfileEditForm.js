@@ -1,39 +1,38 @@
 import React from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { Input, Button } from "react-native-elements";
+import { Input, Button, CheckBox } from "react-native-elements";
 import { View, StyleSheet } from "react-native";
 
 class ProfileEditForm extends React.Component {
   state = {
-    firstName: "",
-    lastName: "",
-    gender: "",
+    first_name: "",
+    last_name: "",
   };
 
   onChangeText = (name) => (text) => this.setState({ [name]: text });
 
   pressHandler = () => {
     this.props.submitUserInfo(this.state);
-    // this.props.navigation.navigate.pop()
+    this.props.navigation.navigate("DatePicker");
   };
 
   render() {
-    let { firstName, lastName, gender } = this.state;
+    let { firstName, lastName } = this.state;
     return (
       <View style={styles.container}>
         <Input
           placeholder="First Name"
           //   leftIcon={{ type: "font-awesome", name: "user" }}
-          onChangeText={this.onChangeText("firstName")}
+          onChangeText={this.onChangeText("first_name")}
           value={firstName}
         />
         <Input
           placeholder="Last Name"
           //   leftIcon={{ type: "font-awesome", name: "lock" }}
-          onChangeText={this.onChangeText("lastName")}
+          onChangeText={this.onChangeText("last_name")}
           value={lastName}
         />
-        <Button title="Submit" onPress={this.pressHandler} />
+        <Button title="Next" onPress={this.pressHandler} />
       </View>
     );
   }
