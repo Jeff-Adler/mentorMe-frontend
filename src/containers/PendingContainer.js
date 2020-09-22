@@ -11,6 +11,8 @@ class PendingContainer extends React.Component {
     this.fetchPendings(token);
   }
 
+  // acceptPending = () => {};
+
   fetchHandler = async (pendingId) => {
     const token = await this.props.getToken();
     this.fetchPendingUser(token, pendingId);
