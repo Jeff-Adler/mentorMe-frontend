@@ -4,13 +4,16 @@ import PostStackNavigator from "../navigation/PostStackNavigator";
 
 class PostContainer extends React.Component {
   state = {
-    posts: null,
+    posts: null, //can probably delete
+    mentorPosts: null,
+    menteePosts: null,
     post: null,
   };
 
   async componentDidMount() {
-    const token = await this.props.getToken(); //need to get this from App
-    this.fetchPosts(token);
+    const token = await this.props.getToken();
+    this.fetchMentorPosts(token);
+    this.fetchMenteePosts(token);
   }
 
   fetchHandler = async (postId) => {
@@ -33,6 +36,49 @@ class PostContainer extends React.Component {
       });
   };
 
+  fetchMentorPosts = (token) => {
+    fetch(
+      `http://localhost:3000/api/v1/users/${this.props.currentUser.id}/posts/mentor`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((mentorPosts) => {
+        this.setState(
+          {
+            mentorPosts: mentorPosts,
+          },
+          () => console.log(this.state.mentorPosts)
+        );
+      });
+  };
+
+  fetchMenteePosts = (token) => {
+    fetch(
+      `http://localhost:3000/api/v1/users/${this.props.currentUser.id}/posts/mentee`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((menteePosts) => {
+        this.setState(
+          {
+            menteePosts: menteePosts,
+          },
+          () => console.log(this.state.menteePosts)
+        );
+      });
+  };
+
+  //may not need this!
   fetchPost = (token, postId) => {
     fetch(`http://localhost:3000/posts/${postId}`, {
       method: "GET",

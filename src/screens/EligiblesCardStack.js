@@ -1,6 +1,7 @@
 import React from "react";
 import CardStack, { Card } from "react-native-card-stack-swiper";
 import { StyleSheet, Text, View } from "react-native";
+import UserAvatar from "react-native-user-avatar";
 
 class EligiblesCardStack extends React.Component {
   mapEligibles = () => {
@@ -12,7 +13,15 @@ class EligiblesCardStack extends React.Component {
           style={[styles.card, styles.card1]}
           onSwipedRight={() => this.props.handleSwipeRight(eligible.id)}
         >
-          <Text style={styles.label}>{eligible.username}</Text>
+          <Text
+            style={styles.label}
+          >{`${eligible.first_name} ${eligible.last_name}`}</Text>
+          <UserAvatar
+            style={styles.avatar}
+            size={50}
+            bgColor="#3498db"
+            name={`${eligible.first_name} ${eligible.last_name}`}
+          />
         </Card>
       );
     });
@@ -40,6 +49,10 @@ class EligiblesCardStack extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  avatar: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
   container: {
     justifyContent: "center",
     alignItems: "center",
@@ -51,6 +64,9 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     // justifyContent: "center",
+    // flex: 1,
+    // justifyContent: "flex-end",
+    // marginBottom: 36,
   },
   card: {
     width: 320,
@@ -65,7 +81,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
   },
   card1: {
-    backgroundColor: "#FE474C",
+    backgroundColor: "white",
   },
   card2: {
     backgroundColor: "#FEB12C",
@@ -73,9 +89,9 @@ const styles = StyleSheet.create({
   label: {
     lineHeight: 400,
     textAlign: "center",
-    fontSize: 55,
+    fontSize: 50,
     fontFamily: "System",
-    color: "#ffffff",
+    color: "black",
     backgroundColor: "transparent",
   },
   footer: {

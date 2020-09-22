@@ -41,7 +41,9 @@ const MainTabNavigator = (props) => {
     >
       <Tab.Screen
         name="Chats"
-        children={() => <PostContainer getToken={getToken} />}
+        children={() => (
+          <PostContainer currentUser={currentUser} getToken={getToken} />
+        )}
       />
       <Tab.Screen
         name="Search"
@@ -64,11 +66,6 @@ const MainTabNavigator = (props) => {
             submitBirthdate={submitBirthdate}
             logoutHandler={logoutHandler}
           />
-          // <DatePicker
-          //   currentUser={currentUser}
-          //   submitBirthdate={submitBirthdate}
-          //   logoutHandler={logoutHandler}
-          // />
         )}
       />
     </Tab.Navigator>

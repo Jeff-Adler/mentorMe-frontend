@@ -11,6 +11,14 @@ class EligiblesContainer extends React.Component {
     this.fetchEligibles(token);
   }
 
+  //this ensures list of eligibles refreshes after a user edits their info
+  async componentDidUpdate(prevProps) {
+    const token = await this.props.getToken();
+    if (this.props.currentUser !== prevProps.currentUser) {
+      this.fetchEligibles(token);
+    }
+  }
+
   fetchEligibles = (token) => {
     fetch(
       `http://localhost:3000/api/v1/users/${this.props.currentUser.id}/retrieve_eligibles`,

@@ -10,12 +10,12 @@ class PendingsList extends React.Component {
   };
 
   mapPendings = () => {
-    return this.props.pendings.map((pending) => {
+    return this.props.pendings.map((pending, index) => {
       const storedPending = pending;
       return (
         <ListItem
           onPress={() => this.clickHandler(storedPending)}
-          key={pending.id}
+          key={index}
           bottomDivider
         >
           <UserAvatar
@@ -24,8 +24,8 @@ class PendingsList extends React.Component {
             name={`${pending.first_name} ${pending.last_name}`}
           />
           <ListItem.Content>
-            <ListItem.Title>{pending.username}</ListItem.Title>
-            <ListItem.Subtitle>{pending.id}</ListItem.Subtitle>
+            <ListItem.Title>{`${pending.first_name} ${pending.last_name}`}</ListItem.Title>
+            <ListItem.Subtitle>{pending.birthdate}</ListItem.Subtitle>
           </ListItem.Content>
           <ListItem.Chevron />
         </ListItem>
