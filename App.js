@@ -72,7 +72,6 @@ class App extends React.Component {
   };
 
   submitUserInfo = async (userInfo) => {
-    console.log(userInfo);
     const token = await this.getToken();
     const configObj = {
       method: "PATCH",

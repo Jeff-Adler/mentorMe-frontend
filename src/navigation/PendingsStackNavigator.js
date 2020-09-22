@@ -9,7 +9,7 @@ import Pending from "../screens/Pending";
 const PendingsStack = createStackNavigator();
 
 function PendingsStackNavigator(props) {
-  const { pendings, pendingUser, fetchHandler } = props;
+  const { pendingUsers, pendingUser, acceptPending, fetchHandler } = props;
   return (
     <NavigationContainer style={styles.container} independent={true}>
       <PendingsStack.Navigator initialRouteName="PendingsList">
@@ -17,13 +17,19 @@ function PendingsStackNavigator(props) {
           {(props) => (
             <PendingsList
               {...props}
-              pendings={pendings}
+              pendingUsers={pendingUsers}
               fetchHandler={fetchHandler}
             />
           )}
         </PendingsStack.Screen>
         <PendingsStack.Screen name="Pending">
-          {(props) => <Pending {...props} pendingUser={pendingUser} />}
+          {(props) => (
+            <Pending
+              {...props}
+              pendingUser={pendingUser}
+              acceptPending={acceptPending}
+            />
+          )}
         </PendingsStack.Screen>
       </PendingsStack.Navigator>
     </NavigationContainer>

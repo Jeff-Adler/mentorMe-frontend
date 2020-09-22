@@ -1,11 +1,11 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { Text } from "react-native-elements";
+import { Text, Button } from "react-native-elements";
 import UserAvatar from "react-native-user-avatar";
 
 class Pending extends React.Component {
   render() {
-    const { pendingUser } = this.props;
+    const { pendingUser, acceptPending } = this.props;
     return (
       <View style={styles.container}>
         {pendingUser !== null ? (
@@ -20,6 +20,10 @@ class Pending extends React.Component {
               size={50}
               bgColor="#3498db"
               name={`${pendingUser.first_name} ${pendingUser.last_name}`}
+            />
+            <Button
+              title="Accept Mentee"
+              onPress={() => acceptPending(pendingUser.id)}
             />
           </View>
         ) : null}

@@ -10,7 +10,7 @@ class PendingsList extends React.Component {
   };
 
   mapPendings = () => {
-    return this.props.pendings.map((pending, index) => {
+    return this.props.pendingUsers.map((pending, index) => {
       const storedPending = pending;
       return (
         <ListItem
@@ -36,7 +36,7 @@ class PendingsList extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        {this.props.pendings !== null ? this.mapPendings() : null}
+        {this.props.pendingUsers !== null ? this.mapPendings() : null}
       </View>
     );
   }

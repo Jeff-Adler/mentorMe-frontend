@@ -4,14 +4,57 @@ import { View, Text, StyleSheet } from "react-native";
 import PendingsStackNavigator from "../navigation/PendingsStackNavigator";
 
 class PendingContainer extends React.Component {
-  state = { pendings: null, error: "", pendingUser: null };
+  state = {
+    pendingUsers: null,
+    error: "",
+    pendingUser: null,
+  };
 
   async componentDidMount() {
     const token = await this.props.getToken();
     this.fetchPendings(token);
   }
 
-  // acceptPending = () => {};
+  acceptPending = async (userId) => {
+    const token = await this.props.getToken();
+    const configObj = {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        accepts: "application/json",
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ user: { user_id: userId } }),
+    };
+
+    fetch(
+      `http://localhost:3000/api/v1/users/${this.props.currentUser.id}/accept_pending`,
+      configObj
+    )
+      .then((response) => response.json())
+      .then((connection) => {
+        console.log(connection);
+      });
+  };
+
+  // acceptPending = async (userId) => {
+  //   const token = await this.props.getToken();
+  //   const configObj = {
+  //     method: "GET",
+  //     headers: {
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //   };
+
+  //   fetch(
+  //     `http://localhost:3000/connections/${userId}/${this.props.currentUser.id}/accept`,
+  //     configObj
+  //   )
+  //     .then((response) => response.json())
+  //     .then((connection) => {
+  //       console.log(connection);
+  //     });
+  // };
 
   fetchHandler = async (pendingId) => {
     const token = await this.props.getToken();
@@ -45,7 +88,7 @@ class PendingContainer extends React.Component {
       .then((pendings) => {
         if (Object.keys(pendings)[0] !== "error") {
           this.setState({
-            pendings: pendings,
+            pendingUsers: pendings.pending_users,
           });
         } else {
           this.setState({ error: pendings.error }, () =>
@@ -60,8 +103,9 @@ class PendingContainer extends React.Component {
       <View style={styles.container}>
         {this.state.pendings !== null ? (
           <PendingsStackNavigator
+            acceptPending={this.acceptPending}
             pendingUser={this.state.pendingUser}
-            pendings={this.state.pendings}
+            pendingUsers={this.state.pendingUsers}
             fetchHandler={this.fetchHandler}
           />
         ) : (
