@@ -33,28 +33,18 @@ class PendingContainer extends React.Component {
     )
       .then((response) => response.json())
       .then((connection) => {
-        console.log(connection);
+        this.updatePendingUsers(connection);
       });
   };
 
-  // acceptPending = async (userId) => {
-  //   const token = await this.props.getToken();
-  //   const configObj = {
-  //     method: "GET",
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   };
-
-  //   fetch(
-  //     `http://localhost:3000/connections/${userId}/${this.props.currentUser.id}/accept`,
-  //     configObj
-  //   )
-  //     .then((response) => response.json())
-  //     .then((connection) => {
-  //       console.log(connection);
-  //     });
-  // };
+  updatePendingUsers = (connection) => {
+    let temp = [...this.state.pendingUsers];
+    temp = temp.filter((user) => {
+      return user.id !== connection.mentee_id;
+    });
+    console.log("temp:", temp);
+    this.setState({ pendingUsers: temp });
+  };
 
   fetchHandler = async (pendingId) => {
     const token = await this.props.getToken();

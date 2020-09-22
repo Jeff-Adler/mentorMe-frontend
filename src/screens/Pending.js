@@ -4,6 +4,11 @@ import { Text, Button } from "react-native-elements";
 import UserAvatar from "react-native-user-avatar";
 
 class Pending extends React.Component {
+  pressHandler = () => {
+    this.props.acceptPending(this.props.pendingUser.id);
+    this.props.navigation.pop();
+  };
+
   render() {
     const { pendingUser, acceptPending } = this.props;
     return (
@@ -21,10 +26,7 @@ class Pending extends React.Component {
               bgColor="#3498db"
               name={`${pendingUser.first_name} ${pendingUser.last_name}`}
             />
-            <Button
-              title="Accept Mentee"
-              onPress={() => acceptPending(pendingUser.id)}
-            />
+            <Button title="Accept Mentee" onPress={this.pressHandler} />
           </View>
         ) : null}
       </View>

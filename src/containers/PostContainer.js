@@ -32,9 +32,7 @@ class PostContainer extends React.Component {
   }
 
   toggleHandler = () => {
-    this.setState({ postToggler: !this.state.postToggler }, () =>
-      console.log(this.state.postToggler)
-    );
+    this.setState({ postToggler: !this.state.postToggler });
   };
 
   //fetch post handler
@@ -70,12 +68,9 @@ class PostContainer extends React.Component {
     )
       .then((response) => response.json())
       .then((mentorPosts) => {
-        this.setState(
-          {
-            posts: mentorPosts,
-          },
-          () => console.log(this.state.posts)
-        );
+        this.setState({
+          posts: mentorPosts,
+        });
       });
   };
 
@@ -91,12 +86,9 @@ class PostContainer extends React.Component {
     )
       .then((response) => response.json())
       .then((menteePosts) => {
-        this.setState(
-          {
-            posts: menteePosts,
-          },
-          () => console.log(this.state.posts)
-        );
+        this.setState({
+          posts: menteePosts,
+        });
       });
   };
 
