@@ -9,13 +9,18 @@ import Post from "../screens/Post";
 const PostStack = createStackNavigator();
 
 function PostStackNavigator(props) {
-  const { posts, fetchHandler, post } = props;
+  const { posts, toggleHandler, fetchHandler, post } = props;
   return (
     <NavigationContainer style={styles.container} independent={true}>
       <PostStack.Navigator initialRouteName="PostList">
         <PostStack.Screen name="PostList">
           {(props) => (
-            <PostList {...props} posts={posts} fetchHandler={fetchHandler} />
+            <PostList
+              {...props}
+              posts={posts}
+              toggleHandler={toggleHandler}
+              fetchHandler={fetchHandler}
+            />
           )}
         </PostStack.Screen>
         <PostStack.Screen name="Post">

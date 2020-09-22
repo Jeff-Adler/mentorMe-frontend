@@ -1,21 +1,43 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { ThemeConsumer } from "react-native-elements";
 import PostStackNavigator from "../navigation/PostStackNavigator";
 
 class PostContainer extends React.Component {
   state = {
-    posts: null, //can probably delete
-    mentorPosts: null,
-    menteePosts: null,
+    posts: null,
+    postToggler: true,
     post: null,
   };
 
   async componentDidMount() {
     const token = await this.props.getToken();
-    this.fetchMentorPosts(token);
-    this.fetchMenteePosts(token);
+    if (this.state.postToggler === true) {
+      this.fetchMentorPosts(token);
+    } else {
+      this.fetchMenteePosts(token);
+    }
   }
 
+  //prevProps is listed because prevState is 2nd argument for componentDidUpdate
+  async componentDidUpdate(prevProps, prevState) {
+    const token = await this.props.getToken();
+    if (this.state.postToggler !== prevState.postToggler) {
+      if (this.state.postToggler === true) {
+        this.fetchMentorPosts(token);
+      } else {
+        this.fetchMenteePosts(token);
+      }
+    }
+  }
+
+  toggleHandler = () => {
+    this.setState({ postToggler: !this.state.postToggler }, () =>
+      console.log(this.state.postToggler)
+    );
+  };
+
+  //fetch post handler
   fetchHandler = async (postId) => {
     const token = await this.props.getToken();
     this.fetchPost(token, postId);
@@ -50,9 +72,9 @@ class PostContainer extends React.Component {
       .then((mentorPosts) => {
         this.setState(
           {
-            mentorPosts: mentorPosts,
+            posts: mentorPosts,
           },
-          () => console.log(this.state.mentorPosts)
+          () => console.log(this.state.posts)
         );
       });
   };
@@ -71,9 +93,9 @@ class PostContainer extends React.Component {
       .then((menteePosts) => {
         this.setState(
           {
-            menteePosts: menteePosts,
+            posts: menteePosts,
           },
-          () => console.log(this.state.menteePosts)
+          () => console.log(this.state.posts)
         );
       });
   };
@@ -98,6 +120,7 @@ class PostContainer extends React.Component {
         {this.state.posts !== null ? (
           <PostStackNavigator
             posts={this.state.posts}
+            toggleHandler={this.toggleHandler}
             fetchHandler={this.fetchHandler}
             post={this.state.post}
           />

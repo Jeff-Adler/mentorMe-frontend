@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { ListItem } from "react-native-elements";
+import { ListItem, Button } from "react-native-elements";
 import UserAvatar from "react-native-user-avatar";
 
 class PostList extends React.Component {
@@ -32,9 +32,15 @@ class PostList extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        {this.props.posts !== null && this.props.posts !== undefined
-          ? this.mapPosts()
-          : null}
+        {this.props.posts !== null && this.props.posts !== undefined ? (
+          <View>
+            {this.mapPosts()}
+            <Button
+              title="Toggle Mentor/Mentee"
+              onPress={this.props.toggleHandler}
+            />
+          </View>
+        ) : null}
       </View>
     );
   }
