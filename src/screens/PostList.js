@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { ScrollView, View, StyleSheet } from "react-native";
 import { ListItem, Button } from "react-native-elements";
 import UserAvatar from "react-native-user-avatar";
 
@@ -38,7 +38,7 @@ class PostList extends React.Component {
               title="Toggle Mentor/Mentee"
               onPress={this.props.toggleHandler}
             />
-            {this.mapPosts()}
+            <ScrollView>{this.mapPosts()}</ScrollView>
           </View>
         ) : null}
       </View>
@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     flex: 1,
     // justifyContent: "center",
     alignItems: "stretch",
+    flexGrow: 1,
   },
 });
 
