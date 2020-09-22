@@ -34,11 +34,11 @@ class PostList extends React.Component {
       <View style={styles.container}>
         {this.props.posts !== null && this.props.posts !== undefined ? (
           <View>
-            {this.mapPosts()}
             <Button
               title="Toggle Mentor/Mentee"
               onPress={this.props.toggleHandler}
             />
+            {this.mapPosts()}
           </View>
         ) : null}
       </View>
