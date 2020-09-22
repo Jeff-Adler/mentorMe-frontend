@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
 import { ListItem } from "react-native-elements";
 import UserAvatar from "react-native-user-avatar";
 
@@ -35,9 +35,11 @@ class PendingsList extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      // <View style={styles.container}>
+      <ScrollView>
         {this.props.pendingUsers !== null ? this.mapPendings() : null}
-      </View>
+      </ScrollView>
+      // {/* </View> */}
     );
   }
 }
