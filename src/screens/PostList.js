@@ -10,9 +10,9 @@ class PostList extends React.Component {
   };
 
   mapPosts = () => {
-    console.log(this.props.posts);
     return this.props.posts.map((post) => {
       const storedPost = post;
+      console.log("Post:", storedPost);
       return (
         <ListItem
           onPress={() => this.clickHandler(storedPost)}
