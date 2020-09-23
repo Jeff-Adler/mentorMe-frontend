@@ -86,12 +86,9 @@ class PostContainer extends React.Component {
     )
       .then((response) => response.json())
       .then((menteePosts) => {
-        this.setState(
-          {
-            posts: menteePosts,
-          },
-          () => console.log("Mentees: ", menteePosts)
-        );
+        this.setState({
+          posts: menteePosts,
+        });
       });
   };
 
