@@ -7,6 +7,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import MainTabNavigator from "./src/navigation/MainTabNavigator";
 import LoginStackNavigator from "./src/navigation/LoginStackNavigator";
+import AccountStackNavigator from "./src/navigation/AccountStackNavigator";
 
 import AsyncStorage from "@react-native-community/async-storage";
 
@@ -171,26 +172,41 @@ class App extends React.Component {
   };
 
   render() {
+    const { user } = this.state;
+    console.log("User:", this.state.user);
     return (
       <View style={styles.container}>
         {this.state.isSignedIn === true ? (
           <View style={styles.container}>
-            {/* <Header
+            {user.first_name === null ||
+            user.last_name === null ||
+            user.birthdate === null ||
+            user.age === null ||
+            user.gender === null ? (
+              <AccountStackNavigator
+                currentUser={user}
+                submitUserInfo={this.submitUserInfo}
+                submitBirthdate={this.submitBirthdate}
+                logoutHandler={this.logoutHandler}
+              />
+            ) : (
+              <View style={styles.container}>
+                {/* <Header
               leftComponent={{ icon: "menu", color: "#fff" }}
               centerComponent={{ text: "MentorMe", style: { color: "#fff" } }}
               rightComponent={{ icon: "home", color: "#fff" }}
             /> */}
-            <NavigationContainer>
-              <MainTabNavigator
-                currentUser={this.state.user}
-                getToken={this.getToken}
-                submitUserInfo={this.submitUserInfo}
-                submitBirthdate={this.submitBirthdate}
-                // loginHandler={this.loginHandler}
-                // signupHandler={this.signupHandler}
-                logoutHandler={this.logoutHandler}
-              />
-            </NavigationContainer>
+                <NavigationContainer>
+                  <MainTabNavigator
+                    currentUser={this.state.user}
+                    getToken={this.getToken}
+                    submitUserInfo={this.submitUserInfo}
+                    submitBirthdate={this.submitBirthdate}
+                    logoutHandler={this.logoutHandler}
+                  />
+                </NavigationContainer>
+              </View>
+            )}
           </View>
         ) : (
           <View style={styles.container}>

@@ -8,27 +8,40 @@ class Profile extends React.Component {
     let { currentUser, logoutHandler } = this.props;
     return (
       <View style={styles.container}>
-        <Text h4>
-          {`${currentUser.first_name} ${currentUser.last_name}`}
-          {"\n"}
-        </Text>
-        <Text h4>
-          {currentUser.gender}
-          {"\n"}
-        </Text>
-        <Text h4>
-          {currentUser.birthdate}
-          {"\n"}
-        </Text>
-        <UserAvatar
-          size={50}
-          bgColor="#3498db"
-          name={`${currentUser.first_name} ${currentUser.last_name}`}
-        />
-        <Text>{"\n"}</Text>
+        {currentUser.first_name === null ||
+        currentUser.last_name === null ||
+        currentUser.birthdate === null ||
+        currentUser.age === null ||
+        currentUser.gender === null ? (
+          <View style={styles.miniContainer}>
+            <Text h4>You're signed in!{"\n"}</Text>
+            <Text h4>Let's fill out your profile.{"\n"}</Text>
+          </View>
+        ) : (
+          <View style={styles.container}>
+            <Text h4>
+              {`${currentUser.first_name} ${currentUser.last_name}`}
+              {"\n"}
+            </Text>
+            <Text h4>
+              {currentUser.gender}
+              {"\n"}
+            </Text>
+            <Text h4>
+              {currentUser.birthdate}
+              {"\n"}
+            </Text>
+            <UserAvatar
+              size={50}
+              bgColor="#3498db"
+              name={`${currentUser.first_name} ${currentUser.last_name}`}
+            />
+            <Text>{"\n"}</Text>
+          </View>
+        )}
         <Button
           style={styles.button}
-          title="Edit"
+          title="Edit Profile"
           onPress={() => this.props.navigation.navigate("ProfileEditForm")}
         />
         <Button
@@ -49,6 +62,10 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   button: {
+    alignItems: "center",
+  },
+  miniContainer: {
+    justifyContent: "center",
     alignItems: "center",
   },
 });
