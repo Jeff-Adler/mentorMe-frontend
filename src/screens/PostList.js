@@ -1,6 +1,6 @@
 import React from "react";
-import { ScrollView, View, StyleSheet } from "react-native";
-import { ListItem, Button, ButtonGroup } from "react-native-elements";
+import { ScrollView, View, StyleSheet, Text } from "react-native";
+import { ListItem, ButtonGroup } from "react-native-elements";
 import UserAvatar from "react-native-user-avatar";
 
 class PostList extends React.Component {
@@ -29,8 +29,14 @@ class PostList extends React.Component {
         >
           {/* <UserAvatar size={50} bgColor="#3498db" name="Avishay Bar" /> */}
           <ListItem.Content>
-            <ListItem.Title>Mentee: {post.mentee_name}</ListItem.Title>
-            <ListItem.Subtitle>Mentor: {post.mentor_name}</ListItem.Subtitle>
+            <ListItem.Title>
+              <Text style={{ fontWeight: "bold" }}>Mentee: </Text>
+              {post.mentee_name}
+            </ListItem.Title>
+            <ListItem.Subtitle>
+              <Text style={{ fontWeight: "bold" }}>Mentor: </Text>{" "}
+              {post.mentor_name}
+            </ListItem.Subtitle>
           </ListItem.Content>
           <ListItem.Chevron />
         </ListItem>
