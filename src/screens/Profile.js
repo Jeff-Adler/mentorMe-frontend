@@ -31,6 +31,10 @@ class Profile extends React.Component {
               {currentUser.birthdate}
               {"\n"}
             </Text>
+            <Text h4>
+              {currentUser.karma}
+              {"\n"}
+            </Text>
             <UserAvatar
               size={50}
               bgColor="#3498db"

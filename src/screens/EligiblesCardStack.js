@@ -8,7 +8,7 @@ import UserAvatar from "react-native-user-avatar";
 
 class EligiblesCardStack extends React.Component {
   mapEligibles = () => {
-    return this.props.eligibles.map((eligible, index) => {
+    return this.props.eligibles.map((eligible) => {
       return (
         <Card
           key={eligible.id}
@@ -43,7 +43,9 @@ class EligiblesCardStack extends React.Component {
             {this.mapEligibles()}
           </CardStack>
         ) : (
-          <Text>Sorry, we can't find anyone!</Text>
+          <View style={styles.container}>
+            <Text>Sorry, we can't find anyone!</Text>
+          </View>
         )}
       </View>
     );
