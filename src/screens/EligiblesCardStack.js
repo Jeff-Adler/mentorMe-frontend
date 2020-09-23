@@ -18,7 +18,7 @@ class EligiblesCardStack extends React.Component {
           >{`${eligible.first_name} ${eligible.last_name}`}</Text>
           <UserAvatar
             style={styles.avatar}
-            size={50}
+            size={100}
             bgColor="#3498db"
             name={`${eligible.first_name} ${eligible.last_name}`}
           />
@@ -50,8 +50,13 @@ class EligiblesCardStack extends React.Component {
 
 const styles = StyleSheet.create({
   avatar: {
+    // flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    textAlign: "center",
+    // width: 50,
+    marginBottom: 250,
+    // paddingHorizontal: 24,
   },
   container: {
     justifyContent: "center",
@@ -69,6 +74,8 @@ const styles = StyleSheet.create({
     // marginBottom: 36,
   },
   card: {
+    justifyContent: "center",
+    alignItems: "center",
     width: 320,
     height: 470,
     backgroundColor: "#FE474C",
@@ -79,6 +86,7 @@ const styles = StyleSheet.create({
       height: 1,
     },
     shadowOpacity: 0.5,
+    marginTop: 50,
   },
   card1: {
     backgroundColor: "white",
@@ -87,9 +95,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#FEB12C",
   },
   label: {
+    marginTop: 75,
     lineHeight: 400,
     textAlign: "center",
-    fontSize: 50,
+    fontSize: 45,
     fontFamily: "System",
     color: "black",
     backgroundColor: "transparent",
