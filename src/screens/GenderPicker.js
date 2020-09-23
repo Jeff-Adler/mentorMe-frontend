@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { CheckBox, Button } from "react-native-elements";
 
 class GenderPicker extends React.Component {
@@ -24,7 +24,7 @@ class GenderPicker extends React.Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <CheckBox
           center
           title="Male"
@@ -52,10 +52,26 @@ class GenderPicker extends React.Component {
           value="other"
           onPress={this.otherPressHandler}
         />
-        <Button title="Next" onPress={this.submitHandler} />
+        <Button
+          style={styles.button}
+          title="Next"
+          onPress={this.submitHandler}
+        />
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    // alignItems: "center",
+  },
+  button: {
+    alignItems: "center",
+    // backgroundColor: "#fff",
+  },
+});
 
 export default GenderPicker;
