@@ -109,7 +109,7 @@ class PostContainer extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        {this.state.posts !== null ? (
+        {this.state.posts !== null && this.state.posts[0] !== null ? (
           <PostStackNavigator
             posts={this.state.posts}
             toggleHandler={this.toggleHandler}
