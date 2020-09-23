@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { Card, Text, Button, Icon } from "react-native-elements";
+import { Card, Text, Button } from "react-native-elements";
 import UserAvatar from "react-native-user-avatar";
 
 class Pending extends React.Component {
@@ -50,30 +50,6 @@ class Pending extends React.Component {
                 title="Accept Mentee"
               />
             </Card>
-            {/* <Text h4>
-              {pendingUser.username}
-              {"\n"}
-            </Text>
-            <Text h4>
-              {`${pendingUser.first_name} ${pendingUser.last_name}`}
-              {"\n"}
-            </Text>
-            <Text h4>
-              {pendingUser.gender}
-              {"\n"}
-            </Text>
-            <Text h4>
-              {pendingUser.birthdate}
-              {"\n"}
-            </Text>
-            <UserAvatar
-              style={styles.avatar}
-              size={50}
-              bgColor="#3498db"
-              name={`${pendingUser.first_name} ${pendingUser.last_name}`}
-            />
-            <Text>{"\n"}</Text>
-            <Button title="Accept Mentee" onPress={this.pressHandler} /> */}
           </View>
         ) : null}
       </View>

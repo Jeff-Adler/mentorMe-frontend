@@ -1,28 +1,55 @@
 import React from "react";
-import CardStack, { Card } from "react-native-card-stack-swiper";
-import { StyleSheet, Text, View } from "react-native";
+// import CardStack, { Card } from "react-native-card-stack-swiper";
+import CardStack from "react-native-card-stack-swiper";
+import { Card, Text, Button, Icon } from "react-native-elements";
+
+import { StyleSheet, View } from "react-native";
 import UserAvatar from "react-native-user-avatar";
 
 class EligiblesCardStack extends React.Component {
   mapEligibles = () => {
     return this.props.eligibles.map((eligible, index) => {
-      const evenOddBoolean = index % 2 === 0;
       return (
-        <Card
-          key={eligible.id}
-          style={[styles.card, styles.card1]}
-          onSwipedRight={() => this.props.handleSwipeRight(eligible.id)}
-        >
-          <Text
-            style={styles.label}
-          >{`${eligible.first_name} ${eligible.last_name}`}</Text>
-          <UserAvatar
-            style={styles.avatar}
-            size={100}
-            bgColor="#3498db"
-            name={`${eligible.first_name} ${eligible.last_name}`}
-          />
-        </Card>
+        // <Card
+        //   key={eligible.id}
+        //   style={[styles.card, styles.card1]}
+        //   onSwipedRight={() => this.props.handleSwipeRight(eligible.id)}
+        // >
+        //   <Text
+        //     style={styles.label}
+        //   >{`${eligible.first_name} ${eligible.last_name}`}</Text>
+        //   <UserAvatar
+        //     style={styles.avatar}
+        //     size={100}
+        //     bgColor="#3498db"
+        //     name={`${eligible.first_name} ${eligible.last_name}`}
+        //   />
+        // </Card>
+        <View key={eligible.id} style={styles.container}>
+          <Card key={eligible.id} style={styles.card}>
+            <Card.Title>{`${eligible.first_name} ${eligible.last_name}`}</Card.Title>
+            <Card.Divider />
+            {/* <Card.Image source={require("../images/pic2.jpg")} /> */}
+            <Text style={styles.cardText}>
+              {eligible.username}
+              {"\n"}
+            </Text>
+            <Text style={styles.cardText}>
+              {eligible.gender}
+              {"\n"}
+            </Text>
+            <Text style={styles.cardText}>
+              {eligible.birthdate}
+              {"\n"}
+            </Text>
+            <UserAvatar
+              style={styles.avatar}
+              size={50}
+              bgColor="#3498db"
+              name={`${eligible.first_name} ${eligible.last_name}`}
+            />
+          </Card>
+        </View>
       );
     });
   };
@@ -33,7 +60,7 @@ class EligiblesCardStack extends React.Component {
       <View style={styles.container}>
         {this.props.eligibles !== [] ? (
           <CardStack
-            style={styles.content}
+            style={styles.container}
             ref={(swiper) => {
               this.swiper = swiper;
             }}
@@ -41,7 +68,9 @@ class EligiblesCardStack extends React.Component {
             {this.mapEligibles()}
           </CardStack>
         ) : (
-          <Text>Sorry, we can't find anyone!</Text>
+          <View style={styles.container}>
+            <Text>Sorry, we can't find anyone!</Text>
+          </View>
         )}
       </View>
     );
@@ -55,8 +84,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     textAlign: "center",
     // width: 50,
-    marginBottom: 250,
+    // marginBottom: 250,
     // paddingHorizontal: 24,
+    width: 50,
+    height: 50,
+    marginLeft: "33%",
+  },
+  cardText: {
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
   },
   container: {
     justifyContent: "center",
@@ -64,10 +101,13 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     backgroundColor: "#f2f2f2",
+    marginTop: 150,
+    width: 375,
+    height: 500,
   },
   content: {
-    flex: 1,
-    alignItems: "center",
+    // flex: 1,
+    // alignItems: "center",
     // justifyContent: "center",
     // flex: 1,
     // justifyContent: "flex-end",
@@ -124,6 +164,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     zIndex: 0,
+  },
+  miniContainer: {
+    // flex: 1,
+    // justifyContent: "center",
+    // alignItems: "center",
   },
   orange: {
     width: 55,
