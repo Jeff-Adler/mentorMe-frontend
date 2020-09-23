@@ -1,19 +1,9 @@
 import "react-native-gesture-handler";
-import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { Header } from "react-native-elements";
-// import BottomTabs from "./src/navigations/bottomTabs";
 
-import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "@expo/vector-icons";
-
-import MainStackNavigator from "./src/navigation/MainStackNavigator";
-
-import HomeScreen from "./src/screens/Home";
-import SettingsScreen from "./src/screens/Settings";
 
 import MainTabNavigator from "./src/navigation/MainTabNavigator";
 import LoginStackNavigator from "./src/navigation/LoginStackNavigator";
@@ -114,9 +104,7 @@ class App extends React.Component {
       .then((response) => response.json())
       .then((data) => {
         if (data) {
-          this.setState({ user: data.user }, () =>
-            console.log("Birthdate submitted:", this.state.user)
-          );
+          this.setState({ user: data.user });
         }
       });
   };
@@ -198,8 +186,8 @@ class App extends React.Component {
                 getToken={this.getToken}
                 submitUserInfo={this.submitUserInfo}
                 submitBirthdate={this.submitBirthdate}
-                loginHandler={this.loginHandler}
-                signupHandler={this.signupHandler}
+                // loginHandler={this.loginHandler}
+                // signupHandler={this.signupHandler}
                 logoutHandler={this.logoutHandler}
               />
             </NavigationContainer>
@@ -211,6 +199,8 @@ class App extends React.Component {
                 style={styles.container}
                 loginHandler={this.loginHandler}
                 signupHandler={this.signupHandler}
+                submitUserInfo={this.submitUserInfo}
+                submitBirthdate={this.submitBirthdate}
               />
             </NavigationContainer>
           </View>

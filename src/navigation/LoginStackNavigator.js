@@ -7,7 +7,12 @@ import Login from "../screens/Login";
 const Stack = createStackNavigator();
 
 const LoginStackNavigator = (props) => {
-  const { loginHandler, signupHandler } = props;
+  const {
+    loginHandler,
+    signupHandler,
+    submitUserInfo,
+    submitBirthdate,
+  } = props;
   return (
     <Stack.Navigator style={styles.container} initialRouteName="Login">
       <Stack.Screen name="Login">
