@@ -24,6 +24,7 @@ class Login extends React.Component {
         />
         <Input
           placeholder="Password"
+          secureTextEntry={true}
           leftIcon={{ type: "font-awesome", name: "lock" }}
           onChangeText={this.onChangeText("password")}
           value={password}
