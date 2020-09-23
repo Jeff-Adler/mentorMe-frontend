@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { Text, Button } from "react-native-elements";
+import { Card, Text, Button } from "react-native-elements";
 import UserAvatar from "react-native-user-avatar";
 
 class Pending extends React.Component {

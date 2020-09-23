@@ -18,7 +18,7 @@ class Profile extends React.Component {
             <Text h4>Let's fill out your profile.{"\n"}</Text>
           </View>
         ) : (
-          <View style={styles.container}>
+          <View style={styles.miniContainer}>
             <Text h4>
               {`${currentUser.first_name} ${currentUser.last_name}`}
               {"\n"}
