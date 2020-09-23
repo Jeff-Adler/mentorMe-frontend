@@ -42,7 +42,6 @@ class PendingContainer extends React.Component {
     temp = temp.filter((user) => {
       return user.id !== connection.mentee_id;
     });
-    console.log("temp:", temp);
     this.setState({ pendingUsers: temp });
   };
 
