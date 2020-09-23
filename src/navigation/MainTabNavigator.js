@@ -1,8 +1,10 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
 import PostContainer from "../containers/PostContainer";
-import { DatePicker } from "../screens/DatePicker";
 import EligiblesContainer from "../containers/EligiblesContainer";
 import PendingContainer from "../containers/PendingContainer";
 import AccountStackNavigator from "../navigation/AccountStackNavigator";
@@ -24,14 +26,15 @@ const MainTabNavigator = (props) => {
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
           if (route.name === "Chats") {
-            iconName = focused
-              ? "ios-information-circle"
-              : "ios-information-circle-outline";
+            iconName = focused ? "comments" : "comments";
           } else if (route.name === "Search") {
-            iconName = focused ? "ios-list-box" : "ios-list";
+            iconName = focused ? "search" : "search";
+          } else if (route.name === "Pending") {
+            iconName = focused ? "list-ul" : "list-ul";
+          } else if (route.name === "Account") {
+            iconName = focused ? "user-alt" : "user";
           }
-
-          return <Ionicons name={iconName} size={size} color={color} />;
+          return <FontAwesome5 name={iconName} size={size} color={color} />;
         },
       })}
       tabBarOptions={{
