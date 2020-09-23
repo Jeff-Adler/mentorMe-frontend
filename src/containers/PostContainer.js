@@ -112,6 +112,7 @@ class PostContainer extends React.Component {
         {this.state.posts !== null && this.state.posts[0] !== null ? (
           <PostStackNavigator
             posts={this.state.posts}
+            postToggler={this.state.postToggler}
             toggleHandler={this.toggleHandler}
             fetchHandler={this.fetchHandler}
             post={this.state.post}

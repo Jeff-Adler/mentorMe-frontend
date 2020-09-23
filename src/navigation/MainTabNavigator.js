@@ -1,8 +1,5 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 import PostContainer from "../containers/PostContainer";
 import EligiblesContainer from "../containers/EligiblesContainer";
@@ -29,7 +26,7 @@ const MainTabNavigator = (props) => {
             iconName = focused ? "comments" : "comments";
           } else if (route.name === "Search") {
             iconName = focused ? "search" : "search";
-          } else if (route.name === "Pending") {
+          } else if (route.name === "Requests") {
             iconName = focused ? "list-ul" : "list-ul";
           } else if (route.name === "Account") {
             iconName = focused ? "user-alt" : "user";
@@ -55,7 +52,7 @@ const MainTabNavigator = (props) => {
         )}
       />
       <Tab.Screen
-        name="Pending"
+        name="Requests"
         children={() => (
           <PendingContainer currentUser={currentUser} getToken={getToken} />
         )}

@@ -9,7 +9,7 @@ import Post from "../screens/Post";
 const PostStack = createStackNavigator();
 
 function PostStackNavigator(props) {
-  const { posts, toggleHandler, fetchHandler, post } = props;
+  const { posts, postToggler, toggleHandler, fetchHandler, post } = props;
   return (
     <NavigationContainer style={styles.container} independent={true}>
       <PostStack.Navigator initialRouteName="PostList">
@@ -20,6 +20,7 @@ function PostStackNavigator(props) {
               posts={posts}
               toggleHandler={toggleHandler}
               fetchHandler={fetchHandler}
+              postToggler={postToggler}
             />
           )}
         </PostStack.Screen>

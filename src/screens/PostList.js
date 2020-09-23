@@ -1,9 +1,18 @@
 import React from "react";
 import { ScrollView, View, StyleSheet } from "react-native";
-import { ListItem, Button } from "react-native-elements";
+import { ListItem, Button, ButtonGroup } from "react-native-elements";
 import UserAvatar from "react-native-user-avatar";
 
 class PostList extends React.Component {
+  state = {
+    selectedIndex: 0,
+  };
+
+  buttonGroupClickHandler = (selectedIndex) => {
+    this.setState({ selectedIndex });
+    this.props.toggleHandler();
+  };
+
   clickHandler = (post) => {
     this.props.fetchHandler(post.id);
     this.props.navigation.navigate("Post");
@@ -30,13 +39,17 @@ class PostList extends React.Component {
   };
 
   render() {
+    const buttons = ["Mentor", "Mentee"];
+    const { selectedIndex } = this.state;
     return (
       <View style={styles.container}>
         {this.props.posts !== null && this.props.posts !== undefined ? (
           <View>
-            <Button
-              title="Toggle Mentor/Mentee"
-              onPress={this.props.toggleHandler}
+            <ButtonGroup
+              onPress={this.buttonGroupClickHandler}
+              selectedIndex={selectedIndex}
+              buttons={buttons}
+              containerStyle={{ height: 40 }}
             />
             <ScrollView>{this.mapPosts()}</ScrollView>
           </View>
