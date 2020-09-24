@@ -1,12 +1,24 @@
 import React from "react";
 // import CardStack, { Card } from "react-native-card-stack-swiper";
 import CardStack, { Card } from "react-native-card-stack-swiper";
-import { Text } from "react-native-elements";
+import { Text, ButtonGroup } from "react-native-elements";
 
-import { StyleSheet, View } from "react-native";
+import { SafeAreaView, StyleSheet, View } from "react-native";
 import UserAvatar from "react-native-user-avatar";
 
+import Constants from "expo-constants";
+const statusBarHeight = Constants.statusBarHeight;
+
 class EligiblesCardStack extends React.Component {
+  state = {
+    selectedIndex: 0,
+  };
+
+  buttonGroupClickHandler = (selectedIndex) => {
+    this.setState({ selectedIndex });
+    // this.props.toggleHandler();
+  };
+
   mapEligibles = () => {
     return this.props.eligibles.map((eligible) => {
       return (
@@ -30,9 +42,19 @@ class EligiblesCardStack extends React.Component {
   };
 
   render() {
+    const buttons = ["Professional", "Interpersonal", "Self"];
+    const { selectedIndex } = this.state;
     const { eligibles } = this.props;
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.buttonGroupContainer}>
+          <ButtonGroup
+            onPress={this.buttonGroupClickHandler}
+            selectedIndex={selectedIndex}
+            buttons={buttons}
+            containerStyle={{ height: 40 }}
+          />
+        </View>
         {eligibles !== [] ? (
           <CardStack
             style={styles.content}
@@ -43,11 +65,11 @@ class EligiblesCardStack extends React.Component {
             {this.mapEligibles()}
           </CardStack>
         ) : (
-          <View style={styles.container}>
+          <SafeAreaView style={styles.container}>
             <Text>Sorry, we can't find anyone!</Text>
-          </View>
+          </SafeAreaView>
         )}
-      </View>
+      </SafeAreaView>
     );
   }
 }
@@ -62,7 +84,14 @@ const styles = StyleSheet.create({
     marginBottom: 250,
     // paddingHorizontal: 24,
   },
+  buttonGroupContainer: {
+    marginTop: statusBarHeight,
+    justifyContent: "center",
+    alignItems: "center",
+    flex: 1,
+  },
   container: {
+    marginTop: statusBarHeight,
     justifyContent: "center",
     alignItems: "center",
     flex: 1,
