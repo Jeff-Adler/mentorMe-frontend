@@ -32,7 +32,7 @@ class Signup extends React.Component {
           onChangeText={this.onChangeText("password")}
           value={password}
         />
-        <Button title="Sign up!" onPress={pressHandler} />
+        <Button title="Sign up!" onPress={this.pressHandler} />
       </View>
     );
   }
