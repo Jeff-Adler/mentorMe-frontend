@@ -21,7 +21,7 @@ class EligiblesContainer extends React.Component {
 
   fetchEligibles = (token) => {
     fetch(
-      `http://localhost:3000/api/v1/users/${this.props.currentUser.id}/retrieve_eligibles`,
+      `http://localhost:3000/api/v1/users/${this.props.currentUser.id}/retrieve_eligibles/professional`,
       {
         method: "GET",
         headers: {
@@ -35,10 +35,13 @@ class EligiblesContainer extends React.Component {
           Object.keys(eligibles)[0] !== "error" &&
           Object.keys(eligibles)[0] !== "status"
         ) {
-          this.setState({
-            eligibles: eligibles,
-            isLoaded: true,
-          });
+          this.setState(
+            {
+              eligibles: eligibles,
+              isLoaded: true,
+            },
+            () => console.log(this.state.eligibles)
+          );
         } else {
           this.setState({ error: eligibles.error });
         }
