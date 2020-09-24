@@ -7,6 +7,7 @@ import Profile from "../screens/Profile";
 import ProfileEditForm from "../screens/ProfileEditForm";
 import { DatePicker } from "../screens/DatePicker";
 import GenderPicker from "../screens/GenderPicker";
+import ExperiencePicker from "../screens/ExperiencePicker";
 
 const Stack = createStackNavigator();
 
@@ -37,6 +38,11 @@ const AccountStackNavigator = (props) => {
         <Stack.Screen name="DatePicker">
           {(props) => (
             <DatePicker {...props} submitBirthdate={submitBirthdate} />
+          )}
+        </Stack.Screen>
+        <Stack.Screen name="ExperiencePicker">
+          {(props) => (
+            <ExperiencePicker {...props} submitUserInfo={submitUserInfo} />
           )}
         </Stack.Screen>
       </Stack.Navigator>
