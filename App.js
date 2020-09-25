@@ -78,9 +78,7 @@ class App extends React.Component {
       .then((response) => response.json())
       .then((data) => {
         if (data) {
-          this.setState({ user: data.user }, () =>
-            console.log("Updated user:", this.state.user)
-          );
+          this.setState({ user: data.user });
         }
       });
   };
@@ -173,7 +171,6 @@ class App extends React.Component {
 
   render() {
     const { user } = this.state;
-    console.log("User:", this.state.user);
     return (
       <View style={styles.container}>
         {this.state.isSignedIn === true ? (
