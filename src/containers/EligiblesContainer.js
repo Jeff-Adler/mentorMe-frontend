@@ -4,7 +4,12 @@ import { View, StyleSheet, Text } from "react-native";
 import EligiblesCardStack from "../screens/EligiblesCardStack";
 
 class EligiblesContainer extends React.Component {
-  state = { eligibles: null, error: "", isLoaded: false };
+  state = {
+    eligibles: null,
+    eligibleToggler: "professional",
+    error: "",
+    isLoaded: false,
+  };
 
   async componentDidMount() {
     const token = await this.props.getToken();
@@ -19,9 +24,21 @@ class EligiblesContainer extends React.Component {
     }
   }
 
+  toggleHandler = async (buttonIndex) => {
+    if (buttonIndex === 0) {
+      this.setState({ eligibleToggler: "professional" });
+    } else if (buttonIndex === 1) {
+      this.setState({ eligibleToggler: "interpersonal" });
+    } else {
+      this.setState({ eligibleToggler: "self_improvement" });
+    }
+    const token = await this.props.getToken();
+    this.fetchEligibles(token);
+  };
+
   fetchEligibles = (token) => {
     fetch(
-      `http://localhost:3000/api/v1/users/${this.props.currentUser.id}/retrieve_eligibles/professional`,
+      `http://localhost:3000/api/v1/users/${this.props.currentUser.id}/retrieve_eligibles/${this.state.eligibleToggler}`,
       {
         method: "GET",
         headers: {
@@ -76,6 +93,7 @@ class EligiblesContainer extends React.Component {
         this.state.error === "" &&
         this.state.isLoaded === true ? (
           <EligiblesCardStack
+            toggleHandler={this.toggleHandler}
             handleSwipeRight={this.handleSwipeRight}
             eligibles={this.state.eligibles}
           />

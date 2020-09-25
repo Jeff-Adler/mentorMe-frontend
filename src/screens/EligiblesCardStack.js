@@ -15,8 +15,9 @@ class EligiblesCardStack extends React.Component {
   };
 
   buttonGroupClickHandler = (selectedIndex) => {
+    console.log(selectedIndex);
     this.setState({ selectedIndex });
-    // this.props.toggleHandler();
+    this.props.toggleHandler(selectedIndex);
   };
 
   mapEligibles = () => {
