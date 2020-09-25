@@ -55,13 +55,10 @@ class EligiblesContainer extends React.Component {
           Object.keys(eligibles)[0] !== "error" &&
           Object.keys(eligibles)[0] !== "status"
         ) {
-          this.setState(
-            {
-              eligibles: eligibles,
-              isLoaded: true,
-            },
-            () => console.log(this.state.eligibles)
-          );
+          this.setState({
+            eligibles: eligibles,
+            isLoaded: true,
+          });
         } else {
           this.setState({ error: eligibles.error });
         }
@@ -83,11 +80,10 @@ class EligiblesContainer extends React.Component {
         "content-type": "application/json",
       },
       body: JSON.stringify({ connection: connection }),
-    })
-      .then((response) => response.json())
-      .then((connection) => {
-        console.log(connection);
-      });
+    }).then((response) => response.json());
+    // .then((connection) => {
+    //   console.log(connection);
+    // });
   };
 
   render() {

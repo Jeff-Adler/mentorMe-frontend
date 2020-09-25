@@ -6,7 +6,6 @@ var moment = require("moment");
 
 class Profile extends React.Component {
   convertBirthdateToDate = (birthdate) => {
-    console.log(birthdate);
     const convertedBirthdate = moment(birthdate, "YYYY-MM-DD").format(
       "MMMM Do, YYYY"
     );

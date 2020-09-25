@@ -2,11 +2,19 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import { Card, Text, Button } from "react-native-elements";
 import UserAvatar from "react-native-user-avatar";
+var moment = require("moment");
 
 class Pending extends React.Component {
   pressHandler = () => {
     this.props.acceptPending(this.props.pendingUser.id);
     this.props.navigation.pop();
+  };
+
+  convertBirthdateToDate = (birthdate) => {
+    const convertedBirthdate = moment(birthdate, "YYYY-MM-DD").format(
+      "MMMM Do, YYYY"
+    );
+    return convertedBirthdate;
   };
 
   render() {
@@ -19,7 +27,7 @@ class Pending extends React.Component {
               <Card.Title>{`${pendingUser.first_name} ${pendingUser.last_name}`}</Card.Title>
               <Card.Divider />
               {/* <Card.Image source={require("../images/pic2.jpg")} /> */}
-              <Text style={{ fontWeight: "bold" }} style={styles.cardText}>
+              <Text style={styles.italicizedText}>
                 {pendingUser.description}
                 {"\n"}
               </Text>
@@ -32,7 +40,7 @@ class Pending extends React.Component {
                 {"\n"}
               </Text>
               <Text style={styles.cardText}>
-                {pendingUser.birthdate}
+                {this.convertBirthdateToDate(pendingUser.birthdate)}
                 {"\n"}
               </Text>
               <UserAvatar
@@ -67,12 +75,12 @@ const styles = StyleSheet.create({
     // flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    // textAlign: "center",
+    textAlign: "center",
     width: 50,
     height: 50,
     // marginBottom: 250,
     // paddingHorizontal: 24,
-    marginLeft: "35%",
+    marginLeft: "42%",
   },
   cardText: {
     justifyContent: "center",
@@ -83,6 +91,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  italicizedText: {
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    fontStyle: "italic",
   },
   miniContainer: {
     // flex: 1,
