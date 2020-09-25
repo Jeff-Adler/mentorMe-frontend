@@ -182,7 +182,11 @@ class App extends React.Component {
             user.last_name === null ||
             user.birthdate === null ||
             user.age === null ||
-            user.gender === null ? (
+            user.gender === null ||
+            user.description === null ||
+            user.professional === null ||
+            user.self_improvement === null ||
+            user.interpersonal === null ? (
               <AccountStackNavigator
                 currentUser={user}
                 submitUserInfo={this.submitUserInfo}

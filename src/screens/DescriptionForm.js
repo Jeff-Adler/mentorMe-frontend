@@ -9,7 +9,7 @@ class DescriptionForm extends React.Component {
 
   pressHandler = () => {
     const descriptionObj = {
-      description: `${this.state.profession} hoping to ${this.state.goal}`,
+      description: `${this.state.profession} looking to ${this.state.goal}`,
     };
     this.props.submitUserInfo(descriptionObj);
     this.props.navigation.popToTop();
