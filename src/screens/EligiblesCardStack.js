@@ -56,14 +56,16 @@ class EligiblesCardStack extends React.Component {
           />
         </View>
         {eligibles !== [] ? (
-          <CardStack
-            style={styles.content}
-            ref={(swiper) => {
-              this.swiper = swiper;
-            }}
-          >
-            {this.mapEligibles()}
-          </CardStack>
+          <View style={styles.cardContainer}>
+            <CardStack
+              style={styles.content}
+              ref={(swiper) => {
+                this.swiper = swiper;
+              }}
+            >
+              {this.mapEligibles()}
+            </CardStack>
+          </View>
         ) : (
           <SafeAreaView style={styles.container}>
             <Text>Sorry, we can't find anyone!</Text>
@@ -89,6 +91,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     flex: 1,
+    // marginBottom: 30,
+    // marginBottom: -10,
   },
   container: {
     marginTop: statusBarHeight,
@@ -96,30 +100,50 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "#f2f2f2",
+    // borderRadius: 5,
+    // borderWidth: 5,
+    // borderColor: "black",
   },
+  // cardContainer: {
+  //   margin: "7%",
+  // },
   content: {
+    // justifyContent: "space-around",
+    marginTop: "33%",
+    // marginBottom: -10,
     flex: 1,
     alignItems: "center",
+    // paddingTop: -50,
+    // backgroundColor: "#f2f2f2",
+    // borderRadius: 5,
+    // borderWidth: 5,
+    // borderColor: "black",
+    // top: 100,
+    // width: 320,
+    // height: 200,
     // justifyContent: "center",
     // flex: 1,
     // justifyContent: "flex-end",
-    // marginBottom: 36,
+    // marginBottom: "100%",
+    // position: "absolute",
   },
   card: {
+    // borderColor: "black",
     justifyContent: "center",
     alignItems: "center",
     width: 320,
-    height: 470,
+    height: 390,
     backgroundColor: "#FE474C",
     borderRadius: 5,
+    // borderRadius: 5,
+    // borderWidth: 5,
     shadowColor: "rgba(0,0,0,0.5)",
     shadowOffset: {
       width: 0,
       height: 1,
     },
     shadowOpacity: 0.5,
-    marginTop: 50,
+    // marginTop: 50,
   },
   card1: {
     backgroundColor: "white",
