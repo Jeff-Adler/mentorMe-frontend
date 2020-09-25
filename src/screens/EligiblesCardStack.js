@@ -41,7 +41,10 @@ class EligiblesCardStack extends React.Component {
             <Text
               h3
               // style={styles.label}
-            >{`${eligible.first_name} ${eligible.last_name}`}</Text>
+            >
+              {`${eligible.first_name} ${eligible.last_name}`}
+              {"\n"}
+            </Text>
             <Text h4>
               {eligible.gender.charAt(0).toUpperCase() +
                 eligible.gender.slice(1)}
@@ -164,7 +167,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     width: 320,
-    height: 450,
+    height: 455,
     backgroundColor: "#FE474C",
     borderRadius: 5,
     shadowColor: "rgba(0,0,0,0.5)",
