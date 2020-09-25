@@ -3,6 +3,9 @@ import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 import EligiblesCardStack from "../screens/EligiblesCardStack";
 
+// import Constants from "expo-constants";
+// const statusBarHeight = Constants.statusBarHeight;
+
 class EligiblesContainer extends React.Component {
   state = {
     eligibles: null,
@@ -88,7 +91,7 @@ class EligiblesContainer extends React.Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         {this.state.eligibles !== null &&
         this.state.error === "" &&
         this.state.isLoaded === true ? (
@@ -104,5 +107,15 @@ class EligiblesContainer extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    marginTop: 64,
+    flex: 1,
+    backgroundColor: "#fff",
+    // alignItems: "center",
+    // justifyContent: "center",
+  },
+});
 
 export default EligiblesContainer;

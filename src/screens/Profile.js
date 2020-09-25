@@ -28,7 +28,7 @@ class Profile extends React.Component {
           </View>
         ) : (
           <View style={styles.miniContainer}>
-            <Text h4>
+            <Text style={{ fontWeight: "bold" }} h4>
               {`${currentUser.first_name} ${currentUser.last_name}`}
               {"\n"}
             </Text>
@@ -46,7 +46,7 @@ class Profile extends React.Component {
               size={100}
               bgColor="#3498db"
               name={`${currentUser.first_name} ${currentUser.last_name}`}
-              src={"https://randomuser.me/api/portraits/men/39.jpg"}
+              src={"https://randomuser.me/api/portraits/men/44.jpg"}
             />
             <Text>{"\n"}</Text>
           </View>
