@@ -45,8 +45,8 @@ class EligiblesCardStack extends React.Component {
               {`${eligible.first_name} ${eligible.last_name}`}
               {"\n"}
             </Text>
-            <Text h4>
-              High School Student looking to up my public speaking game!
+            <Text style={{ fontWeight: "bold" }} h4>
+              {eligible.description}
               {"\n"}
             </Text>
             <Text h4>

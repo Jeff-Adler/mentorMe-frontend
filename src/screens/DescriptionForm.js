@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { Input, Button } from "react-native-elements";
+import { Input, Button, Text } from "react-native-elements";
 
 class DescriptionForm extends React.Component {
   state = { profession: "", goal: "" };
@@ -20,12 +20,14 @@ class DescriptionForm extends React.Component {
     const { navigation } = this.props;
     return (
       <View style={styles.container}>
+        <Text style={styles.textStyle}>I am a ...</Text>
         <Input
           placeholder="Profession"
           //   leftIcon={{ type: "font-awesome", name: "user" }}
           onChangeText={this.onChangeText("profession")}
           value={profession}
         />
+        <Text style={styles.textStyle}>Looking to...</Text>
         <Input
           placeholder="Goal"
           //   leftIcon={{ type: "font-awesome", name: "lock" }}
@@ -43,6 +45,13 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  textStyle: {
+    flexDirection: "row",
+    alignItems: "flex-start",
+    textAlign: "left",
+    fontStyle: "italic",
+    fontSize: 20,
   },
 });
 
