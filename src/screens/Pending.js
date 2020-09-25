@@ -36,6 +36,7 @@ class Pending extends React.Component {
                 size={50}
                 bgColor="#3498db"
                 name={`${pendingUser.first_name} ${pendingUser.last_name}`}
+                src={pendingUser.avatar}
               />
               <Text>{"\n"}</Text>
               <Button

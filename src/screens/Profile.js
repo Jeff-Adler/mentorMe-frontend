@@ -39,6 +39,7 @@ class Profile extends React.Component {
               size={50}
               bgColor="#3498db"
               name={`${currentUser.first_name} ${currentUser.last_name}`}
+              src={"https://randomuser.me/api/portraits/men/39.jpg"}
             />
             <Text>{"\n"}</Text>
           </View>

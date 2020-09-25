@@ -36,6 +36,7 @@ class EligiblesCardStack extends React.Component {
             size={100}
             bgColor="#3498db"
             name={`${eligible.first_name} ${eligible.last_name}`}
+            src={eligible.avatar}
           />
         </Card>
       );
