@@ -3,9 +3,6 @@ import { View, Text, StyleSheet } from "react-native";
 import { ThemeConsumer } from "react-native-elements";
 import PostStackNavigator from "../navigation/PostStackNavigator";
 
-import Constants from "expo-constants";
-const statusBarHeight = Constants.statusBarHeight;
-
 class PostContainer extends React.Component {
   state = {
     posts: null,

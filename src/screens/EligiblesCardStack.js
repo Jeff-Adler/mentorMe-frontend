@@ -8,6 +8,7 @@ import UserAvatar from "react-native-user-avatar";
 
 import Constants from "expo-constants";
 const statusBarHeight = Constants.statusBarHeight;
+var moment = require("moment");
 
 class EligiblesCardStack extends React.Component {
   state = {
@@ -20,6 +21,14 @@ class EligiblesCardStack extends React.Component {
     this.props.toggleHandler(selectedIndex);
   };
 
+  convertBirthdateToDate = (birthdate) => {
+    console.log(birthdate);
+    const convertedBirthdate = moment(birthdate, "YYYY-MM-DD").format(
+      "MMMM Do, YYYY"
+    );
+    return convertedBirthdate;
+  };
+
   mapEligibles = () => {
     return this.props.eligibles.map((eligible) => {
       return (
@@ -28,17 +37,28 @@ class EligiblesCardStack extends React.Component {
           style={[styles.card, styles.card1]}
           onSwipedRight={() => this.props.handleSwipeRight(eligible.id)}
         >
-          <Text
-            h3
-            style={styles.label}
-          >{`${eligible.first_name} ${eligible.last_name}`}</Text>
-          <UserAvatar
-            style={styles.avatar}
-            size={100}
-            bgColor="#3498db"
-            name={`${eligible.first_name} ${eligible.last_name}`}
-            src={eligible.avatar}
-          />
+          <View style={styles.cardContainer}>
+            <Text
+              h3
+              // style={styles.label}
+            >{`${eligible.first_name} ${eligible.last_name}`}</Text>
+            <Text h4>
+              {eligible.gender.charAt(0).toUpperCase() +
+                eligible.gender.slice(1)}
+              {"\n"}
+            </Text>
+            <Text h4>
+              {this.convertBirthdateToDate(eligible.birthdate)}
+              {"\n"}
+            </Text>
+            <UserAvatar
+              style={styles.avatar}
+              size={100}
+              bgColor="#3498db"
+              name={`${eligible.first_name} ${eligible.last_name}`}
+              src={eligible.avatar}
+            />
+          </View>
         </Card>
       );
     });
@@ -59,7 +79,7 @@ class EligiblesCardStack extends React.Component {
           />
         </View>
         {eligibles !== [] ? (
-          <View style={styles.cardContainer}>
+          <View>
             <CardStack
               style={styles.content}
               ref={(swiper) => {
@@ -97,6 +117,16 @@ const styles = StyleSheet.create({
     // marginBottom: 30,
     // marginBottom: -10,
   },
+  cardContainer: {
+    marginTop: "5%",
+    // justifyContent: "center",
+    alignItems: "center",
+    flex: 1,
+    flexDirection: "column",
+    // borderRadius: 5,
+    // borderWidth: 5,
+    // borderColor: "black",
+  },
   container: {
     marginTop: statusBarHeight,
     justifyContent: "center",
@@ -107,12 +137,9 @@ const styles = StyleSheet.create({
     // borderWidth: 5,
     // borderColor: "black",
   },
-  // cardContainer: {
-  //   margin: "7%",
-  // },
   content: {
     // justifyContent: "space-around",
-    marginTop: "33%",
+    marginTop: "12%",
     // marginBottom: -10,
     flex: 1,
     alignItems: "center",
@@ -132,14 +159,14 @@ const styles = StyleSheet.create({
   },
   card: {
     // borderColor: "black",
+    // borderRadius: 5,
+    // borderWidth: 5,
     justifyContent: "center",
     alignItems: "center",
     width: 320,
-    height: 380,
+    height: 450,
     backgroundColor: "#FE474C",
     borderRadius: 5,
-    // borderRadius: 5,
-    // borderWidth: 5,
     shadowColor: "rgba(0,0,0,0.5)",
     shadowOffset: {
       width: 0,
@@ -155,8 +182,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#FEB12C",
   },
   label: {
+    borderColor: "black",
+    borderRadius: 5,
+    borderWidth: 5,
+
     marginTop: 75,
-    lineHeight: 400,
+    lineHeight: 450,
     textAlign: "center",
     fontSize: 45,
     fontFamily: "System",

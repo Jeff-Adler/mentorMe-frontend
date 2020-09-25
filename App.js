@@ -11,8 +11,8 @@ import AccountStackNavigator from "./src/navigation/AccountStackNavigator";
 
 import AsyncStorage from "@react-native-community/async-storage";
 
-import Constants from "expo-constants";
-const statusBarHeight = Constants.statusBarHeight;
+// import Constants from "expo-constants";
+// const statusBarHeight = Constants.statusBarHeight;
 
 const Tab = createBottomTabNavigator();
 
