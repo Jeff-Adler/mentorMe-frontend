@@ -72,6 +72,7 @@ class EligiblesContainer extends React.Component {
     const connection = {
       mentee_id: this.props.currentUser.id,
       mentor_id: mentorId,
+      mentor_type: this.state.eligibleToggler,
     };
     const token = await this.props.getToken();
     fetch(`http://localhost:3000/connections`, {
