@@ -32,6 +32,10 @@ class Profile extends React.Component {
               {`${currentUser.first_name} ${currentUser.last_name}`}
               {"\n"}
             </Text>
+            <Text style={{ fontStyle: "italic" }} h4>
+              {currentUser.description}
+              {"\n"}
+            </Text>
             <Text h4>
               {currentUser.gender.charAt(0).toUpperCase() +
                 currentUser.gender.slice(1)}

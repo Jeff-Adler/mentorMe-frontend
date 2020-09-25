@@ -46,6 +46,10 @@ class EligiblesCardStack extends React.Component {
               {"\n"}
             </Text>
             <Text h4>
+              High School Student looking to up my public speaking game!
+              {"\n"}
+            </Text>
+            <Text h4>
               {eligible.gender.charAt(0).toUpperCase() +
                 eligible.gender.slice(1)}
               {"\n"}

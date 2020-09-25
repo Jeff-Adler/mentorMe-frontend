@@ -20,6 +20,10 @@ class Pending extends React.Component {
               <Card.Divider />
               {/* <Card.Image source={require("../images/pic2.jpg")} /> */}
               <Text style={styles.cardText}>
+                {pendingUser.description}
+                {"\n"}
+              </Text>
+              <Text style={styles.cardText}>
                 {pendingUser.username}
                 {"\n"}
               </Text>
