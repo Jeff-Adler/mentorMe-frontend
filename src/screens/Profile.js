@@ -2,8 +2,17 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import { Button, Text } from "react-native-elements";
 import UserAvatar from "react-native-user-avatar";
+var moment = require("moment");
 
 class Profile extends React.Component {
+  convertBirthdateToDate = (birthdate) => {
+    console.log(birthdate);
+    const convertedBirthdate = moment(birthdate, "YYYY-MM-DD").format(
+      "MMMM Do, YYYY"
+    );
+    return convertedBirthdate;
+  };
+
   render() {
     let { currentUser, logoutHandler } = this.props;
     return (
@@ -24,19 +33,17 @@ class Profile extends React.Component {
               {"\n"}
             </Text>
             <Text h4>
-              {currentUser.gender}
+              {currentUser.gender.charAt(0).toUpperCase() +
+                currentUser.gender.slice(1)}
               {"\n"}
             </Text>
             <Text h4>
-              {currentUser.birthdate}
+              {this.convertBirthdateToDate(currentUser.birthdate)}
               {"\n"}
             </Text>
-            <Text h4>
-              {currentUser.karma}
-              {"\n"}
-            </Text>
+            <Text h4>{currentUser.karma}</Text>
             <UserAvatar
-              size={50}
+              size={100}
               bgColor="#3498db"
               name={`${currentUser.first_name} ${currentUser.last_name}`}
               src={"https://randomuser.me/api/portraits/men/39.jpg"}

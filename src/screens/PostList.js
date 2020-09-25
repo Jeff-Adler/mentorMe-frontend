@@ -27,7 +27,7 @@ class PostList extends React.Component {
           key={post.id}
           bottomDivider
         >
-          {/* <UserAvatar size={50} bgColor="#3498db" name="Avishay Bar" /> */}
+          {/* <UserAvatar size={50} bgColor="#3498db" name={`${pending.first_name} ${pending.last_name}`} /> */}
           <ListItem.Content>
             <ListItem.Title>
               <Text style={{ fontWeight: "bold" }}>Mentee: </Text>

@@ -22,6 +22,7 @@ class PendingsList extends React.Component {
             size={50}
             bgColor="#3498db"
             name={`${pending.first_name} ${pending.last_name}`}
+            src={pending.avatar}
           />
           <ListItem.Content>
             <ListItem.Title>{`${pending.first_name} ${pending.last_name}`}</ListItem.Title>

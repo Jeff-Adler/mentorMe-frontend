@@ -29,6 +29,7 @@ class EligiblesCardStack extends React.Component {
           onSwipedRight={() => this.props.handleSwipeRight(eligible.id)}
         >
           <Text
+            h3
             style={styles.label}
           >{`${eligible.first_name} ${eligible.last_name}`}</Text>
           <UserAvatar
