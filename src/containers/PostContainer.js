@@ -22,8 +22,11 @@ class PostContainer extends React.Component {
     this.fetchPosts(token);
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.postType !== prevState.postType) {
+  async componentDidUpdate(prevProps, prevState) {
+    if (prevProps.isFocused !== this.props.isFocused) {
+      const token = await this.props.getToken();
+      this.fetchPosts(token);
+    } else if (this.state.postType !== prevState.postType) {
       this.filterPosts();
     }
   }
