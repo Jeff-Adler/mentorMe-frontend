@@ -12,11 +12,12 @@ class PostContainer extends React.Component {
 
   async componentDidMount() {
     const token = await this.props.getToken();
-    if (this.state.postToggler === true) {
-      this.fetchMentorPosts(token);
-    } else {
-      this.fetchMenteePosts(token);
-    }
+    this.fetchPosts(token);
+    // if (this.state.postToggler === true) {
+    //   this.fetchMentorPosts(token);
+    // } else {
+    //   this.fetchMenteePosts(token);
+    // }
   }
 
   //prevProps is listed because prevState is 2nd argument for componentDidUpdate
@@ -42,17 +43,23 @@ class PostContainer extends React.Component {
   };
 
   fetchPosts = (token) => {
-    fetch("http://localhost:3000/posts", {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    fetch(
+      `http://localhost:3000/api/v1/users/${this.props.currentUser.id}/posts`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
       .then((response) => response.json())
       .then((retrievedPosts) => {
-        this.setState({
-          posts: retrievedPosts,
-        });
+        this.setState(
+          {
+            posts: retrievedPosts,
+          },
+          () => console.log(this.state.posts)
+        );
       });
   };
 
@@ -109,7 +116,9 @@ class PostContainer extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        {this.state.posts !== null && this.state.posts[0] !== null ? (
+        {this.state.posts !== null &&
+        this.state.posts !== undefined &&
+        this.state.posts[0] !== null ? (
           <PostStackNavigator
             posts={this.state.posts}
             postToggler={this.state.postToggler}

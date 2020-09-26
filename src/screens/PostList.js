@@ -19,29 +19,31 @@ class PostList extends React.Component {
   };
 
   mapPosts = () => {
-    return this.props.posts.map((post) => {
-      const storedPost = post;
-      return (
-        <ListItem
-          onPress={() => this.clickHandler(storedPost)}
-          key={post.id}
-          bottomDivider
-        >
-          {/* <UserAvatar size={50} bgColor="#3498db" name={`${pending.first_name} ${pending.last_name}`} /> */}
-          <ListItem.Content>
-            <ListItem.Title>
-              <Text style={{ fontWeight: "bold" }}>Mentee: </Text>
-              {post.mentee_name}
-            </ListItem.Title>
-            <ListItem.Subtitle>
-              <Text style={{ fontWeight: "bold" }}>Mentor: </Text>{" "}
-              {post.mentor_name}
-            </ListItem.Subtitle>
-          </ListItem.Content>
-          <ListItem.Chevron />
-        </ListItem>
-      );
-    });
+    console.log(this.props.posts);
+    // return this.props.posts.map((post) => {
+    //   const storedPost = post;
+    //   return (
+    //     <ListItem
+    //       onPress={() => this.clickHandler(storedPost)}
+    //       key={post.id}
+    //       bottomDivider
+    //     >
+    //       {/* <UserAvatar size={50} bgColor="#3498db" name={`${pending.first_name} ${pending.last_name}`} /> */}
+    //       <ListItem.Content>
+    //         <ListItem.Title>
+    //           <Text style={{ fontWeight: "bold" }}>Mentee: </Text>
+    //           {post.mentee_name}
+    //         </ListItem.Title>
+    //         <ListItem.Subtitle>
+    //           <Text style={{ fontWeight: "bold" }}>Mentor: </Text>{" "}
+    //           {post.mentor_name}
+    //         </ListItem.Subtitle>
+    //       </ListItem.Content>
+    //       <ListItem.Chevron />
+    //     </ListItem>
+    //   );
+    // }
+    // );
   };
 
   render() {
