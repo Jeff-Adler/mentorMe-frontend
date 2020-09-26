@@ -8,12 +8,6 @@ class PostList extends React.Component {
     selectedIndex: 0,
   };
 
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.postType!== prevProps.postType) {
-
-  //   }
-  // }
-
   buttonGroupClickHandler = (selectedIndex) => {
     this.setState({ selectedIndex });
     this.props.toggleHandler();

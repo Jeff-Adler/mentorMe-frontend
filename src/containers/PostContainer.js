@@ -12,7 +12,6 @@ class PostContainer extends React.Component {
   state = {
     posts: null,
     filteredPosts: null,
-    postToggler: true,
     postType: "mentor",
     post: null,
   };
@@ -21,11 +20,6 @@ class PostContainer extends React.Component {
     //this fetches all posts AND filters post, but this.filterPost() is called in this.fetchPosts() after async event
     const token = await this.props.getToken();
     this.fetchPosts(token);
-    // if (this.state.postToggler === true) {
-    //   this.fetchMentorPosts(token);
-    // } else {
-    //   this.fetchMenteePosts(token);
-    // }
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -48,23 +42,6 @@ class PostContainer extends React.Component {
     }
     this.setState({ filteredPosts: filteredPosts });
   };
-
-  //prevProps is listed because prevState is 2nd argument for componentDidUpdate
-
-  // async componentDidUpdate(prevProps, prevState) {
-  //   const token = await this.props.getToken();
-  //   if (this.state.postToggler !== prevState.postToggler) {
-  //     if (this.state.postToggler === true) {
-  //       this.fetchMentorPosts(token);
-  //     } else {
-  //       this.fetchMenteePosts(token);
-  //     }
-  //   }
-  // }
-
-  // toggleHandler = () => {
-  //   this.setState({ postToggler: !this.state.postToggler });
-  // };
 
   toggleHandler = () => {
     const temp = this.state.postType;
@@ -98,41 +75,41 @@ class PostContainer extends React.Component {
       });
   };
 
-  fetchMentorPosts = (token) => {
-    fetch(
-      `http://localhost:3000/api/v1/users/${this.props.currentUser.id}/posts/mentor`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
-      .then((response) => response.json())
-      .then((mentorPosts) => {
-        this.setState({
-          posts: mentorPosts,
-        });
-      });
-  };
+  // fetchMentorPosts = (token) => {
+  //   fetch(
+  //     `http://localhost:3000/api/v1/users/${this.props.currentUser.id}/posts/mentor`,
+  //     {
+  //       method: "GET",
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     }
+  //   )
+  //     .then((response) => response.json())
+  //     .then((mentorPosts) => {
+  //       this.setState({
+  //         posts: mentorPosts,
+  //       });
+  //     });
+  // };
 
-  fetchMenteePosts = (token) => {
-    fetch(
-      `http://localhost:3000/api/v1/users/${this.props.currentUser.id}/posts/mentee`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
-      .then((response) => response.json())
-      .then((menteePosts) => {
-        this.setState({
-          posts: menteePosts,
-        });
-      });
-  };
+  // fetchMenteePosts = (token) => {
+  //   fetch(
+  //     `http://localhost:3000/api/v1/users/${this.props.currentUser.id}/posts/mentee`,
+  //     {
+  //       method: "GET",
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     }
+  //   )
+  //     .then((response) => response.json())
+  //     .then((menteePosts) => {
+  //       this.setState({
+  //         posts: menteePosts,
+  //       });
+  //     });
+  // };
 
   //may not need this!
   fetchPost = (token, postId) => {
@@ -155,7 +132,6 @@ class PostContainer extends React.Component {
         this.state.filteredPosts !== undefined ? (
           <PostStackNavigator
             posts={this.state.filteredPosts}
-            postToggler={this.state.postToggler}
             postType={this.state.postType}
             toggleHandler={this.toggleHandler}
             fetchHandler={this.fetchHandler}
