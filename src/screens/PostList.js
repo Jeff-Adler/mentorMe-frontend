@@ -8,6 +8,12 @@ class PostList extends React.Component {
     selectedIndex: 0,
   };
 
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.postType!== prevProps.postType) {
+
+  //   }
+  // }
+
   buttonGroupClickHandler = (selectedIndex) => {
     this.setState({ selectedIndex });
     this.props.toggleHandler();
@@ -22,24 +28,30 @@ class PostList extends React.Component {
     return this.props.posts.map((post) => {
       const storedPost = post.post;
       const postConnection = post.connection;
-      const postMentee = post.mentee;
-      const postMentor = post.mentor;
-      console.log("Post Object: ", storedPost);
+      const shownUser =
+        this.props.postType === "mentor" ? post.mentee : post.mentor;
       return (
         <ListItem
           onPress={() => this.clickHandler(storedPost)}
           key={storedPost.id}
           bottomDivider
         >
-          {/* <UserAvatar size={50} bgColor="#3498db" name={`${pending.first_name} ${pending.last_name}`} /> */}
+          <UserAvatar
+            size={50}
+            bgColor="#3498db"
+            name={`${shownUser.first_name} ${shownUser.last_name}`}
+            src={shownUser.avatar}
+          />
           <ListItem.Content>
             <ListItem.Title>
-              <Text style={{ fontWeight: "bold" }}>Mentee: </Text>
-              {storedPost.mentee_name}
+              <Text
+                style={{ fontWeight: "bold" }}
+              >{`${shownUser.first_name} ${shownUser.last_name}`}</Text>
             </ListItem.Title>
             <ListItem.Subtitle>
-              <Text style={{ fontWeight: "bold" }}>Mentor: </Text>{" "}
-              {storedPost.mentor_name}
+              <Text style={{ fontStyle: "italic" }}>
+                {postConnection.mentor_type}
+              </Text>
             </ListItem.Subtitle>
           </ListItem.Content>
           <ListItem.Chevron />
