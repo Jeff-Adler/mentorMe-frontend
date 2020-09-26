@@ -54,12 +54,9 @@ class PostContainer extends React.Component {
     )
       .then((response) => response.json())
       .then((retrievedPosts) => {
-        this.setState(
-          {
-            posts: retrievedPosts,
-          },
-          () => console.log(this.state.posts)
-        );
+        this.setState({
+          posts: retrievedPosts,
+        });
       });
   };
 
