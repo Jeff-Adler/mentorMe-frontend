@@ -10,11 +10,20 @@ class Pending extends React.Component {
     this.props.navigation.pop();
   };
 
-  convertBirthdateToDate = (birthdate) => {
-    const convertedBirthdate = moment(birthdate, "YYYY-MM-DD").format(
-      "MMMM Do, YYYY"
-    );
-    return convertedBirthdate;
+  capitalize = (gender) => {
+    if (typeof gender !== "string") return "";
+    return gender.charAt(0).toUpperCase() + gender.slice(1);
+  };
+
+  // convertBirthdateToDate = (birthdate) => {
+  //   const convertedBirthdate = moment(birthdate, "YYYY-MM-DD").format(
+  //     "MMMM Do, YYYY"
+  //   );
+  //   return convertedBirthdate;
+  // };
+
+  convertBirthdateToAge = (birthdate) => {
+    return moment().diff(birthdate, "years");
   };
 
   render() {
@@ -24,33 +33,49 @@ class Pending extends React.Component {
         {pendingUser !== null ? (
           <View style={styles.container}>
             <Card style={styles.miniContainer}>
-              <Card.Title>{`${pendingUser.first_name} ${pendingUser.last_name}`}</Card.Title>
+              <Card.Title
+                style={styles.cardTitle}
+              >{`${pendingUser.first_name} ${pendingUser.last_name}`}</Card.Title>
               <Card.Divider />
               {/* <Card.Image source={require("../images/pic2.jpg")} /> */}
+              <UserAvatar
+                style={styles.avatar}
+                size={220}
+                bgColor="#3498db"
+                name={`${pendingUser.first_name} ${pendingUser.last_name}`}
+                src={pendingUser.avatar}
+              />
               <Text style={styles.italicizedText}>
                 {pendingUser.description}
                 {"\n"}
               </Text>
               <Text style={styles.cardText}>
+                <Text style={{ fontWeight: "bold" }}>Gender: </Text>
+                {this.capitalize(pendingUser.gender)}
+                {"         "}
+                <Text style={{ fontWeight: "bold" }}>Age: </Text>
+                {this.convertBirthdateToAge(pendingUser.birthdate)}
+                {"\n"}
+              </Text>
+              {/* <Text style={styles.cardText}>
+                <Text style={{ fontWeight: "bold" }}>Username: </Text>
                 {pendingUser.username}
                 {"\n"}
-              </Text>
-              <Text style={styles.cardText}>
-                {pendingUser.gender}
+              </Text> */}
+              {/* <Text style={styles.cardText}>
+                <Text style={{ fontWeight: "bold" }}>Gender: </Text>
+                {this.capitalize(pendingUser.gender)}
                 {"\n"}
-              </Text>
-              <Text style={styles.cardText}>
+              </Text> */}
+              {/* <Text style={styles.cardText}>
                 {this.convertBirthdateToDate(pendingUser.birthdate)}
                 {"\n"}
-              </Text>
-              <UserAvatar
-                style={styles.avatar}
-                size={50}
-                bgColor="#3498db"
-                name={`${pendingUser.first_name} ${pendingUser.last_name}`}
-                src={pendingUser.avatar}
-              />
-              <Text>{"\n"}</Text>
+              </Text> */}
+              {/* <Text style={styles.cardText}>
+                <Text style={{ fontWeight: "bold" }}>Age: </Text>
+                {this.convertBirthdateToAge(pendingUser.birthdate)}
+                {"\n"}
+              </Text> */}
               <Button
                 onPress={this.pressHandler}
                 // icon={<Icon name="code" color="#ffffff" />}
@@ -75,28 +100,33 @@ const styles = StyleSheet.create({
     // flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    textAlign: "center",
-    width: 50,
-    height: 50,
-    // marginBottom: 250,
-    // paddingHorizontal: 24,
-    marginLeft: "42%",
+    width: 220,
+    height: 220,
+    marginTop: "5%",
+    marginBottom: "7%",
+    marginLeft: "13%",
   },
   cardText: {
     justifyContent: "center",
     alignItems: "center",
     textAlign: "center",
+    fontSize: 20,
+  },
+  cardTitle: {
+    fontSize: 25,
   },
   container: {
-    flex: 1,
+    // flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    marginTop: "1%",
   },
   italicizedText: {
     justifyContent: "center",
     alignItems: "center",
     textAlign: "center",
     fontStyle: "italic",
+    fontSize: 20,
   },
   miniContainer: {
     // flex: 1,
