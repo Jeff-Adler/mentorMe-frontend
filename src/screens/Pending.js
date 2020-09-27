@@ -40,7 +40,7 @@ class Pending extends React.Component {
               {/* <Card.Image source={require("../images/pic2.jpg")} /> */}
               <UserAvatar
                 style={styles.avatar}
-                size={220}
+                size={200}
                 bgColor="#3498db"
                 name={`${pendingUser.first_name} ${pendingUser.last_name}`}
                 src={pendingUser.avatar}
@@ -100,11 +100,11 @@ const styles = StyleSheet.create({
     // flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    width: 220,
-    height: 220,
+    width: 200,
+    height: 200,
     marginTop: "5%",
     marginBottom: "7%",
-    marginLeft: "13%",
+    marginLeft: "16%",
   },
   cardText: {
     justifyContent: "center",
@@ -113,13 +113,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   cardTitle: {
-    fontSize: 25,
+    fontSize: 20,
   },
   container: {
     // flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: "1%",
+    marginTop: "2%",
   },
   italicizedText: {
     justifyContent: "center",
