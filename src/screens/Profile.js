@@ -23,15 +23,20 @@ class Profile extends React.Component {
   render() {
     let { currentUser, logoutHandler } = this.props;
     return (
-      <View style={styles.container}>
+      <View style={styles.buildContainer}>
         {currentUser.first_name === null ||
         currentUser.last_name === null ||
         currentUser.birthdate === null ||
         currentUser.age === null ||
         currentUser.gender === null ? (
-          <View style={styles.miniContainer}>
+          <View style={styles.buildContainer}>
             <Text h4>You're signed in!{"\n"}</Text>
             <Text h4>Let's fill out your profile.{"\n"}</Text>
+            <Button
+              style={styles.button}
+              title="Create Profile"
+              onPress={() => this.props.navigation.navigate("Name")}
+            />
           </View>
         ) : (
           <View style={styles.miniContainer}>
@@ -133,6 +138,11 @@ const styles = StyleSheet.create({
     marginTop: "5%",
     marginBottom: "7%",
     marginLeft: "12%",
+  },
+  buildContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
   button: {
     alignItems: "center",
