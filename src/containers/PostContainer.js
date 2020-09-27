@@ -49,13 +49,7 @@ class PostContainer extends React.Component {
     //this fetches all posts AND filters post, but this.filterPost() is called in this.fetchPosts() after async event
     const token = await this.props.getToken();
     this.fetchPosts(token);
-    // this.props.navigation.addListener("didFocus", this.onScreenFocus);
   }
-
-  // onScreenFocus = async () => {
-  //   const token = await this.props.getToken();
-  //   this.fetchPosts(token);
-  // };
 
   componentDidUpdate(prevProps, prevState) {
     if (this.state.postType !== prevState.postType) {
