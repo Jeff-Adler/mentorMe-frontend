@@ -8,6 +8,7 @@ POSTTYPES = {
   mentee: "mentor",
 };
 
+//Hook to refetch Posts when NavTab is clicked
 function RefetchPosts({ getToken, fetchPosts }) {
   useFocusEffect(
     React.useCallback(() => {
@@ -42,7 +43,7 @@ class PostContainer extends React.Component {
     posts: null,
     filteredPosts: null,
     postType: "mentor",
-    post: null,
+    messages: null,
   };
 
   async componentDidMount() {
@@ -75,12 +76,6 @@ class PostContainer extends React.Component {
   toggleHandler = () => {
     const temp = this.state.postType;
     this.setState({ postType: POSTTYPES[temp] });
-  };
-
-  //fetch post handler
-  fetchHandler = async (postId) => {
-    const token = await this.props.getToken();
-    this.fetchPost(token, postId);
   };
 
   fetchPosts = (token) => {
@@ -141,16 +136,34 @@ class PostContainer extends React.Component {
   // };
 
   //may not need this!
-  fetchPost = (token, postId) => {
-    fetch(`http://localhost:3000/posts/${postId}`, {
+  // fetchPost = (token, postId) => {
+  //   fetch(`http://localhost:3000/posts/${postId}`, {
+  //     method: "GET",
+  //     headers: {
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //   })
+  //     .then((response) => response.json())
+  //     .then((post) => {
+  //       this.setState({ post: post });
+  //     });
+  // };
+
+  fetchHandler = async (postId) => {
+    const token = await this.props.getToken();
+    await this.fetchMessages(token, postId);
+  };
+
+  fetchMessages = async (token, postId) => {
+    await fetch(`http://localhost:3000/posts/${postId}/messages`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
       .then((response) => response.json())
-      .then((post) => {
-        this.setState({ post: post });
+      .then((messages) => {
+        this.setState({ messages: messages });
       });
   };
 
@@ -169,7 +182,8 @@ class PostContainer extends React.Component {
               postType={this.state.postType}
               toggleHandler={this.toggleHandler}
               fetchHandler={this.fetchHandler}
-              post={this.state.post}
+              messages={this.state.messages}
+              currentUser={this.props.currentUser}
             />
           </View>
         ) : null}

@@ -4,12 +4,19 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import PostList from "../screens/PostList";
-import Post from "../screens/Post";
+import Chat from "../screens/Chat";
 
 const PostStack = createStackNavigator();
 
 function PostStackNavigator(props) {
-  const { posts, postType, toggleHandler, fetchHandler, post } = props;
+  const {
+    posts,
+    postType,
+    toggleHandler,
+    fetchHandler,
+    messages,
+    currentUser,
+  } = props;
   return (
     <NavigationContainer style={styles.container} independent={true}>
       <PostStack.Navigator initialRouteName="Chats">
@@ -25,7 +32,9 @@ function PostStackNavigator(props) {
           )}
         </PostStack.Screen>
         <PostStack.Screen name="Chat">
-          {(props) => <Post {...props} post={post} />}
+          {(props) => (
+            <Chat {...props} currentUser={currentUser} messages={messages} />
+          )}
         </PostStack.Screen>
       </PostStack.Navigator>
     </NavigationContainer>

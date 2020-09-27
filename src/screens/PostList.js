@@ -13,8 +13,8 @@ class PostList extends React.Component {
     this.props.toggleHandler();
   };
 
-  clickHandler = (post) => {
-    this.props.fetchHandler(post.id);
+  clickHandler = async (post) => {
+    await this.props.fetchHandler(post.id);
     this.props.navigation.navigate("Chat");
   };
 
