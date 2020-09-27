@@ -1,12 +1,41 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { ThemeConsumer } from "react-native-elements";
+import { View, StyleSheet } from "react-native";
 import PostStackNavigator from "../navigation/PostStackNavigator";
+import { useFocusEffect } from "@react-navigation/native";
 
 POSTTYPES = {
   mentor: "mentee",
   mentee: "mentor",
 };
+
+function RefetchPosts({ getToken, fetchPosts }) {
+  useFocusEffect(
+    React.useCallback(() => {
+      let isActive = true;
+
+      const refetchPosts = async () => {
+        try {
+          const token = await getToken();
+
+          if (isActive) {
+            fetchPosts(token);
+          }
+        } catch (e) {
+          console.log(e);
+          // Handle error
+        }
+      };
+
+      refetchPosts();
+
+      return () => {
+        isActive = false;
+      };
+    }, [])
+  );
+
+  return null;
+}
 
 class PostContainer extends React.Component {
   state = {
@@ -20,13 +49,16 @@ class PostContainer extends React.Component {
     //this fetches all posts AND filters post, but this.filterPost() is called in this.fetchPosts() after async event
     const token = await this.props.getToken();
     this.fetchPosts(token);
+    // this.props.navigation.addListener("didFocus", this.onScreenFocus);
   }
 
-  async componentDidUpdate(prevProps, prevState) {
-    if (prevProps.isFocused !== this.props.isFocused) {
-      const token = await this.props.getToken();
-      this.fetchPosts(token);
-    } else if (this.state.postType !== prevState.postType) {
+  // onScreenFocus = async () => {
+  //   const token = await this.props.getToken();
+  //   this.fetchPosts(token);
+  // };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.postType !== prevState.postType) {
       this.filterPosts();
     }
   }
@@ -133,13 +165,19 @@ class PostContainer extends React.Component {
       <View style={styles.container}>
         {this.state.filteredPosts !== null &&
         this.state.filteredPosts !== undefined ? (
-          <PostStackNavigator
-            posts={this.state.filteredPosts}
-            postType={this.state.postType}
-            toggleHandler={this.toggleHandler}
-            fetchHandler={this.fetchHandler}
-            post={this.state.post}
-          />
+          <View style={styles.container}>
+            <RefetchPosts
+              getToken={this.props.getToken}
+              fetchPosts={this.fetchPosts}
+            />
+            <PostStackNavigator
+              posts={this.state.filteredPosts}
+              postType={this.state.postType}
+              toggleHandler={this.toggleHandler}
+              fetchHandler={this.fetchHandler}
+              post={this.state.post}
+            />
+          </View>
         ) : null}
       </View>
     );
