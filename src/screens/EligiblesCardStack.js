@@ -150,7 +150,7 @@ const styles = StyleSheet.create({
     marginLeft: "12%",
   },
   buttonGroupContainer: {
-    marginTop: statusBarHeight,
+    marginTop: "8%",
     justifyContent: "center",
     alignItems: "center",
     flex: 1,
@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
   },
   content: {
     // justifyContent: "space-around",
-    // marginTop: "8%",
+    marginTop: "19%",
     // marginBottom: -10,
     flex: 1,
     alignItems: "center",
