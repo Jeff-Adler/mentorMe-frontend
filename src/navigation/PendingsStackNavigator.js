@@ -12,8 +12,8 @@ function PendingsStackNavigator(props) {
   const { pendingUsers, pendingUser, acceptPending, fetchHandler } = props;
   return (
     <NavigationContainer style={styles.container} independent={true}>
-      <PendingsStack.Navigator initialRouteName="PendingsList">
-        <PendingsStack.Screen name="PendingsList">
+      <PendingsStack.Navigator initialRouteName="Mentorship Requests">
+        <PendingsStack.Screen name="Mentorship Requests">
           {(props) => (
             <PendingsList
               {...props}
@@ -22,7 +22,7 @@ function PendingsStackNavigator(props) {
             />
           )}
         </PendingsStack.Screen>
-        <PendingsStack.Screen name="Pending">
+        <PendingsStack.Screen name="Pending Mentee">
           {(props) => (
             <Pending
               {...props}

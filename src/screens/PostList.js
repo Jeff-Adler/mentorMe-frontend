@@ -15,7 +15,7 @@ class PostList extends React.Component {
 
   clickHandler = (post) => {
     this.props.fetchHandler(post.id);
-    this.props.navigation.navigate("Post");
+    this.props.navigation.navigate("Chat");
   };
 
   mapPosts = () => {

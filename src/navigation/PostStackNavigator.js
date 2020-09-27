@@ -12,8 +12,8 @@ function PostStackNavigator(props) {
   const { posts, postType, toggleHandler, fetchHandler, post } = props;
   return (
     <NavigationContainer style={styles.container} independent={true}>
-      <PostStack.Navigator initialRouteName="PostList">
-        <PostStack.Screen name="PostList">
+      <PostStack.Navigator initialRouteName="Chats">
+        <PostStack.Screen name="Chats">
           {(props) => (
             <PostList
               {...props}
@@ -24,7 +24,7 @@ function PostStackNavigator(props) {
             />
           )}
         </PostStack.Screen>
-        <PostStack.Screen name="Post">
+        <PostStack.Screen name="Chat">
           {(props) => <Post {...props} post={post} />}
         </PostStack.Screen>
       </PostStack.Navigator>

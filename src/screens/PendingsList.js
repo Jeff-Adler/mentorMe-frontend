@@ -6,7 +6,7 @@ import UserAvatar from "react-native-user-avatar";
 class PendingsList extends React.Component {
   clickHandler = (pending) => {
     this.props.fetchHandler(pending.id);
-    this.props.navigation.navigate("Pending");
+    this.props.navigation.navigate("Pending Mentee");
   };
 
   mapPendings = () => {
