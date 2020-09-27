@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
     height: 200,
     marginTop: "5%",
     marginBottom: "7%",
-    marginLeft: "12%",
+    marginLeft: "16%",
   },
   buttonGroupContainer: {
     marginTop: "8%",
