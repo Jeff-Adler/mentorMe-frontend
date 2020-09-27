@@ -6,6 +6,8 @@ import EligiblesContainer from "../containers/EligiblesContainer";
 import PendingContainer from "../containers/PendingContainer";
 import AccountStackNavigator from "../navigation/AccountStackNavigator";
 
+import { ChatExample } from "../screens/ChatExample";
+
 const Tab = createBottomTabNavigator();
 
 const MainTabNavigator = (props) => {
@@ -68,6 +70,7 @@ const MainTabNavigator = (props) => {
           />
         )}
       />
+      <Tab.Screen name="Chat" component={ChatExample} />
     </Tab.Navigator>
   );
 };
