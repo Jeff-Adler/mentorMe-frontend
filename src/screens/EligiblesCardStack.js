@@ -1,7 +1,8 @@
 import React from "react";
 // import CardStack, { Card } from "react-native-card-stack-swiper";
-import CardStack, { Card } from "react-native-card-stack-swiper";
-import { Text, ButtonGroup } from "react-native-elements";
+// import CardStack, { Card } from "react-native-card-stack-swiper";
+import CardStack from "react-native-card-stack-swiper";
+import { Text, ButtonGroup, Card } from "react-native-elements";
 
 import { SafeAreaView, StyleSheet, View } from "react-native";
 import UserAvatar from "react-native-user-avatar";
@@ -16,9 +17,17 @@ class EligiblesCardStack extends React.Component {
   };
 
   buttonGroupClickHandler = (selectedIndex) => {
-    console.log(selectedIndex);
     this.setState({ selectedIndex });
     this.props.toggleHandler(selectedIndex);
+  };
+
+  capitalize = (gender) => {
+    if (typeof gender !== "string") return "";
+    return gender.charAt(0).toUpperCase() + gender.slice(1);
+  };
+
+  convertBirthdateToAge = (birthdate) => {
+    return moment().diff(birthdate, "years");
   };
 
   convertBirthdateToDate = (birthdate) => {
@@ -36,7 +45,31 @@ class EligiblesCardStack extends React.Component {
           style={[styles.card, styles.card1]}
           onSwipedRight={() => this.props.handleSwipeRight(eligible.id)}
         >
-          <View style={styles.cardContainer}>
+          <Card.Title
+            style={styles.cardTitle}
+          >{`${eligible.first_name} ${eligible.last_name}`}</Card.Title>
+          <Card.Divider />
+          {/* <Card.Image source={require("../images/pic2.jpg")} /> */}
+          <UserAvatar
+            style={styles.avatar}
+            size={200}
+            bgColor="#3498db"
+            name={`${eligible.first_name} ${eligible.last_name}`}
+            src={eligible.avatar}
+          />
+          <Text style={styles.italicizedText}>
+            {eligible.description}
+            {"\n"}
+          </Text>
+          <Text style={styles.cardText}>
+            <Text style={{ fontWeight: "bold" }}>Gender: </Text>
+            {this.capitalize(eligible.gender)}
+            {"         "}
+            <Text style={{ fontWeight: "bold" }}>Age: </Text>
+            {this.convertBirthdateToAge(eligible.birthdate)}
+            {"\n"}
+          </Text>
+          {/* <View style={styles.cardContainer}>
             <Text
               h3
               // style={styles.label}
@@ -64,7 +97,7 @@ class EligiblesCardStack extends React.Component {
               name={`${eligible.first_name} ${eligible.last_name}`}
               src={eligible.avatar}
             />
-          </View>
+          </View> */}
         </Card>
       );
     });
@@ -75,7 +108,7 @@ class EligiblesCardStack extends React.Component {
     const buttons = ["Professional", "Interpersonal", "Self"];
     const { selectedIndex } = this.state;
     return (
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView>
         <View style={styles.buttonGroupContainer}>
           <ButtonGroup
             onPress={this.buttonGroupClickHandler}
@@ -85,7 +118,7 @@ class EligiblesCardStack extends React.Component {
           />
         </View>
         {eligibles !== [] ? (
-          <View>
+          <View style={styles.container}>
             <CardStack
               style={styles.content}
               ref={(swiper) => {
@@ -110,10 +143,11 @@ const styles = StyleSheet.create({
     // flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    textAlign: "center",
-    // width: 50,
-    marginBottom: 250,
-    // paddingHorizontal: 24,
+    width: 200,
+    height: 200,
+    marginTop: "5%",
+    marginBottom: "7%",
+    marginLeft: "12%",
   },
   buttonGroupContainer: {
     marginTop: statusBarHeight,
@@ -133,8 +167,11 @@ const styles = StyleSheet.create({
     // borderWidth: 5,
     // borderColor: "black",
   },
+  cardTitle: {
+    fontSize: 20,
+  },
   container: {
-    marginTop: statusBarHeight,
+    // marginTop: statusBarHeight,
     justifyContent: "center",
     alignItems: "center",
     flex: 1,
@@ -145,7 +182,7 @@ const styles = StyleSheet.create({
   },
   content: {
     // justifyContent: "space-around",
-    marginTop: "12%",
+    // marginTop: "8%",
     // marginBottom: -10,
     flex: 1,
     alignItems: "center",
@@ -187,11 +224,23 @@ const styles = StyleSheet.create({
   card2: {
     backgroundColor: "#FEB12C",
   },
+  cardText: {
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    fontSize: 20,
+  },
+  italicizedText: {
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    fontStyle: "italic",
+    fontSize: 20,
+  },
   label: {
     borderColor: "black",
     borderRadius: 5,
     borderWidth: 5,
-
     marginTop: 75,
     lineHeight: 450,
     textAlign: "center",
