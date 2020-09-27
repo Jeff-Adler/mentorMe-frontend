@@ -1,7 +1,10 @@
 import React from "react";
 // import AsyncStorage from "@react-native-community/async-storage";
 import { View, StyleSheet, Text } from "react-native";
+
 import EligiblesCardStack from "../screens/EligiblesCardStack";
+import EligibleStackNavigator from "../navigation/EligiblesStackNavigator";
+import EligiblesStackNavigator from "../navigation/EligiblesStackNavigator";
 
 // import Constants from "expo-constants";
 // const statusBarHeight = Constants.statusBarHeight;
@@ -81,18 +84,16 @@ class EligiblesContainer extends React.Component {
       },
       body: JSON.stringify({ connection: connection }),
     }).then((response) => response.json());
-    // .then((connection) => {
-    //   console.log(connection);
-    // });
   };
 
   render() {
+    const { eligibles } = this.state;
     return (
       <View style={styles.container}>
         {this.state.eligibles !== null &&
         this.state.error === "" &&
         this.state.isLoaded === true ? (
-          <EligiblesCardStack
+          <EligiblesStackNavigator
             toggleHandler={this.toggleHandler}
             handleSwipeRight={this.handleSwipeRight}
             eligibles={this.state.eligibles}
@@ -107,7 +108,6 @@ class EligiblesContainer extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 64,
     flex: 1,
     backgroundColor: "#fff",
     // alignItems: "center",
