@@ -19,7 +19,7 @@ class GenderPicker extends React.Component {
 
   submitHandler = () => {
     this.props.submitUserInfo(this.state);
-    this.props.navigation.navigate("DatePicker");
+    this.props.navigation.navigate("Birthdate");
   };
 
   render() {

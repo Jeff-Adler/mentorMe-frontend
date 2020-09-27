@@ -13,7 +13,7 @@ class ProfileEditForm extends React.Component {
 
   pressHandler = () => {
     this.props.submitUserInfo(this.state);
-    this.props.navigation.navigate("GenderPicker");
+    this.props.navigation.navigate("Gender");
   };
 
   render() {

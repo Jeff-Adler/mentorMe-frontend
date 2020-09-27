@@ -57,7 +57,7 @@ class Profile extends React.Component {
         <Button
           style={styles.button}
           title="Edit Profile"
-          onPress={() => this.props.navigation.navigate("ProfileEditForm")}
+          onPress={() => this.props.navigation.navigate("Name")}
         />
         <Button
           style={styles.button}

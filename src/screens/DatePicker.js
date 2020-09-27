@@ -18,7 +18,7 @@ export const DatePicker = (props) => {
 
   const pressHandler = () => {
     submitBirthdate(date);
-    props.navigation.navigate("ExperiencePicker");
+    props.navigation.navigate("Experience");
   };
 
   return (

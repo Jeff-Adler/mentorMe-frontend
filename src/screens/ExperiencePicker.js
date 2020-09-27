@@ -23,7 +23,7 @@ class ExperiencePicker extends React.Component {
 
   submitHandler = () => {
     this.props.submitUserInfo(this.state);
-    this.props.navigation.navigate("DescriptionForm");
+    this.props.navigation.navigate("Tagline");
   };
 
   render() {

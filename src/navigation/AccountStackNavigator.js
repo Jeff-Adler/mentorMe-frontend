@@ -26,27 +26,27 @@ const AccountStackNavigator = (props) => {
             />
           )}
         </Stack.Screen>
-        <Stack.Screen name="ProfileEditForm">
+        <Stack.Screen name="Name">
           {(props) => (
             <ProfileEditForm {...props} submitUserInfo={submitUserInfo} />
           )}
         </Stack.Screen>
-        <Stack.Screen name="GenderPicker">
+        <Stack.Screen name="Gender">
           {(props) => (
             <GenderPicker {...props} submitUserInfo={submitUserInfo} />
           )}
         </Stack.Screen>
-        <Stack.Screen name="DatePicker">
+        <Stack.Screen name="Birthdate">
           {(props) => (
             <DatePicker {...props} submitBirthdate={submitBirthdate} />
           )}
         </Stack.Screen>
-        <Stack.Screen name="ExperiencePicker">
+        <Stack.Screen name="Experience">
           {(props) => (
             <ExperiencePicker {...props} submitUserInfo={submitUserInfo} />
           )}
         </Stack.Screen>
-        <Stack.Screen name="DescriptionForm">
+        <Stack.Screen name="Tagline">
           {(props) => (
             <DescriptionForm {...props} submitUserInfo={submitUserInfo} />
           )}
