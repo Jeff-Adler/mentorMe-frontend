@@ -189,7 +189,7 @@ class PostContainer extends React.Component {
     )
       .then((response) => response.json())
       .then((message) => {
-        console.log("Message fetch received", message);
+        // console.log("Message fetch received", message);
         // this.setState({ messages: [...this.state.messages, message] });
       });
   };

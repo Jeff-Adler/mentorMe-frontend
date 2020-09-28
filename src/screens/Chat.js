@@ -30,8 +30,8 @@ class Chat extends React.Component {
   }
 
   onSend(newMessages = []) {
-    const postId = this.props.messages[0].id;
-    console.log("Sent Message: ", newMessages, "PostId: ", postId);
+    const postId = this.props.messages[0].post.id;
+    console.log("Postid:", postId);
     this.props.messageHandler(newMessages, postId);
     this.setState((previousState) => ({
       messages: GiftedChat.append(previousState.messages, newMessages),
