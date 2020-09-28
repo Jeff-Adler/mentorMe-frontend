@@ -184,7 +184,7 @@ const styles = StyleSheet.create({
   },
   content: {
     // justifyContent: "space-around",
-    marginTop: "19%",
+    marginTop: "22%",
     // marginBottom: -10,
     flex: 1,
     alignItems: "center",
@@ -240,9 +240,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   label: {
-    borderColor: "black",
-    borderRadius: 5,
-    borderWidth: 5,
+    // borderColor: "black",
+    // borderRadius: 5,
+    // borderWidth: 5,
     marginTop: 75,
     lineHeight: 450,
     textAlign: "center",
