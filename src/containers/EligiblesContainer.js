@@ -1,6 +1,7 @@
 import React from "react";
 // import AsyncStorage from "@react-native-community/async-storage";
 import { View, StyleSheet, Text } from "react-native";
+import { useFocusEffect } from "@react-navigation/native";
 
 import EligiblesCardStack from "../screens/EligiblesCardStack";
 import EligibleStackNavigator from "../navigation/EligiblesStackNavigator";
@@ -8,6 +9,36 @@ import EligiblesStackNavigator from "../navigation/EligiblesStackNavigator";
 
 // import Constants from "expo-constants";
 // const statusBarHeight = Constants.statusBarHeight;
+
+//Hook to refetch Pendings when NavTab is clicked
+function RefetchEligibles({ getToken, fetchEligibles }) {
+  useFocusEffect(
+    React.useCallback(() => {
+      let isActive = true;
+
+      const refetchEligibles = async () => {
+        try {
+          const token = await getToken();
+
+          if (isActive) {
+            fetchEligibles(token);
+          }
+        } catch (e) {
+          console.log(e);
+          // Handle error
+        }
+      };
+
+      refetchEligibles();
+
+      return () => {
+        isActive = false;
+      };
+    }, [])
+  );
+
+  return null;
+}
 
 class EligiblesContainer extends React.Component {
   state = {
@@ -93,11 +124,17 @@ class EligiblesContainer extends React.Component {
         {this.state.eligibles !== null &&
         this.state.error === "" &&
         this.state.isLoaded === true ? (
-          <EligiblesStackNavigator
-            toggleHandler={this.toggleHandler}
-            handleSwipeRight={this.handleSwipeRight}
-            eligibles={this.state.eligibles}
-          />
+          <View style={styles.nestedContainer}>
+            <RefetchEligibles
+              getToken={this.props.getToken}
+              fetchEligibles={this.fetchEligibles}
+            />
+            <EligiblesStackNavigator
+              toggleHandler={this.toggleHandler}
+              handleSwipeRight={this.handleSwipeRight}
+              eligibles={this.state.eligibles}
+            />
+          </View>
         ) : (
           <Text>{this.state.error}</Text>
         )}
@@ -112,6 +149,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     // alignItems: "center",
     // justifyContent: "center",
+  },
+  nestedContainer: {
+    flex: 1,
   },
 });
 
