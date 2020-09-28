@@ -1,7 +1,38 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { useFocusEffect } from "@react-navigation/native";
 
 import PendingsStackNavigator from "../navigation/PendingsStackNavigator";
+
+//Hook to refetch Pendings when NavTab is clicked
+function RefetchPendings({ getToken, fetchPendings }) {
+  useFocusEffect(
+    React.useCallback(() => {
+      let isActive = true;
+
+      const refetchPendings = async () => {
+        try {
+          const token = await getToken();
+
+          if (isActive) {
+            fetchPendings(token);
+          }
+        } catch (e) {
+          console.log(e);
+          // Handle error
+        }
+      };
+
+      refetchPendings();
+
+      return () => {
+        isActive = false;
+      };
+    }, [])
+  );
+
+  return null;
+}
 
 class PendingContainer extends React.Component {
   state = {
@@ -91,12 +122,18 @@ class PendingContainer extends React.Component {
     return (
       <View style={styles.container}>
         {this.state.pendings !== null ? (
-          <PendingsStackNavigator
-            acceptPending={this.acceptPending}
-            pendingUser={this.state.pendingUser}
-            pendingUsers={this.state.pendingUsers}
-            fetchHandler={this.fetchHandler}
-          />
+          <View style={styles.container}>
+            <RefetchPendings
+              getToken={this.props.getToken}
+              fetchPendings={this.fetchPendings}
+            />
+            <PendingsStackNavigator
+              acceptPending={this.acceptPending}
+              pendingUser={this.state.pendingUser}
+              pendingUsers={this.state.pendingUsers}
+              fetchHandler={this.fetchHandler}
+            />
+          </View>
         ) : (
           <Text>{this.state.error}</Text>
         )}
