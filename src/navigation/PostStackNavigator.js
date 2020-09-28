@@ -41,6 +41,7 @@ function PostStackNavigator(props) {
               postId={postId}
               messageHandler={messageHandler}
               messages={messages}
+              fetchHandler={fetchHandler}
             />
           )}
         </PostStack.Screen>
