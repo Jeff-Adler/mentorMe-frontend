@@ -43,6 +43,7 @@ class PostContainer extends React.Component {
     posts: null,
     filteredPosts: null,
     postType: "mentor",
+    postId: null,
     messages: null,
   };
 
@@ -163,7 +164,7 @@ class PostContainer extends React.Component {
     })
       .then((response) => response.json())
       .then((messages) => {
-        this.setState({ messages: messages });
+        this.setState({ messages: messages, postId: postId });
       });
   };
 
@@ -189,7 +190,7 @@ class PostContainer extends React.Component {
     )
       .then((response) => response.json())
       .then((message) => {
-        // console.log("Message fetch received", message);
+        console.log("Message fetch received", message);
         // this.setState({ messages: [...this.state.messages, message] });
       });
   };
@@ -206,6 +207,7 @@ class PostContainer extends React.Component {
             />
             <PostStackNavigator
               posts={this.state.filteredPosts}
+              postId={this.state.postId}
               postType={this.state.postType}
               toggleHandler={this.toggleHandler}
               fetchHandler={this.fetchHandler}

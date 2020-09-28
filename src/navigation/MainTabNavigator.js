@@ -71,12 +71,6 @@ const MainTabNavigator = (props) => {
           />
         )}
       />
-      <Tab.Screen
-        name="Chat"
-        children={() => (
-          <PendingContainer currentUser={currentUser} getToken={getToken} />
-        )}
-      />
     </Tab.Navigator>
   );
 };

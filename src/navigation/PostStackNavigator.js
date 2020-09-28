@@ -11,6 +11,7 @@ const PostStack = createStackNavigator();
 function PostStackNavigator(props) {
   const {
     posts,
+    postId,
     postType,
     toggleHandler,
     fetchHandler,
@@ -37,6 +38,7 @@ function PostStackNavigator(props) {
             <Chat
               {...props}
               currentUser={currentUser}
+              postId={postId}
               messageHandler={messageHandler}
               messages={messages}
             />
