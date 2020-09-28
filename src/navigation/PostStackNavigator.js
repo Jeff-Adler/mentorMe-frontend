@@ -16,6 +16,7 @@ function PostStackNavigator(props) {
     fetchHandler,
     messages,
     currentUser,
+    messageHandler,
   } = props;
   return (
     <NavigationContainer style={styles.container} independent={true}>
@@ -33,7 +34,12 @@ function PostStackNavigator(props) {
         </PostStack.Screen>
         <PostStack.Screen name="Chat">
           {(props) => (
-            <Chat {...props} currentUser={currentUser} messages={messages} />
+            <Chat
+              {...props}
+              currentUser={currentUser}
+              messageHandler={messageHandler}
+              messages={messages}
+            />
           )}
         </PostStack.Screen>
       </PostStack.Navigator>

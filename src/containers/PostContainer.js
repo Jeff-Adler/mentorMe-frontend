@@ -180,13 +180,17 @@ class PostContainer extends React.Component {
         accepts: "application/json",
         "content-type": "application/json",
       },
-      body: JSON.stringify({ message: messageObj }),
+      body: JSON.stringify({ message: messageObj[0] }),
     };
 
-    fetch(`http://localhost:3000/posts/${postId}/messages`, configObj)
+    fetch(
+      `http://localhost:3000/api/v1/users/${this.props.currentUser.id}/posts/${postId}/messages`,
+      configObj
+    )
       .then((response) => response.json())
       .then((message) => {
-        this.setState({ messages: [...this.state.messages, message] });
+        console.log("Message fetch received", message);
+        // this.setState({ messages: [...this.state.messages, message] });
       });
   };
 
@@ -207,6 +211,7 @@ class PostContainer extends React.Component {
               fetchHandler={this.fetchHandler}
               messages={this.state.messages}
               currentUser={this.props.currentUser}
+              messageHandler={this.messageHandler}
             />
           </View>
         ) : null}
