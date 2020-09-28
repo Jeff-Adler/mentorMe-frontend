@@ -46,13 +46,15 @@ class Profile extends React.Component {
               >{`${currentUser.first_name} ${currentUser.last_name}`}</Card.Title>
               <Card.Divider />
               {/* <Card.Image source={require("../images/pic2.jpg")} /> */}
-              <UserAvatar
-                style={styles.avatar}
-                size={200}
-                bgColor="#3498db"
-                name={`${currentUser.first_name} ${currentUser.last_name}`}
-                src={currentUser.avatar}
-              />
+              <View style={styles.miniContainer}>
+                <UserAvatar
+                  style={styles.avatar}
+                  size={200}
+                  bgColor="#3498db"
+                  name={`${currentUser.first_name} ${currentUser.last_name}`}
+                  src={currentUser.avatar}
+                />
+              </View>
               <Text style={styles.italicizedText}>
                 {currentUser.description}
                 {"\n"}
@@ -137,7 +139,7 @@ const styles = StyleSheet.create({
     height: 200,
     marginTop: "5%",
     marginBottom: "7%",
-    marginLeft: "12%",
+    // marginLeft: "12%",
   },
   buildContainer: {
     flex: 1,

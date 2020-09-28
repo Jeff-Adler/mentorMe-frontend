@@ -16,7 +16,7 @@ class Chat extends React.Component {
     return {
       _id: message.id,
       text: message.text,
-      createdAt: message.created_at,
+      createdAt: message.message_created_at,
       user: {
         _id: message.user.id,
         name: `${message.user.first_name} ${message.user.last_name}`,

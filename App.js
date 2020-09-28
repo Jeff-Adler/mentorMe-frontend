@@ -118,7 +118,7 @@ class App extends React.Component {
       body: JSON.stringify({ user: userInfo }),
     };
 
-    fetch("https://127.0.0.1:3000/api/v1/login", configObj)
+    fetch("http://127.0.0.1:3000/api/v1/login", configObj)
       .then((response) => response.json())
       .then((data) => {
         if (data.jwt) {
@@ -140,7 +140,7 @@ class App extends React.Component {
       body: JSON.stringify({ user: userObj }),
     };
 
-    fetch("https://127.0.0.1:3000/api/v1/users", configObj)
+    fetch("http://127.0.0.1:3000/api/v1/users", configObj)
       .then((response) => response.json())
       .then((data) => {
         if (data.jwt) {

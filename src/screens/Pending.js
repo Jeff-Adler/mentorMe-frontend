@@ -38,13 +38,15 @@ class Pending extends React.Component {
               >{`${pendingUser.first_name} ${pendingUser.last_name}`}</Card.Title>
               <Card.Divider />
               {/* <Card.Image source={require("../images/pic2.jpg")} /> */}
-              <UserAvatar
-                style={styles.avatar}
-                size={200}
-                bgColor="#3498db"
-                name={`${pendingUser.first_name} ${pendingUser.last_name}`}
-                src={pendingUser.avatar}
-              />
+              <View style={styles.miniContainer}>
+                <UserAvatar
+                  style={styles.avatar}
+                  size={200}
+                  bgColor="#3498db"
+                  name={`${pendingUser.first_name} ${pendingUser.last_name}`}
+                  src={pendingUser.avatar}
+                />
+              </View>
               <Text style={styles.italicizedText}>
                 {pendingUser.description}
                 {"\n"}
@@ -104,7 +106,7 @@ const styles = StyleSheet.create({
     height: 200,
     marginTop: "5%",
     marginBottom: "7%",
-    marginLeft: "16%",
+    // marginLeft: "16%",
   },
   cardText: {
     justifyContent: "center",

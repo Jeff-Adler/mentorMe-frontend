@@ -50,13 +50,15 @@ class EligiblesCardStack extends React.Component {
           >{`${eligible.first_name} ${eligible.last_name}`}</Card.Title>
           <Card.Divider />
           {/* <Card.Image source={require("../images/pic2.jpg")} /> */}
-          <UserAvatar
-            style={styles.avatar}
-            size={200}
-            bgColor="#3498db"
-            name={`${eligible.first_name} ${eligible.last_name}`}
-            src={eligible.avatar}
-          />
+          <View style={styles.miniContainer}>
+            <UserAvatar
+              style={styles.avatar}
+              size={200}
+              bgColor="#3498db"
+              name={`${eligible.first_name} ${eligible.last_name}`}
+              src={eligible.avatar}
+            />
+          </View>
           <Text style={styles.italicizedText}>
             {eligible.description}
             {"\n"}
@@ -147,7 +149,7 @@ const styles = StyleSheet.create({
     height: 200,
     marginTop: "5%",
     marginBottom: "7%",
-    marginLeft: "16%",
+    // marginLeft: "16%",
   },
   buttonGroupContainer: {
     marginTop: "8%",
@@ -248,6 +250,11 @@ const styles = StyleSheet.create({
     fontFamily: "System",
     color: "black",
     backgroundColor: "transparent",
+  },
+  miniContainer: {
+    // flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
   footer: {
     flex: 1,
