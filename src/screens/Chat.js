@@ -26,14 +26,14 @@ class Chat extends React.Component {
   };
 
   async componentDidMount() {
-    const { messages } = this.props;
-
     this.setState({ messages: this.iterateMessageJSON() });
   }
 
-  onSend(messages = []) {
+  onSend(newMessages = []) {
+    const postId = this.props.messages[0].id;
+    console.log("Sent Message: ", newMessages, "PostId: ", postId);
     this.setState((previousState) => ({
-      messages: GiftedChat.append(previousState.messages, messages),
+      messages: GiftedChat.append(previousState.messages, newMessages),
     }));
   }
 

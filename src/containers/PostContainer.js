@@ -167,6 +167,29 @@ class PostContainer extends React.Component {
       });
   };
 
+  messageHandler = async (messageObj, postId) => {
+    const token = await this.props.getToken();
+    this.postMessage(token, messageObj, postId);
+  };
+
+  postMessage = (token, messageObj, postId) => {
+    const configObj = {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        accepts: "application/json",
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ message: messageObj }),
+    };
+
+    fetch(`http://localhost:3000/posts/${postId}/messages`, configObj)
+      .then((response) => response.json())
+      .then((message) => {
+        this.setState({ messages: [...this.state.messages, message] });
+      });
+  };
+
   render() {
     return (
       <View style={styles.container}>
