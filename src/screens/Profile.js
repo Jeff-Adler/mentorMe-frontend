@@ -137,8 +137,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: 200,
     height: 200,
-    marginTop: "5%",
-    marginBottom: "7%",
+    marginTop: "2%",
+    marginBottom: "3%",
     // marginLeft: "12%",
   },
   buildContainer: {
@@ -179,6 +179,7 @@ const styles = StyleSheet.create({
     // flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    width: 288,
   },
 });
 
