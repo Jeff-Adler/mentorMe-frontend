@@ -20,15 +20,21 @@ class DescriptionForm extends React.Component {
     const { navigation } = this.props;
     return (
       <View style={styles.container}>
-        <Text style={styles.textStyle}>I am a ...</Text>
+        <Text style={styles.textStyle}>
+          <Text> </Text> I am a ... {"\n"}
+        </Text>
         <Input
           placeholder="Profession"
           //   leftIcon={{ type: "font-awesome", name: "user" }}
           onChangeText={this.onChangeText("profession")}
           value={profession}
         />
-        <Text style={styles.textStyle}>Looking to...</Text>
+        <Text style={styles.textStyle}>
+          {"\n"}
+          <Text> </Text> looking to...{"\n"}
+        </Text>
         <Input
+          autoCapitalize="none"
           placeholder="Goal"
           //   leftIcon={{ type: "font-awesome", name: "lock" }}
           onChangeText={this.onChangeText("goal")}
@@ -52,6 +58,7 @@ const styles = StyleSheet.create({
     textAlign: "left",
     fontStyle: "italic",
     fontSize: 20,
+    alignSelf: "flex-start",
   },
 });
 

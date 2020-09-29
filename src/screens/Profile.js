@@ -28,7 +28,8 @@ class Profile extends React.Component {
         currentUser.last_name === null ||
         currentUser.birthdate === null ||
         currentUser.age === null ||
-        currentUser.gender === null ? (
+        currentUser.gender === null ||
+        currentUser.description === null ? (
           <View style={styles.buildContainer}>
             <Text h4>You're signed in!{"\n"}</Text>
             <Text h4>Let's fill out your profile.{"\n"}</Text>
