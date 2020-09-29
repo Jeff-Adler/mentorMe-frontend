@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
   },
   content: {
     // justifyContent: "space-around",
-    marginTop: "16%",
+    marginTop: "10%",
     // marginBottom: -10,
     flex: 1,
     alignItems: "center",
@@ -260,8 +260,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    height: responsiveScreenHeight(35),
-    width: responsiveWidth(75),
+    height: responsiveScreenHeight(40),
+    width: responsiveWidth(82),
     // marginBottom: 100,
   },
   footer: {

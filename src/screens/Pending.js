@@ -104,9 +104,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: 200,
     height: 200,
-    marginTop: "5%",
-    marginBottom: "7%",
-    // marginLeft: "16%",
+    // marginTop: "2%",
+    // marginBottom: "3%",
   },
   cardText: {
     justifyContent: "center",
@@ -122,6 +121,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginTop: "2%",
+    marginBottom: "3.8%",
   },
   italicizedText: {
     justifyContent: "center",
@@ -131,9 +131,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   miniContainer: {
-    // flex: 1,
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    height: 100,
+    width: 277,
   },
 });
 
