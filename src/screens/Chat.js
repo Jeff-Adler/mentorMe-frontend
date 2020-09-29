@@ -28,7 +28,6 @@ class Chat extends React.Component {
   async componentDidMount() {
     this.setState({ messages: this.iterateMessageJSON() });
     this.interval = setInterval(() => {
-      console.log("tick");
       this.props.fetchHandler(this.props.postId);
     }, 1000);
   }
