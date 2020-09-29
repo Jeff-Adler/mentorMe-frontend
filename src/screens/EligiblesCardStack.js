@@ -260,8 +260,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    height: responsiveScreenHeight(40),
-    width: responsiveWidth(82),
+    height: responsiveScreenHeight(40.5),
+    width: responsiveWidth(83),
     // marginBottom: 100,
   },
   footer: {
