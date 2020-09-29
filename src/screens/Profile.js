@@ -91,6 +91,12 @@ class Profile extends React.Component {
                 title="Edit Profile"
                 onPress={() => this.props.navigation.navigate("Name")}
               />
+              <Button
+                style={styles.logoutButton}
+                title="Logout"
+                type="clear"
+                onPress={() => logoutHandler()}
+              />
             </Card>
             {/* <Text style={{ fontWeight: "bold" }} h4>
               {`${currentUser.first_name} ${currentUser.last_name}`}
@@ -119,12 +125,12 @@ class Profile extends React.Component {
             <Text>{"\n"}</Text> */}
           </View>
         )}
-        <Button
+        {/* <Button
           style={styles.logoutButton}
           title="Logout"
           type="clear"
           onPress={() => logoutHandler()}
-        />
+        /> */}
       </View>
     );
   }
@@ -162,7 +168,8 @@ const styles = StyleSheet.create({
     // flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: "2%",
+    // marginTop: "2%",
+    // marginBottom: "2%",
   },
   italicizedText: {
     justifyContent: "center",
@@ -172,14 +179,17 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   logoutButton: {
-    marginTop: 12,
+    marginTop: 6,
     alignItems: "center",
   },
   miniContainer: {
-    // flex: 1,
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    width: 288,
+    width: 296,
+    // height: 2180,
+    marginTop: "2%",
+    marginBottom: "5%",
   },
 });
 
