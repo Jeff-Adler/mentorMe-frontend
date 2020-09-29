@@ -54,6 +54,7 @@ class Chat extends React.Component {
       <View style={styles.container}>
         {this.props.messages !== null ? (
           <GiftedChat
+            showUserAvatar={true}
             messages={this.state.messages}
             onSend={(messages) => this.onSend(messages)}
             user={{ _id: this.props.currentUser.id }}
