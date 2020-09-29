@@ -1,8 +1,13 @@
 import React from "react";
-// import CardStack, { Card } from "react-native-card-stack-swiper";
-// import CardStack, { Card } from "react-native-card-stack-swiper";
+
 import CardStack from "react-native-card-stack-swiper";
 import { Text, ButtonGroup, Card } from "react-native-elements";
+
+import {
+  responsiveHeight,
+  responsiveWidth,
+  responsiveScreenHeight,
+} from "react-native-responsive-dimensions";
 
 import { SafeAreaView, StyleSheet, View } from "react-native";
 import UserAvatar from "react-native-user-avatar";
@@ -184,7 +189,7 @@ const styles = StyleSheet.create({
   },
   content: {
     // justifyContent: "space-around",
-    marginTop: "22%",
+    marginTop: "16%",
     // marginBottom: -10,
     flex: 1,
     alignItems: "center",
@@ -195,7 +200,6 @@ const styles = StyleSheet.create({
     // borderColor: "black",
     // top: 100,
     // width: 320,
-    // height: 200,
     // justifyContent: "center",
     // flex: 1,
     // justifyContent: "flex-end",
@@ -238,6 +242,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontStyle: "italic",
     fontSize: 20,
+    alignSelf: "center",
   },
   label: {
     // borderColor: "black",
@@ -252,9 +257,12 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
   },
   miniContainer: {
-    // flex: 1,
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    height: responsiveScreenHeight(35),
+    width: responsiveWidth(75),
+    // marginBottom: 100,
   },
   footer: {
     flex: 1,
