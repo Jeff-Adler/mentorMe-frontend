@@ -74,7 +74,10 @@ class App extends React.Component {
       body: JSON.stringify({ user: userInfo }),
     };
 
-    fetch(`http://localhost:3000/api/v1/users/${this.getUserId()}`, configObj)
+    await fetch(
+      `http://localhost:3000/api/v1/users/${this.getUserId()}`,
+      configObj
+    )
       .then((response) => response.json())
       .then((data) => {
         if (data) {

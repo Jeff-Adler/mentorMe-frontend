@@ -17,8 +17,8 @@ class GenderPicker extends React.Component {
     this.setState({ gender: "other" });
   };
 
-  submitHandler = () => {
-    this.props.submitUserInfo(this.state);
+  submitHandler = async () => {
+    await this.props.submitUserInfo(this.state);
     this.props.navigation.navigate("Birthdate");
   };
 
