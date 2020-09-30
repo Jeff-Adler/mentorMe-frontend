@@ -6,9 +6,6 @@ import EligiblesContainer from "../containers/EligiblesContainer";
 import PendingContainer from "../containers/PendingContainer";
 import AccountStackNavigator from "../navigation/AccountStackNavigator";
 
-import { ChatExample } from "../screens/ChatExample";
-import Chat from "../screens/Chat";
-
 const Tab = createBottomTabNavigator();
 
 const MainTabNavigator = (props) => {
