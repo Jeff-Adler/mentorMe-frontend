@@ -19,7 +19,6 @@ function RefetchPendings({ getToken, fetchPendings }) {
           }
         } catch (e) {
           console.log(e);
-          // Handle error
         }
       };
 

@@ -15,19 +15,12 @@ class Pending extends React.Component {
     return gender.charAt(0).toUpperCase() + gender.slice(1);
   };
 
-  // convertBirthdateToDate = (birthdate) => {
-  //   const convertedBirthdate = moment(birthdate, "YYYY-MM-DD").format(
-  //     "MMMM Do, YYYY"
-  //   );
-  //   return convertedBirthdate;
-  // };
-
   convertBirthdateToAge = (birthdate) => {
     return moment().diff(birthdate, "years");
   };
 
   render() {
-    const { pendingUser, acceptPending } = this.props;
+    const { pendingUser } = this.props;
     return (
       <View style={styles.container}>
         {pendingUser !== null ? (
@@ -37,9 +30,9 @@ class Pending extends React.Component {
                 style={styles.cardTitle}
               >{`${pendingUser.first_name} ${pendingUser.last_name}`}</Card.Title>
               <Card.Divider />
-              {/* <Card.Image source={require("../images/pic2.jpg")} /> */}
               <View style={styles.miniContainer}>
                 <UserAvatar
+                  key={pendingUser.avatar}
                   style={styles.avatar}
                   size={200}
                   bgColor="#3498db"
@@ -59,28 +52,8 @@ class Pending extends React.Component {
                 {this.convertBirthdateToAge(pendingUser.birthdate)}
                 {"\n"}
               </Text>
-              {/* <Text style={styles.cardText}>
-                <Text style={{ fontWeight: "bold" }}>Username: </Text>
-                {pendingUser.username}
-                {"\n"}
-              </Text> */}
-              {/* <Text style={styles.cardText}>
-                <Text style={{ fontWeight: "bold" }}>Gender: </Text>
-                {this.capitalize(pendingUser.gender)}
-                {"\n"}
-              </Text> */}
-              {/* <Text style={styles.cardText}>
-                {this.convertBirthdateToDate(pendingUser.birthdate)}
-                {"\n"}
-              </Text> */}
-              {/* <Text style={styles.cardText}>
-                <Text style={{ fontWeight: "bold" }}>Age: </Text>
-                {this.convertBirthdateToAge(pendingUser.birthdate)}
-                {"\n"}
-              </Text> */}
               <Button
                 onPress={this.pressHandler}
-                // icon={<Icon name="code" color="#ffffff" />}
                 buttonStyle={{
                   borderRadius: 0,
                   marginLeft: 0,
