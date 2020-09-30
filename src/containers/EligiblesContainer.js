@@ -3,12 +3,7 @@ import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 
-import EligiblesCardStack from "../screens/EligiblesCardStack";
-import EligibleStackNavigator from "../navigation/EligiblesStackNavigator";
 import EligiblesStackNavigator from "../navigation/EligiblesStackNavigator";
-
-// import Constants from "expo-constants";
-// const statusBarHeight = Constants.statusBarHeight;
 
 //Hook to refetch Pendings when NavTab is clicked
 function RefetchEligibles({ getToken, fetchEligibles }) {
@@ -25,7 +20,6 @@ function RefetchEligibles({ getToken, fetchEligibles }) {
           }
         } catch (e) {
           console.log(e);
-          // Handle error
         }
       };
 

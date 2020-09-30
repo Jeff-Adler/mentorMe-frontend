@@ -54,7 +54,6 @@ class EligiblesCardStack extends React.Component {
             style={styles.cardTitle}
           >{`${eligible.first_name} ${eligible.last_name}`}</Card.Title>
           <Card.Divider />
-          {/* <Card.Image source={require("../images/pic2.jpg")} /> */}
           <View style={styles.miniContainer}>
             <UserAvatar
               style={styles.avatar}
@@ -76,35 +75,6 @@ class EligiblesCardStack extends React.Component {
             {this.convertBirthdateToAge(eligible.birthdate)}
             {"\n"}
           </Text>
-          {/* <View style={styles.cardContainer}>
-            <Text
-              h3
-              // style={styles.label}
-            >
-              {`${eligible.first_name} ${eligible.last_name}`}
-              {"\n"}
-            </Text>
-            <Text style={{ fontStyle: "italic" }} h4>
-              {eligible.description}
-              {"\n"}
-            </Text>
-            <Text h4>
-              {eligible.gender.charAt(0).toUpperCase() +
-                eligible.gender.slice(1)}
-              {"\n"}
-            </Text>
-            <Text h4>
-              {this.convertBirthdateToDate(eligible.birthdate)}
-              {"\n"}
-            </Text>
-            <UserAvatar
-              style={styles.avatar}
-              size={100}
-              bgColor="#3498db"
-              name={`${eligible.first_name} ${eligible.last_name}`}
-              src={eligible.avatar}
-            />
-          </View> */}
         </Card>
       );
     });
@@ -154,15 +124,12 @@ const styles = StyleSheet.create({
     height: 200,
     marginTop: "5%",
     marginBottom: "7%",
-    // marginLeft: "16%",
   },
   buttonGroupContainer: {
     marginTop: "8%",
     justifyContent: "center",
     alignItems: "center",
     flex: 1,
-    // marginBottom: 30,
-    // marginBottom: -10,
   },
   cardContainer: {
     marginTop: "5%",
@@ -178,14 +145,10 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   container: {
-    // marginTop: statusBarHeight,
     justifyContent: "center",
     alignItems: "center",
     flex: 1,
     flexDirection: "column",
-    // borderRadius: 5,
-    // borderWidth: 5,
-    // borderColor: "black",
   },
   content: {
     // justifyContent: "space-around",
@@ -193,23 +156,8 @@ const styles = StyleSheet.create({
     // marginBottom: -10,
     flex: 1,
     alignItems: "center",
-    // paddingTop: -50,
-    // backgroundColor: "#f2f2f2",
-    // borderRadius: 5,
-    // borderWidth: 5,
-    // borderColor: "black",
-    // top: 100,
-    // width: 320,
-    // justifyContent: "center",
-    // flex: 1,
-    // justifyContent: "flex-end",
-    // marginBottom: "100%",
-    // position: "absolute",
   },
   card: {
-    // borderColor: "black",
-    // borderRadius: 5,
-    // borderWidth: 5,
     justifyContent: "center",
     alignItems: "center",
     width: 320,
@@ -245,9 +193,6 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   label: {
-    // borderColor: "black",
-    // borderRadius: 5,
-    // borderWidth: 5,
     marginTop: 75,
     lineHeight: 450,
     textAlign: "center",

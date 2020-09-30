@@ -137,12 +137,7 @@ class PostContainer extends React.Component {
     fetch(
       `http://localhost:3000/api/v1/users/${this.props.currentUser.id}/posts/${postId}/messages`,
       configObj
-    )
-      .then((response) => response.json())
-      .then((message) => {
-        console.log("Message fetch received", message);
-        // this.setState({ messages: [...this.state.messages, message] });
-      });
+    ).then((response) => response.json());
   };
 
   render() {
