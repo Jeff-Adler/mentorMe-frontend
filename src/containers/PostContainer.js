@@ -100,56 +100,6 @@ class PostContainer extends React.Component {
       });
   };
 
-  // fetchMentorPosts = (token) => {
-  //   fetch(
-  //     `http://localhost:3000/api/v1/users/${this.props.currentUser.id}/posts/mentor`,
-  //     {
-  //       method: "GET",
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     }
-  //   )
-  //     .then((response) => response.json())
-  //     .then((mentorPosts) => {
-  //       this.setState({
-  //         posts: mentorPosts,
-  //       });
-  //     });
-  // };
-
-  // fetchMenteePosts = (token) => {
-  //   fetch(
-  //     `http://localhost:3000/api/v1/users/${this.props.currentUser.id}/posts/mentee`,
-  //     {
-  //       method: "GET",
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     }
-  //   )
-  //     .then((response) => response.json())
-  //     .then((menteePosts) => {
-  //       this.setState({
-  //         posts: menteePosts,
-  //       });
-  //     });
-  // };
-
-  //may not need this!
-  // fetchPost = (token, postId) => {
-  //   fetch(`http://localhost:3000/posts/${postId}`, {
-  //     method: "GET",
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   })
-  //     .then((response) => response.json())
-  //     .then((post) => {
-  //       this.setState({ post: post });
-  //     });
-  // };
-
   fetchHandler = async (postId) => {
     const token = await this.props.getToken();
     await this.fetchMessages(token, postId);
