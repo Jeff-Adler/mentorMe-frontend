@@ -24,12 +24,14 @@ class ProfileEditForm extends React.Component {
           placeholder="First Name"
           //   leftIcon={{ type: "font-awesome", name: "user" }}
           onChangeText={this.onChangeText("first_name")}
+          autoCorrect={false}
           value={firstName}
         />
         <Input
           placeholder="Last Name"
           //   leftIcon={{ type: "font-awesome", name: "lock" }}
           onChangeText={this.onChangeText("last_name")}
+          autoCorrect={false}
           value={lastName}
         />
         <Button title="Next" onPress={this.pressHandler} />

@@ -82,7 +82,7 @@ class EligiblesCardStack extends React.Component {
 
   render() {
     const { eligibles } = this.props;
-    const buttons = ["Professional", "Interpersonal", "Self"];
+    const buttons = ["Career", "Relationships", "Self-Esteem"];
     const { selectedIndex } = this.state;
     return (
       <SafeAreaView>

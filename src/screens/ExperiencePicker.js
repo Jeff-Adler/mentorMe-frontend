@@ -10,15 +10,15 @@ class ExperiencePicker extends React.Component {
   };
 
   professionalPressHandler = () => {
-    this.setState({ professional: true });
+    this.setState({ professional: !this.state.professional });
   };
 
   interpersonalPressHandler = () => {
-    this.setState({ interpersonal: true });
+    this.setState({ interpersonal: !this.state.interpersonal });
   };
 
   selfImprovementPressHandler = () => {
-    this.setState({ self_improvement: true });
+    this.setState({ self_improvement: !this.state.self_improvement });
   };
 
   submitHandler = () => {
@@ -31,21 +31,21 @@ class ExperiencePicker extends React.Component {
       <View style={styles.container}>
         <CheckBox
           center
-          title="Professional"
+          title="Career"
           checked={this.state.professional === true}
           value="professional"
           onPress={this.professionalPressHandler}
         />
         <CheckBox
           center
-          title="Interpersonal"
+          title="Relationships"
           checked={this.state.interpersonal === true}
           value="interpersonal"
           onPress={this.interpersonalPressHandler}
         />
         <CheckBox
           center
-          title="Self-Improvement"
+          title="Self-esteem"
           checked={this.state.self_improvement === true}
           value="self-improvement"
           onPress={this.selfImprovementPressHandler}
