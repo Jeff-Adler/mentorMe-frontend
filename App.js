@@ -121,7 +121,7 @@ class App extends React.Component {
       body: JSON.stringify({ user: userInfo }),
     };
 
-    fetch("http://127.0.0.1:3000/api/v1/login", configObj)
+    fetch("http://localhost:3000/api/v1/login", configObj)
       .then((response) => response.json())
       .then((data) => {
         if (data.jwt) {
@@ -143,7 +143,7 @@ class App extends React.Component {
       body: JSON.stringify({ user: userObj }),
     };
 
-    fetch("http://127.0.0.1:3000/api/v1/users", configObj)
+    fetch("http://localhost:3000/api/v1/users", configObj)
       .then((response) => response.json())
       .then((data) => {
         if (data.jwt) {
@@ -195,11 +195,6 @@ class App extends React.Component {
               />
             ) : (
               <View style={styles.container}>
-                {/* <Header
-              leftComponent={{ icon: "menu", color: "#fff" }}
-              centerComponent={{ text: "MentorMe", style: { color: "#fff" } }}
-              rightComponent={{ icon: "home", color: "#fff" }}
-            /> */}
                 <NavigationContainer>
                   <MainTabNavigator
                     currentUser={this.state.user}
