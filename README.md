@@ -48,9 +48,12 @@ i
 ![login_page](./screenshots/login_page.png?raw=true "Login Page")
 ![signup_page](./screenshots/signup_page.png?raw=true "Signup Page")
 
-3. Create Profile
+3. Create Profile. Enter Name, Gender, Birthdate
 
 ![profile_create_page](./screenshots/profile_create_page.png?raw=true "Profile Create Page")
+![name_entry_page](./screenshots/name_entry_page.png?raw=true "Name Submission Page")
+![gender_page](./screenshots/gender_page.png?raw=true "Gender Selection Page")
+![birthdate_picker](./screenshots/birthdate_picker.png?raw=true "Birthdate Selection Page")
 
 # Built With
 
