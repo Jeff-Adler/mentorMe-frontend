@@ -73,9 +73,25 @@ i
 rake app:all
 ```
 
-8. Search for mentorship for Career, Relationships, and Self-Esteem in the 'Search' tab. Swipe right to accept mentor, swipe left to reject.
+8. From the 'Search' tab, search for mentorship for Career, Relationships, and Self-Esteem. Swipe right to accept mentor, swipe left to reject.
 
 ![search_tab](./screenshots/search_tab.png?raw=true "Search Tab Page")
+
+9. From the 'Requests' tab, view all users who are requesting mentorship from you (i.e. all users who swiped right on you). Click on user in the list to see their show page. If you skipped step 7, no users will appear.
+
+10. Click 'Accept Mentee' to accept them as a user to whom you will provide mentorship!
+
+![request_index_page](./screenshots/request_index_page.png?raw=true "Request Index Page")
+![request_show_page](./screenshots/request_show_page.png?raw=true "Request Show Page")
+
+11. From the 'Chats' tab, toggle between chats for which you are the Mentor, and chats for which you are the Mentee. Mentor chats are all the chats for which you accepted a mentee, Mentee chats are all the chats for which a user accepted you as a mentee. Again, if you skipped step 7, no users will appear.
+
+![mentor_chat_index_page](./screenshots/mentor_chat_index_page.png?raw=true "Mentor Chat Index Page")
+![mentee_chat_index_page](./screenshots/mentee_chat_index_page.png?raw=true "Mentee Chat Index Page")
+
+12. Click on a user in the list to enter into a chat!
+
+![chat_example](./screenshots/chat_example.png?raw=true "Chat Example Page")
 
 # Built With
 
