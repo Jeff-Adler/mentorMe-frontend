@@ -1,7 +1,7 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import PostStackNavigator from "../navigation/PostStackNavigator";
 import { useFocusEffect } from "@react-navigation/native";
+import PostStackNavigator from "../navigation/PostStackNavigator";
 
 POSTTYPES = {
   mentor: "mentee",
@@ -23,7 +23,6 @@ function RefetchPosts({ getToken, fetchPosts }) {
           }
         } catch (e) {
           console.log(e);
-          // Handle error
         }
       };
 

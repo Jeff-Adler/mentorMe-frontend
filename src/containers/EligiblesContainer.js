@@ -1,5 +1,4 @@
 import React from "react";
-// import AsyncStorage from "@react-native-community/async-storage";
 import { View, StyleSheet, Text } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 

@@ -4,7 +4,6 @@ import CardStack from "react-native-card-stack-swiper";
 import { Text, ButtonGroup, Card } from "react-native-elements";
 
 import {
-  responsiveHeight,
   responsiveWidth,
   responsiveScreenHeight,
 } from "react-native-responsive-dimensions";
@@ -12,8 +11,6 @@ import {
 import { SafeAreaView, StyleSheet, View } from "react-native";
 import UserAvatar from "react-native-user-avatar";
 
-import Constants from "expo-constants";
-const statusBarHeight = Constants.statusBarHeight;
 var moment = require("moment");
 
 class EligiblesCardStack extends React.Component {
@@ -133,13 +130,9 @@ const styles = StyleSheet.create({
   },
   cardContainer: {
     marginTop: "5%",
-    // justifyContent: "center",
     alignItems: "center",
     flex: 1,
     flexDirection: "column",
-    // borderRadius: 5,
-    // borderWidth: 5,
-    // borderColor: "black",
   },
   cardTitle: {
     fontSize: 20,
@@ -151,9 +144,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
   },
   content: {
-    // justifyContent: "space-around",
     marginTop: "10%",
-    // marginBottom: -10,
     flex: 1,
     alignItems: "center",
   },
@@ -207,7 +198,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     height: responsiveScreenHeight(40.5),
     width: responsiveWidth(83),
-    // marginBottom: 100,
   },
   footer: {
     flex: 1,

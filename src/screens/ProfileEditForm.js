@@ -1,6 +1,5 @@
 import React from "react";
-import Icon from "react-native-vector-icons/FontAwesome";
-import { Input, Button, CheckBox } from "react-native-elements";
+import { Input, Button } from "react-native-elements";
 import { View, StyleSheet } from "react-native";
 
 class ProfileEditForm extends React.Component {
@@ -22,14 +21,12 @@ class ProfileEditForm extends React.Component {
       <View style={styles.container}>
         <Input
           placeholder="First Name"
-          //   leftIcon={{ type: "font-awesome", name: "user" }}
           onChangeText={this.onChangeText("first_name")}
           autoCorrect={false}
           value={firstName}
         />
         <Input
           placeholder="Last Name"
-          //   leftIcon={{ type: "font-awesome", name: "lock" }}
           onChangeText={this.onChangeText("last_name")}
           autoCorrect={false}
           value={lastName}

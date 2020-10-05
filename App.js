@@ -11,9 +11,6 @@ import AccountStackNavigator from "./src/navigation/AccountStackNavigator";
 
 import AsyncStorage from "@react-native-community/async-storage";
 
-// import Constants from "expo-constants";
-// const statusBarHeight = Constants.statusBarHeight;
-
 const Tab = createBottomTabNavigator();
 
 class App extends React.Component {
@@ -227,11 +224,8 @@ class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    // marginTop: statusBarHeight,
     flex: 1,
     backgroundColor: "#fff",
-    // alignItems: "center",
-    // justifyContent: "center",
   },
 });
 
