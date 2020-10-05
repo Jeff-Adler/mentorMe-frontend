@@ -20,26 +20,28 @@ cd mentorMe_backend
 bundle install
 ```
 
-3. In terminal (preferably in another tab):
+3. In terminal (preferably in another tab), enter:
 
 ```
 cd mentorMe_frontend
 npm install
 ```
 
-4. From backend terminal tab:
+4. From backend terminal tab, enter:
 
 ```
 rails s
 ```
 
-5. From frontend terminal tab:
+5. From frontend terminal tab, enter:
 
 ```
 npm start
 //After expo is loaded
 i
 ```
+
+Note: ignore messages "(node:13968) Warning: Accessing non-existent property 'cat' of module exports inside circular dependency..."
 
 ## Usage
 
