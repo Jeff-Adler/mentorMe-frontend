@@ -2,6 +2,8 @@
 
 Life is full of challenges. But, any setback can be an opportunity for growth! That is, if you have a mentor! MentorMe. is a means to connect users looking for mentorship with those looking to give mentorship through a swipe-based mechanic familiar from dating apps. Get one-on-one advice for your career, relationships, and self-esteem from the comfort of your smartphone device!
 
+[App Walkthrough](https://youtu.be/U85gXH0QPL0 "MentorMe. Walkthrough")
+
 ## Getting Started
 
 ### Prerequisites
@@ -64,6 +66,16 @@ i
 6. Enter a tagline to display on your profile
 
 ![tagline_submission_page](./screenshots/tagline_submission_page.png?raw=true "Tagline Submission Page")
+
+7. (Optional) To fully seed the database, from the backend terminal tab, run:
+
+```
+rake app:all
+```
+
+8. Search for mentorship for Career, Relationships, and Self-Esteem in the 'Search' tab. Swipe right to accept mentor, swipe left to reject.
+
+![search_tab](./screenshots/search_tab.png?raw=true "Search Tab Page")
 
 # Built With
 
