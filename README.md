@@ -31,7 +31,7 @@ npm install
 rails s
 ```
 
-5. From front terminal tab:
+5. From frontend terminal tab:
 
 ```
 npm start
@@ -45,15 +45,25 @@ i
 
 2. Enter Username and Password (must be between 6 - 20 characters)
 
+3. Click 'Create Profile'
+
 ![login_page](./screenshots/login_page.png?raw=true "Login Page")
 ![signup_page](./screenshots/signup_page.png?raw=true "Signup Page")
-
-3. Create Profile. Enter Name, Gender, Birthdate
-
 ![profile_create_page](./screenshots/profile_create_page.png?raw=true "Profile Create Page")
+
+4. Enter Name, Gender, and Birthdate
+
 ![name_entry_page](./screenshots/name_entry_page.png?raw=true "Name Submission Page")
 ![gender_page](./screenshots/gender_page.png?raw=true "Gender Selection Page")
 ![birthdate_picker](./screenshots/birthdate_picker.png?raw=true "Birthdate Selection Page")
+
+5. Enter any categories for which you feel licensed to give mentorship on
+
+![experience_picker](./screenshots/experience_picker.png?raw=true "Experience Picker Page")
+
+6. Enter a tagline to display on your profile
+
+![tagline_submission_page](./screenshots/tagline_submission_page.png?raw=true "Tagline Submission Page")
 
 # Built With
 
