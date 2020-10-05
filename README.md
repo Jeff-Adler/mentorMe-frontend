@@ -48,6 +48,10 @@ i
 ![login_page](./screenshots/login_page.png?raw=true "Login Page")
 ![signup_page](./screenshots/signup_page.png?raw=true "Signup Page")
 
+3. Create Profile
+
+![profile_create_page](./screenshots/profile_create_page.png?raw=true "Profile Create Page")
+
 # Built With
 
 - React Native
