@@ -35,21 +35,18 @@ rails s
 
 ```
 npm start
-```
-
-Once expo starts:
-
-```
+//After expo is loaded
 i
 ```
 
 ## Usage
 
 1. Click 'Go to signup'
-   ![login_page](./screenshots/login_page.png?raw=true "Login Page")
 
 2. Enter Username and Password (must be between 6 - 20 characters)
-   ![signup_page](./screenshots/signup_page.png?raw=true "Signup Page")
+
+![login_page](./screenshots/login_page.png?raw=true "Login Page")
+![signup_page](./screenshots/signup_page.png?raw=true "Signup Page")
 
 # Built With
 
