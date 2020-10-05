@@ -12,7 +12,8 @@ Ensure you have React Native, Expo, iOS simulator, Ruby, and Rails installed.
 
 ### Installation
 
-1. Fork and clone this repo
+1. Fork and clone [backend repo](https://github.com/Jeff-Adler/mentorMe-backend "Backend Repo")
+
 2. From your terminal, enter:
 
 ```
@@ -20,20 +21,22 @@ cd mentorMe_backend
 bundle install
 ```
 
-3. From terminal (preferably in another tab), enter:
+3. Fork and clone this repo
+
+4. From terminal (preferably in another tab), enter:
 
 ```
 cd mentorMe_frontend
 npm install
 ```
 
-4. From backend terminal tab, enter:
+5. From backend terminal tab, enter:
 
 ```
 rails s
 ```
 
-5. From frontend terminal tab, enter:
+6. From frontend terminal tab, enter:
 
 ```
 npm start
