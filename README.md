@@ -21,7 +21,7 @@ cd mentorMe_backend
 bundle install
 ```
 
-3. Fork and clone this repo
+3. Fork and clone this (frontend) repo
 
 4. From terminal (preferably in another tab), enter:
 
