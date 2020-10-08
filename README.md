@@ -33,15 +33,16 @@ npm install
 5. From backend terminal tab, enter:
 
 ```
-rails s
+rails db:seed //seeds database
+rails s //runs Rails server
 ```
 
 6. From frontend terminal tab, enter:
 
 ```
-npm start
+npm start //runs React Native server
 //After expo is loaded
-i
+i //runs iOS simulator
 ```
 
 Note: ignore messages "(node:13968) Warning: Accessing non-existent property 'cat' of module exports inside circular dependency..."
