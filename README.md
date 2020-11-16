@@ -33,6 +33,8 @@ npm install
 5. From backend terminal tab, enter:
 
 ```
+rails db:create //creates database
+rails db:migrate //runs migrations
 rails db:seed //seeds database
 rails s //runs Rails server
 ```
